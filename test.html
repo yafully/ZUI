@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+<script language="javascript">
+/*Browser*/
+(function($){
+    'use strict';
+
+    var browser = { webkit: false, /*opera: false,*/ msie: false, firefox: false },
+        ua = window.navigator.userAgent.toLowerCase();
+    if (!$.browser) {
+        // Useragent RegExp
+        var rwebkit = /(webkit)[ \/]([\w.]+)/,
+        /*ropera = /(opera)(?:.*version)?[ \/]([\w.]+)/,*/
+        rmsie = /(msie) ([\w.]+)/,
+        rfirefox = /(firefox)\/([\d.]+)/,
+        //rmozilla = /(mozilla)(?:.*? rv:([\w.]+))?/,
+        ie11 = /(trident)(?:.*? rv:([\w.]+))?/,
+        uaMatch = function () {
+            var match = rwebkit.exec(ua) ||
+                /*ropera.exec(ua) ||*/
+                rmsie.exec(ua) ||
+                rfirefox.exec(ua) ||
+                //ua.indexOf("compatible") < 0 && rmozilla.exec(ua) ||
+                ie11.exec(ua) ||
+                [];
+            return { browser: match[1] || "", version: match[2] || "0" };
+        },
+        browserMatch = uaMatch();
+        if (browserMatch.browser) {
+            //对ie11做出的修正
+            if (browserMatch.browser == "trident")
+                browserMatch.browser = "msie";
+            //if (browserMatch.browser == "mozilla" && (!!window.ActiveXObject || "ActiveXObject" in window)) {
+            //    browser["msie"] = true;
+            //}
+            //else
+            browser[browserMatch.browser] = true;
+            browser.version = browserMatch.version;
+        }
+    }
+    else {
+        browser = $.browser;
+    }
+
+    browser.ie6 = browser.msie && (browser.version == "6.0");
+    browser.mobile = ua.match(/ipad/i) == "ipad"
+         || ua.match(/iphone os/i) == "iphone os"
+         || ua.match(/midp/i) == "midp"
+         || ua.match(/rv:1.2.3.4/i) == "rv:1.2.3.4"
+         || ua.match(/ucweb/i) == "ucweb"
+         || ua.match(/android/i) == "android"
+         || ua.match(/windows ce/i) == "windows ce"
+         || ua.match(/windows mobile/i) == "windows mobile";
+
+    $.browser = browser;
+})(jQuery);
+$(function(){
+	alert($.browser.version);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>联动</title>
+
+</head>
+<body>
+<style type="text/css">
+select{margin:0;padding:0;}
+.clear{zoom:1;}
+.clear:after{display:table;content:'';clear:both;}
+.field{margin-right:10px;}
+.field, .field span, .field div{display:inline;float:left;}
+.field span{margin-right:10px;}
+</style>
+<div style="padding:20px;" class="clear">
+    <div class="field">
+        <span class="selected">学段</span>
+        <div class="selectwrap">
+        <select class="hasunopts" name="grade" id="J_grade" title="--请选择--">
+        	<option value="">--请选择--</option>
+            <option value="1">小学</option>
+            <option value="2" disabled="disabled">初中</option>
+            <option value="3">高中</option>
+        </select></div>
+    </div>
+    <div class="field">
+        <span class="selected">科目</span>
+        <div class="selectwrap">
+        <select name="subject" id="J_subject" title="--请选择--">
+        <option value="">--请选择--</option>
+        </select></div>
+    </div>
+    
+    <div class="field">
+        <span class="selected">版本</span>
+        <div class="selectwrap"><select name="version" id="J_version" title="--请选择--"><option value="">--请选择--</option></select></div>
+    </div>
+    <div class="field">
+        <span class="selected">课本</span>
+        <div class="selectwrap"><select name="book" id="J_book" title="--请选择--"><option value="">--请选择--</option></select></div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+<script type="text/javascript" src="js/asdui.js"></script>
+<script>
+$.linkage({
+	target: ['J_grade','J_subject','J_version','J_book'],
+	url: ['test/grade.json','test/subject.json','test/version.json?time=12353','test/book.json?time=2423'],
+	//relate: '',//可以为字符串或元素id组成的数组，默认不设置时是前面每项select拼接的查询字符串
+	//,loadIndex: 0 //编辑模式下可以不设置此项，只查询出已经设置的值
+	//,defValues: [1,1,1,1]
+	selectIndex: [0,0,0,0],
+	error:[0,function(els, oi, XMLHttpRequest, textStatus, errorThrown){
+		alert('不好意思，发生了错误！');
+		window.status = 'error'+','+oi+','+this.id+','+els+XMLHttpRequest+','+ textStatus+','+ errorThrown;
+		if(window.console)
+			console.log('error',els, oi, XMLHttpRequest, textStatus, errorThrown);
+	}]
+	,change:function(els,i){
+		//数据加载前的回调
+//		window.status = 'change'+','+i+','+this.id+','+els;
+//		if(window.console)console.log('change',this, els,i);
+    }
+    /*,callback:function(D, els, i){
+    	//比如实现当返回数据D为[]空数组时，隐藏后面几项选择菜单
+    	window.status = 'beforeAdd'+','+this+','+i+','+this.id+','+els+','+D;
+		if(window.console)
+			console.log('beforeAdd', D, this, els, i);
+    }*/ //callback会替代ajax返回数据后的操作并且不会执行beforeAdd和afterAdd以及设置默认值
+    ,beforeAdd:function(D, els, i){
+    	//比如实现当返回数据D为[]空数组时，隐藏后面几项选择菜单
+//    	window.status = 'beforeAdd'+','+this+','+i+','+this.id+','+els+','+D;
+//		if(window.console)console.log('beforeAdd', D, this, els, i);
+    }
+    ,afterAdd:function(D, els, i, setDef){
+    	//D是ajax返回的数据，els是前面id对应的DOM元素数组，i为当前元素在数组中的索引，setDef判断是否是默认加载后需要设置默认值，如果提供了默认值则setDef为true
+    	//比如实现当返回数据D为[]空数组时，隐藏后面几项选择菜单，还可以实现选中默认项(老师所教年级与科目都可以设置已知的默认值，但版本科目不知时可以选择第一项作为默认值)
+//    	window.status = 'afterAdd'+','+this+','+i+','+this.id+','+els+','+D;
+//		if(window.console)console.log('afterAdd', D, this, els, i);
+		console.log(D);	
+		console.log(els);
+		console.log(i);	
+		console.log(this);
+    }
+    ,afterSetVal:function(D, els, v, i){
+    	//比如实现当返回数据D为[]空数组时，隐藏后面几项选择菜单，还可以实现选中默认项(老师所教年级与科目都可以设置已知的默认值，但版本科目不知时可以选择第一项作为默认值)
+//    	window.status = 'afterSetVal'+','+this+','+i+','+this.id+','+els+','+v+','+D;
+//		if(window.console)console.log('afterSetVal', D, this, els, v, i);
+    }
+});
+</script>
+
+<style type="text/css">
+.selectwrap{width:100px;height:25px;background:#f00;padding:3px;float:left;}
+.selectwrap iframe{/*for ie6*/display:none;position:absolute;left:3px;top:3px;/*top&left set as parent's padding*/z-index:-1;height:22px;filter:alpha(opacity=0);}
+.selectwrap select{width:90px;
+*unicode-bidi:expression(function(e){var s=e.style,w=e.currentStyle.width,p=e.parentNode,m=!window.XMLHttpRequest,i,c;s.unicodeBidi='normal';if(m){p.insertAdjacentHTML('afterBegin','<iframe src="javascript:;" tabindex="-1" frameborder="0"></iframe>');i=p.getElementsByTagName('iframe')[0]}e.attachEvent('onclick',function(){p.style.position='relative';s.position='absolute';s.width='auto';if(m){i.style.display='block';i.style.width=e.offsetWidth}});e.attachEvent('onblur',function(){p.style.position='static';s.width=w;s.position='static';m&&(i.style.display='none')});e.attachEvent('onchange',function(){document.body.focus();e.focus()})}(this));}
+
+/*带有disabled options的select*/
+select.hasunopts{_unicode-bidi:expression(function(e){e.style.unicodeBidi='normal';if(!window.XMLHttpRequest){e.setAttribute("selectIndex",e.selectedIndex);e.attachEvent("onfocusin",function(){var s=e.options;for(var i=0,l=s.length;i<l;i++){if(s[i].disabled){s[i].style.color='graytext';}}});e.attachEvent("onchange",function(){if(e.options[e.selectedIndex].disabled){e.selectedIndex=e.getAttribute("selectIndex");e.setAttribute("unselectIndex",e.selectedIndex)}e.setAttribute("selectIndex",e.selectedIndex);});}}(this));}
+</style>
+</body>
+</html>

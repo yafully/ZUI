@@ -1,0 +1,141 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="user-scalable=0, width=device-width, initial-scale=1.0,  minimum-scale=1.0, maximum-scale=1.0">
+<title>页面图片等元素滚动动态加载</title>
+
+<style>
+.zxx_test_list{font-size:13px;}
+.zxx_test_list img{margin-bottom:5px;}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<style>
+img.lzy{background: url(images/loading.gif) no-repeat center;}
+ul,li{margin:0;list-style:none;}
+/*.demo{display:block;width:5500px}
+.demo li{float:left;padding-left:200px}
+#box{width:400px;height:600px;borcer:2px solid #ccc;overflow:hidden;overflow-y:auto;}*/
+</style>
+</head>
+<body>
+<div id="box">
+    <ul class="demo" id="scop">
+        <li>
+            <img class="lzy" width="246" height="328" src="listEmp.png" 
+            data-url="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HS1624C2/Strapless-Tulle-Wedding-Dress-in-A-Line-Design.jpg"
+            data-original="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HS140109003/Sheer-Strap-Lace-over-Satin-Mermaid-Wedding-Dress-in-V-shaped-Back-Design.jpg"
+            />
+        </li>
+        <li>
+            <img class="lzy" width="246" height="328" src="listEmp.png" 
+            data-url="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HS1623C2/One-Shoulder-Chiffon-Wedding-Dress-Adorned-with-Appliques-and-Rhinestones.jpg"
+            data-original="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HS140109002/Strapless-Tulle-A-Line-Wedding-Dress-with-Exquisitely-Appliqued-Bodice-and-Hem.jpg"
+            />
+        </li>
+        <li>
+            <img class="lzy" width="246" height="328" src="listEmp.png" 
+            data-url="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HS1622C2/Vintage-Satin-Wedding-Gown-with-Lace-Bodice.jpg"
+            data-original="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HSGS32012/Rhinestoned-Lace-Halter-Empire-Chiffon-Wedding-Dress.jpg"
+            />
+        </li>
+        <li>
+            <img class="lzy" width="246" height="328" src="listEmp.png" 
+            data-url="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HS1621C2/High-Neck-Tulle-Wedding-Dress-in-A-Line-Design.jpg"
+            data-original="src='http://www.topwedding.com/media/catalog/product/cache/1/thumbnail/246x/040ec09b1e35df139433887a97daa66f/wedding/Wedding Dresses/HSGS32011/Beading-Neck-Column-Satin-Wedding-Dress-with-Brooch-(1).jpg'"
+            />
+        </li>
+        <li>
+            <img class="lzy" width="246" height="328" src="listEmp.png" 
+            data-url="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HS1620C2/Appliqued-Tulle-Wedding-Gown-with-Bowknot-on-Back.jpg"
+            data-original="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HSGS31007/Appliqued-Sweetheart-Tulle-over-Satin-Mermaid-Wedding-Dress.jpg"
+            />
+        </li>
+        <li>
+              <div style="border:1px solid #c00;width:200px;height:200px;" class="lzy" data-url="1.html">load in</div>
+        </li>
+        <li>
+            <img class="lzy" width="246" height="328" src="listEmp.png" 
+            data-url="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HS1618C2/Mermaid-Satin-Wedding-Dress-with-Rhinestones-and-Beadwork-on-Side-Waist.jpg"
+            data-original="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HSGS31002A/Appliqued-Tulle-Princess-Wedding-Dress-with-Half-Sleeved-Jacket-in-Off-the-Shoulder-Design.jpg"
+            />
+        </li>
+        <li>
+            <img class="lzy" width="246" height="328" src="listEmp.png" 
+            data-url="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HS1611C2/A-Line-Tulle-Wedding-Dress-with-Rhinestones-and-Ruffles.jpg"
+            data-original="src='http://www.topwedding.com/media/catalog/product/cache/1/thumbnail/246x/040ec09b1e35df139433887a97daa66f/wedding/Wedding Dresses/HSFG14009/Half-Sleeved-Beading-Appliqued-Organza-A-Line-Wedding-Dress-(1).jpg'"
+            />
+        </li>
+        <li>
+            <img class="lzy" width="246" height="328" src="listEmp.png" 
+            data-url="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HS1610C2/Strapless-Wedding-Dress-with-Floral-and-Pearled-Adornment.jpg"
+            data-original="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HSFG14005/Asymmetrical-Tulle-and-Lace-A-Line-Wedding-Dress-with-Rhinestone.jpg"
+            />
+        </li>
+        <li>
+            <img class="lzy" width="246" height="328" src="listEmp.png" 
+            data-url="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HS1609C2/Column-Chiffon-Wedding-Dress-with-Beadwork-and-Lace-Back.jpg"
+            data-original="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HSFG14004/Appliqued-Strapless-Empire-Tulle-Wedding-Dress-with-Court-Train.jpg"
+            />
+        </li>
+        <li>
+            <img class="lzy" width="246" height="328" src="listEmp.png" 
+            data-url="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HS1604C2/Sweetheart-Neckline-Chiffon-Wedding-Dress-in-Mermaid-Silhouette.jpg"
+            data-original="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HSNW32014/Sweetheart-Allover-Lace-Column-Wedding-Dress-with-Tulle-Overlay.jpg"
+            />
+        </li>
+        <li>
+            <img class="lzy" width="246" height="328" src="listEmp.png" 
+            data-url="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HS140109016/A-Line-Polka-Dot-Tulle-Wedding-Dress-with-Appliqued-Straps-and-Waist.jpg"
+            data-original="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HSNW32010/Rhinestone-Detailed-Sweetheart-Satin-and-Tulle-Wedding-Dress.jpg"
+            />
+        </li>
+        <li>
+            <img class="lzy" width="246" height="328" src="listEmp.png" 
+            data-url="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HS140109014/Strapless-Lace-and-Tulle-Wedding-Dress-with-Allover-Beadings-and-Detachable-Sash.jpg"
+            data-original="http://www.topwedding.com/media/catalog/product/cache/1/small_image/246x328/9df78eab33525d08d6e5fb8d27136e95/wedding/Wedding Dresses/HSNW32008/Sheer-Bateau-Neckline-Ball-Gown-with-Tulle-Skirt.jpg"
+            />
+        </li>
+    </ul>
+</div>
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+<script type="text/javascript" src="js/asdui.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script>
+var lazyLoad = new ZUI.Lazyload('.lzy',{
+		mouseAttr:'data-original',
+		container:'box',
+		verticalOnly:true,
+		loaded: function(o,data,tag){
+			
+			if(tag=="div")o.html(data);
+		},
+		callback: function() {
+			//console.log(this)
+		}
+	});
+
+$(function(){
+	$('#scop').on('mouseover','.ZUISeed',function(){
+		$(this).attr('src',$(this).data('original'))
+		
+	}).on('mouseout','.ZUISeed',function(){
+		$(this).attr('src',$(this).data('url'))
+		
+	});
+	
+//	var menuScroll = new IScroll('box',{
+//		hScroll: false,
+//		vScrollbar: false,
+//		checkDOMChanges:true,
+//		onScrollMove:function(a,b){
+//			lazyLoad.checkAppear();
+//		}
+//	});
+});
+</script>
+
+
+</body>
+</html>

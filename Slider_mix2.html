@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="user-scalable=0, width=device-width, initial-scale=1.0,  minimum-scale=1.0, maximum-scale=1.0">
+<meta content="telephone=no" name="format-detection" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="full-screen" content="yes">
+<meta name="x5-fullscreen" content="true">
+<title>无标题文档</title>
+
+<link rel="stylesheet" href="css/asdui1.4b.css" type="text/css" media="all" />
+<style>
+a:link,a:visited{color:#f00; text-decoration:underline}
+
+.SL_box3{    color: #ccc;
+    display: inline-block;
+    height: 180px;
+    overflow: hidden;
+    padding: 10px;
+    position: absolute;
+    text-align: justify;
+    width: 680px;}
+	
+#SLin2 .SL_box{position:absolute}
+
+.SL_box4{width:100px;height:100px;float:left}
+.a{background:#d8d8d8;}
+.b{background:#cdcdcd;}
+.c{background:#b7b7b7;}
+.d{background:#9d9d9d;}
+.e{background:#868686;}
+.f{background:#6c6b6b;}
+.g{background:#4d4c4c;}
+
+</style>
+</head>
+
+<body>
+<h2>Slider fix</h2>
+			<div id="output" style="border:2px solid blue;background:#fff;width:300px;height:50px;position:absolute;right:10px;top:40px;"></div>
+        
+            <div id="SL" style="width:700px;border:1px solid #f00;background:none">
+            	<div id="Slin" style="width:700px;margin:0 auto;position:relative">
+            
+                    <div class="SL_box" id="S1" style="background:#F60;color:#fff">	
+                        <!--<h2 class="animate">First article1</h2>
+                        <p class="animate">Some description</p>-->	
+                        11111
+                    </div>
+    
+                    <div class="SL_box" id="S2" style="background:#060">	
+                        <!--<h2 class="animate">First article2</h2>
+                        <p class="animate">Some description</p>	-->
+                        2222
+                    </div>
+        
+                    <div class="SL_box" id="S3" style="background:#f30;color:#fff">	
+                        <!--<h2 class="animate">First article3</h2>
+                        <p class="animate">Some description</p>	-->
+                        33333
+                    </div>
+                    
+                    <div class="SL_box" id="S4" style="background:#000;color:#fff">	
+                        <!--<h2 class="animate">First article4</h2>
+                        <p class="animate">Some description</p>	-->
+                        4444
+                    </div>
+                </div>    
+            </div>
+            <a href="javascript:void(0)" id="prev">&lt;上一个</a> | <a href="javascript:void(0)" id="next">下一个&gt;</a> |  <a href="javascript:void(0)" onClick="Sl.goToSlide(2)">跳转到第3个</a> | <a href="javascript:void(0)" id="CgSL">动态改变</a>
+            
+            <div class="SL_nav" id="SL_nav">
+			</div>
+            
+<h2>Fade</h2>
+
+			<div id="SL2" style="position:relative;width:500px;height:250px">
+					<div id="SLin2">
+                        <!-- this is an article -->
+                        <div class="SL_box" style="background:#fc0;color:#fff">	
+                            <h2>1111111111</h2>
+                            <p>Some description</p>	
+                            <div class="SL_info">1111111</div>
+                        </div>
+        
+                        <div class="SL_box">	
+                            <h2>22222222222</h2>
+                            <p>Some description</p>	
+                            <div class="SL_info">2222222</div>
+                        </div>
+            
+                        <div class="SL_box" id="dltMe" style="background:#f30;color:#fff">	
+                            <h2>333333333</h2>
+                            <p>Some description</p>	
+                            <div class="SL_info">33333333</div>
+                        </div>
+					</div>
+            </div>
+
+            <div class="SL_nav" id="SL_nav2">
+                <a href="#" title="Click to navigate"></a>
+                <a href="#" title="Click to navigate"></a>
+                <a href="#" title="Click to navigate"></a>
+            </div>
+            
+            
+<h2>Vertical</h2>
+            <div id="SL3" style="position:relative;width:90%;margin:0 auto;overflow:hidden;height:250px">
+            		<div id="SLin3" style="width:100%;height:100%;">
+                        <!-- this is an article -->
+                        <div class="SL_box2" style="background:#fc0;color:#fff">	
+                            <h2>1111111111</h2>
+                            <p>Some description</p>	
+                        </div>
+        
+                        <div class="SL_box2" style="background:#00F;color:#fff">	
+                            <h2>22222222222</h2>
+                            <p>Some description</p>	
+                        </div>
+            
+                        <div class="SL_box2" style="background:#f30;color:#fff">	
+                            <h2>333333333</h2>
+                            <p>Some description</p>	
+                        </div>
+					</div>
+            </div>
+
+            <div class="SL_nav" id="SL_nav3">
+                <a href="#" title="Click to navigate"></a>
+                <a href="#" title="Click to navigate"></a>
+                <a href="#" title="Click to navigate"></a>
+            </div> 
+            
+
+<h2>Carousel</h2>
+            
+		<div id="SL4" style="position:relative;width:300px;margin:0 auto;overflow:hidden;height:100px;border:1px solid #555">
+        	<div id="SLin4">
+            	<div class="SL_box4 a" id="1" style="background:#d8d8d8;">1</div>
+                <div class="SL_box4 b" id="2" style="background:#cdcdcd;">2</div>
+                <div class="SL_box4 c" id="3" style="background:#b7b7b7;">3</div>
+                <div class="SL_box4 d" id="4" style="background:#9d9d9d;">4</div>
+                <div class="SL_box4 e" id="5" style="background:#868686;">5</div>
+                <div class="SL_box4 f" id="6" style="background:#6c6b6b;">6</div>
+                <div class="SL_box4 g" id="7" style="background:#4d4c4c;">7</div>
+            </div>
+        </div>
+        
+        <span id="sright">下一区</span>
+        <span id="sleft">上一区</span>
+        
+        <div class="SL_nav" id="SL_nav4" style="position:static"></div>
+                          
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+<script src="js/asdui.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var Sl = new ZUI.SL('#SL',{
+				moveBox:'#Slin',
+				slides: '.SL_box',
+				slideDuration:5000,
+				effectDuration:1000,
+				page:0,
+				effect:'linear',
+				fadeDist:700,
+				fadePosition:'horizontal',//$.browser.mobile ? 'carousel' : 
+				stopSlideOnClick: true,
+				autoSlide: false,
+				circle:true,//是否首尾相连
+				nextBtn:'#next',//next id
+				prevBtn:'#prev',//prev id
+				navBuild:'<a href="#" title="Click to navigate" class=""></a>',//是否自动创建dot,false为不创建
+				navigationNums: true,//是否显示数字索引
+				navbox:'SL_nav',//数字导航容器
+				nav:'a',//数字导航元素
+				onStart:function(D,E){
+					//$('Slin').fade(.7);
+					//$.spAni && D.find('.animate').each(function(i,item){
+						//$(item).removeClass('bounceInLeft')
+					//});
+					
+				},
+				onFinish:function(D,E){
+					//$('Slin').fade('in');
+					//D.find('.animate').addClass('bounceInLeft');
+					
+					//$('#output').html(D.attr('id')+'显示'+E.attr('id')+'隐藏');
+				}
+		
+			});
+////			
+	var Sl2 = new ZUI.SL('#SL2',{
+				moveBox:'#SLin2',
+				slides:'.SL_box',
+				slideDuration:5000,
+				effectDuration:500,
+				fadeDist:600,
+				fadePosition:'fade',
+				stopSlideOnClick: false,
+				autoSlide: false,
+				navigationNums: true, // if true, numbers will appear
+				navbox:'SL_nav2',
+				onStart:function(){
+					//alert('begin')
+				},
+				onFinish:function(){
+					//alert('finish')
+				}			
+		
+			});	
+
+			
+			
+	var Sl4 = new ZUI.SL('#SL4',{
+				moveBox:'#SLin4',
+				slides:'.SL_box4',
+				slideDuration:5000,
+				effectDuration:500,
+				fadeDist:null,
+				fadePosition:'carousel',
+				stopSlideOnClick: false,
+				autoSlide: false,
+				nextBtn:"#sleft",
+				prevBtn:"#sright",
+				amount:3,//滚动个数
+				visual:3,//可视个数
+				
+				navBuild:'<a href="#" title="Click to navigate" class=""></a>',//是否自动创建dot,false为不创建
+				navigationNums: false,//是否显示数字索引
+				navbox:'SL_nav4',//数字导航容器
+				nav:'a',//数字导航元素
+				
+				circle:false,
+				autoSize:true
+//				,
+//				onNext:function(inx){
+//					//console.log(inx);
+//				},
+//				onPrev:function(inx){
+//					//console.log(inx);
+//				},
+//				onStart:function(){
+//					console.log('begin');
+//				},
+//				onFinish:function(){
+//					console.log('finish');
+//				}			
+		
+			});					
+</script>            
+</body>
+</html>

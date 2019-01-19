@@ -1,0 +1,417 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/asdui1.4b.css" type="text/css" media="all" />
+
+
+<style type="text/css">
+html,body{padding:0;margin:0}
+a:link,a:visited{color:#f00; text-decoration:underline}
+
+pre{border:1px solid #fc0;background:#ffd;padding:5px}
+#oop{position:absolute;z-index:65566;top:10px;right:100px;}
+.bdbox{overflow:hidden}
+
+fieldset{text-align:left}
+fieldset legend{padding:5px 10px;font-weight:700;font-size:16px}
+table{color:#333;background:#E8F5FE;border-collapse:collapse;width:100%;text-align:left;}
+thead{}
+thead th{padding:1em 1em .5em;border:1px solid #5C9CC0;font-size:120%;background:#5C9CC0;text-align:left}
+thead tr{}
+td{padding:.5em 1em;border:1px solid #BBE1F1}
+tbody td{background:#EEFAFF;}
+tfoot{background-color:#A9C9E2;}
+tfoot td{padding-bottom:1.5em;border:1px solid #BBE1F1}
+
+dl{padding:10px 5px}
+dl dt{font-weight:700;font-sie:14px;padding:5px 0;}
+dl dt span{color:#f60;padding:0 8px}
+pre{border:1px solid #ADCD3C;background-color:#F2FDDB;padding:5px;white-space: pre-wrap;
+word-wrap: break-word;}
+</style>
+</head>
+
+<body>
+<div class="bdbox" style="background:#ffd">
+<fieldset class="fd">
+<legend>ASDUI.Box Dialog Class</legend>
+<a href="javascript:void(0)" onclick="Sexy.alert('Nice!',{
+boxtitle:'系统提示啊',
+aName:'zoomIn',
+duration:200,
+clickHide:true,
+onShow:function(a,b,c){console.log(a);console.log(b);console.log(c)},
+onClose: function(a,b,c){console.log(a);console.log(b);console.log(c);}
+}); return false;">Show a JavaScript alert with a new look!</a>
+<br />
+<a href="javascript:void(0)" onclick="Sexy.alert('Nice!',{boxtitle:'系统提示啊',callback:function(){alert('a')}}); return false;">对话框回调</a>
+<br />
+<a href="javascript:void(0)" onclick="Sexy.confirm('准备好了吗？',{boxtitle:'系统提示',textBoxBtnOk: '通 过', textBoxBtnCancel: '不通过',onShow:function(a,b,c,d,e){console.log(a);console.log(b);console.log(c);console.log(d);console.log(e)},callback:function(){alert('返回ture')},onCancel:function(){alert(2)}});">Show a JavaScript confirm</a>
+<br />
+<a href="javascript:void(0)" onclick="Sexy.prompt('输入一些文字',{boxtitle:'输入框!',backinfo:'num'}); return false;">prompt</a><br />
+<a href="javascript:void(0)" onclick="Sexy.flash('swf/czsg.swf',{mywidth:'500',myheight:'300',boxtitle:'pushdown',moveDuration:0}); return false;">flash</a><br />
+
+<a href="javascript:void(0)" onclick="Sexy.myhtml('#showme',{mywidth:'500',myheight:'200',boxtitle:'ggggg',onShow:function(a,b,c){console.log(c)}});">Show a innerHTML dialog</a><br />
+<a href="javascript:void(0)" onclick="Sexy.myhtml('#fuck',{mywidth:'500',myheight:'200',barClass:'ASDBox-allh',auto:false,onShow:function(a){console.log(a)}});">Show a innerHTML dialog2 no close</a><br />
+<a href="javascript:void(0)" onclick="Sexy.myframe('print.html',{mywidth:'1024',myheight:'610',boxtitle:'Forteeny'}); return false;">frame</a><br />
+
+<a href="javascript:void(0)" onclick="Sexy.myAjax('Doc/ASDUI.Doc.html',{mywidth:'400',myheight:'300',boxtitle:'Requesthtml'}); return false;">Requesthtml</a>
+<br />
+<a href="javascript:void(0)" onclick="Sexy.myMessage('System infos!',{mywidth:'300',myheight:'100',Mstyle:'Ywarn',boxtitle:'系统提示啊',auto:true,autoduration:2000}); return false;">System infos</a>定时自动关闭
+<br />
+<a href="javascript:void(0)" onclick="Sexy.myMessage('System infos!',{mywidth:'400',myheight:'80',Mstyle:'Ysuccess',boxtitle:'test!'}); return false;">System infos</a>手动关闭<br />
+<a href="javascript:;" id="cust">Custom ToolBar</a>自定义ToolBar&nbsp;
+</fieldset>
+<h1><a href="javascript:void(0);" onClick="fullScreen()">浏览器全屏</a></h1>
+
+<div>
+  <div id="showme" style="border:1px solid #f00" >
+    <table width="200" border="1" style="visibility:visible">
+      <colgroup id="colsG">
+      	
+      </colgroup>
+      <thead id="tbhead">
+      
+      </thead>
+      <tbody>
+      <tr>
+        <td><label>
+          <input type="text" name="textfield" id="num" />
+        </label></td>
+        <td><a href="javascript:void(0)" onclick="Sexy.alert('Nice!',{boxtitle:'系统提示啊',depth:2}); return false;">Show a JavaScript alert with a new look!</a></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><a href="javascript:;" id="addRow">ADD Row</a></td>
+        <td></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      </tbody>
+    </table>
+    <br />111213<br />111213<br />111213<br />111213<br />111213<br />111213<br />111213<br />oop
+  </div>
+</div>
+
+<div>
+  <div id="fuck" style="border:4px solid #000" >
+  	
+      	<h1 onClick="Sexy.display(0)">444444444444</h1>
+      
+  </div>
+</div>
+
+<fieldset><legend>ASDUI.Box.Class</legend>
+<dl>
+<dt>调用方法：</dt>
+<dd>
+<pre>
+var box = new ASDUI.Box();
+box.type(object,{, options});
+</pre>
+<table>
+<col id="middle" />
+<col />
+<col />
+<thead>
+	<tr><th>type</th>
+	  <th>object</th></tr>
+</thead>
+<tfoot>
+</tfoot>
+<tbody>
+		<tr><td>alert</td>
+		  <td>弹出层内容区文本</td>
+		</tr>
+		
+		<tr>
+		  <td>confirm</td>
+		  <td>弹出层初始显示区文本</td>
+    </tr>
+	    <tr>
+	      <td>prompt</td>
+	      <td>弹出层内容区文本</td>
+        </tr>
+	    <tr>
+	      <td>flash</td>
+	      <td>弹出层嵌入flash路径</td>
+        </tr>
+	    
+	    <tr>
+	      <td>myhtml</td>
+	      <td>弹出层嵌入HTML父级元素Id引用或者弹出内容的html字符串（string）</td>
+        </tr>
+	    <tr>
+	      <td>myframe</td>
+	      <td>弹出层嵌入页面地址路径</td>
+        </tr>
+	    <tr>
+	      <td>myAjax</td>
+	      <td>弹出层请求页面地址路径</td>
+        </tr>
+	    <tr>
+	      <td>myMessage</td>
+	      <td>弹出层内容区文本</td>
+        </tr>
+</tbody>
+</table>
+</dd>
+<dt>一个藏袍：</dt>
+<dd>
+<pre>
+var box = new ASDUI.Box();
+box.alert('Nice!',{boxtitle:'系统提示啊'});//提示框
+
+
+box.confirm('老头子，准备好了吗？',{boxtitle:'老头子',textBoxBtnOk: '确 定', textBoxBtnCancel: '取 消',callback:function(){alert('你完了')}});//确认框
+
+
+box.prompt('输入一些文字',{boxtitle:'输入框!',backinfo:'num'});//输入框
+
+
+box.flash('request/Corona_Skin_2.swf',{mywidth:'500',myheight:'300',boxtitle:'pushdown',moveDuration:0});//加载FLASH
+
+
+box.myhtml($('showme'),{mywidth:'500',myheight:'300',boxtitle:'ggggg',toolbarinfo:'&lt;h3&gt;Im a boy!&lt;/h3&gt;',toolbarpos:'top'});//加载页面内HTML元素
+box.myhtml('&lt;div&gt;aaaaaaa&lt;/div&gt;',{mywidth:'500',myheight:'300',boxtitle:'ggggg',toolbarinfo:'&lt;h3&gt;Im a boy!&lt;/h3&gt;',toolbarpos:'top'});//加载string形式的HTML元素
+
+
+box.myframe('http://www.163.com/',{mywidth:'1024',myheight:'610',boxtitle:'Forteeny',toolbarinfo:'123344',toolbarpos:'bottom','toolbarclose':'yes'});//加载iframe
+
+
+box.myAjax('request/requesthtml.html',{mywidth:'400',myheight:'300',boxtitle:'Requesthtml'});//Ajax加载页面
+
+
+box.myMessage('System infos!',{mywidth:'300',myheight:'100',boxtitle:'系统提示啊',auto:true,autoduration:2000});系统提示框
+</pre>
+</dd>
+</dl>
+<table>
+<col id="middle" />
+<col />
+<col />
+<thead>
+	<tr>
+	  <th>Option（公有构造）</th>
+	  <th>参数描述</th></tr>
+</thead>
+<tfoot>
+<tr>
+  <td colspan="2"><p>注：同一函数申明下所有弹出层不会同时触发，只会叠加链式触发<br />
+  </p>    </td>
+</tr>
+</tfoot>
+<tbody>
+		<tr><td>name</td>
+		  <td>弹出对话框名称，默认值ASDBox</td>
+		</tr>
+		
+		<tr>
+		  <td>zIndex</td>
+		  <td>弹出对话框zindex，默认值65555</td>
+    </tr>
+	    <tr>
+	      <td>display</td>
+	      <td>弹出层状态监听值。打开时返回1，关闭时返回0.</td>
+    </tr>
+	    <tr>
+	      <td>onReturn</td>
+	      <td>弹出层是否打开标记参数，默认值false(未打开)true(已打开) 注：当点"X"或"取消"关闭会返回false，点确定会返回"true"</td>
+    </tr>
+	    <tr>
+	      <td>width</td>
+	      <td>弹出层打开宽度，默认值300px</td>
+    </tr>
+        <tr>
+          <td>height</td>
+          <td>弹出层打开高度，默认值250px</td>
+        </tr>
+        <tr>
+          <td>Useoverlay</td>
+          <td>是否使用遮罩层，默认值true</td>
+        </tr>
+        <tr>
+          <td>closeDuration</td>
+          <td>弹出层关闭动画延迟，默认值300ms</td>
+        </tr>
+        <tr>
+          <td>moveEffect</td>
+          <td>弹出层执行动画效果，默认值Fx.Transitions.linear，更多效果请参见mootools开发文档Fx.Transitions</td>
+        </tr>
+        <tr>
+          <td>onShowStart（fn）</td>
+          <td>弹出层弹出时回调函数</td>
+        </tr>
+
+        <tr>
+          <td>onCloseStart（fn）</td>
+          <td>弹出层关闭时回调函数</td>
+        </tr>
+        
+        <tr>
+          <td colspan="2"><b>properties参数组（私有构造）</b></td>
+        </tr>
+        <tr>
+          <td>mywidth</td>
+          <td>弹出层宽度，默认值400</td>
+        </tr>
+        <tr>
+          <td>myheight</td>
+          <td>弹出层高度，默认值300</td>
+        </tr>
+        <tr>
+          <td>boxtitle</td>
+          <td>弹出层标题文字</td>
+        </tr>
+        
+        <tr>
+          <td>textBoxBtnOk</td>
+          <td>确定按钮文字(confirm私有)</td>
+        </tr>
+        <tr>
+          <td>textBoxBtnCancel</td>
+          <td>取消按钮文字(confirm私有)</td>
+        </tr>
+        
+        
+        
+        
+        <tr>
+          <td>backinfo</td>
+          <td>prompt输入后接受值的容器Id（prompt私有）</td>
+        </tr>
+        <tr>
+          <td>password</td>
+          <td>prompt输入框类型（ture，flase可选分别对应text，password类型）（prompt私有）</td>
+        </tr>
+        <tr>
+          <td>callback</td>
+          <td>弹出层确定后回调函数（alert，confirm私有）</td>
+        </tr>
+        <tr>
+          <td>Mstyle</td>
+          <td>弹出层样式定义（Ywarn，Yerro，Yunkown，Ysuccess可选，可以为空，myMessage私有）</td>
+        </tr>
+        <tr>
+          <td>auto</td>
+          <td>弹出层是否显示右上角关闭按钮，默认为false(显示)，true则不显示</td>
+        </tr>
+        <tr>
+          <td>autoduration</td>
+          <td>弹出层自动关闭延迟时间</td>
+        </tr>
+        <tr>
+          <td>bar(fn)</td>
+          <td>弹出非alert,confirm,prompt对话框时需要创建底部toolbar的接口方法可自行根据需要添加元素并调用内部方法</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+		</tbody>
+</table>
+<dl>
+<dt>外置方法：<span>display();</span>开开/关闭</dt>
+<dd>
+<pre>
+box.display(0);//关闭
+box.display(1);//打开
+</pre>
+</dd>
+
+<dt>外置方法：<span>ESC</span>关闭</dt>
+<dd>
+<pre>
+键盘监听
+</pre>
+</dd>
+<dt>外置方法：<span>getTitle()</span>返回当前Box的标题容器对象</dt>
+<dd>
+<pre>
+box.getTitle()
+</pre>
+</dd>
+<dt>外置方法：<span>getContent()</span>返回当前Box的内容容器对象</dt>
+<dd>
+<pre>
+box.getContent()
+</pre>
+</dd>
+<dt>Future:</dt>
+<dd>Request.Josn</dd>
+<dt>Bug:</dt>
+<dd>ToolBar构建逻辑可能不是很流畅，可能会导致未知BUG</dd>
+</dl>
+</fieldset>
+
+<script type="text/javascript" src="js/jquery3.0.js"></script>
+<script src="js/asdui.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+	Sexy = new ZUI.Box({
+		onCloseStart:function(type,mess){console.log(type+'|'+mess)}
+	});
+	
+//	Sexy
+//	.on('show',function(a,b,c,d,e){
+//		console.log(a);
+//		console.log(b);
+//		console.log(c);
+//		console.log(d);
+//		console.log(e);
+//	})
+//	.on('close',function(a,b,c,d){
+//		console.log(a);
+//		console.log(b);
+//		console.log(c);
+//		console.log(d);
+//
+//	});
+
+$(function(){	
+
+
+
+	$('#cust').on('click',function(){
+			Sexy.myframe('print.html',{mywidth:'1024',myheight:'400',boxtitle:'标 题',auto:false,bar:function(){//alert(1);
+						return [
+							$('<input/>', {
+								  id:'okBtn',
+								  type:'button',
+								  value:'确 定',
+								  'class': 'button'
+								}).on('click',function(){
+									//var pgHTML = Sexy.getFrame();
+//									alert(pgHTML.find('th').text());
+									//Sexy.display(0)
+							}),
+							$('<input/>', {
+								  id:'canBtn',
+								  type:'button',
+								  value:'取消',
+								  'class': 'button'
+								}).on('click',function(){
+									Sexy.display(0)
+							})
+						]		  
+				  }
+			 });
+
+	});
+
+});//dom		
+</script>
+
+</body>
+</html>

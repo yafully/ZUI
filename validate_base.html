@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/asdui1.4b.css" type="text/css" media="all" />
+<style type="text/css">
+*{padding:0;margin:0}
+body{font-size:12px;font-family:Arial, Helvetica, sans-serif}
+a { color: #0099CB; text-decoration: none; }
+a:hover { color: #FF7E03; }
+ul,ol,li{list-style:none;padding:0;margin:0;}
+input { border:1px solid #919191; height:18px; padding:3px 0 1px 2px; vertical-align:middle}
+input.radio, input.checkbox { width:12px;border:0; margin:0 5px;float:left }
+input.button { background:url(images/train.png) 0 -940px repeat-x; height:24px; line-height:22px; color:#fff; padding:0 5px; border:1px solid #5B9400; margin:5px 20px 5px 0; cursor:pointer }
+input.err{border:1px solid #c00;}
+a:hover input.button { background:url(images/train.png) 0 -964px repeat-x; }
+select { height:22px; line-height:18px; margin-right:5px; _margin-top:3px; }
+textarea { padding: 3px; border: 1px solid #919191; }
+/*commen*/
+/*------------------------@Form-------------------------------*/
+ul.fm { margin: 30px 0;margin-left:300px}
+ul.fm li {padding:5px 0; position:relative}
+ul.fm li.hr {/* border-top: 1px solid #ccc; padding-top: 20px; */}
+ul.fm input[type="text"], ul.fm textarea { width: 300px; }
+ul.fm select {margin:0;width: 90px; }
+ul.fm textarea { height: auto; }
+ul.fm .radio { width: 30px;cursor:pointer;line-height:20px; float:none; }
+ul.fm label.first { display: inline-block; width: 100px; font-size: 14px; text-align:right; margin-right: 15px; float: left;line-height:24px}
+ul.fm label.other { font-size: 14px;cursor:pointer}
+ul.fm span { color: #999; }
+ul.fm span.rq { color: #f00; display: inline-block;vertical-align:-4px;*vertical-align:-1px;margin: 0 3px; }
+
+ul.fm li .customSelect{width:100px;position:static}
+
+ul.bd .sb { margin: 10px 20px; text-align: center; }
+.pass{background:#f6fbed;border-color:#7DBE09}
+/*-----------------------//Form-----------------------------*/
+.fValidator-form fieldset {border: 1px solid #ccc;padding: 10px;}
+.fValidator-form legend {padding: 0 5px;}
+.fValidator-form input, select {color: #666;}
+.fValidator-form input {padding: 2px;}
+.full {width: 100%;}
+.half {width: 50%; vertical-align: top;}
+.Vmsg{position:absolute}
+
+/*custom select*/
+.customSelect{position:absolute;z-index:-1;background:#fff url(images/select.jpg) right center no-repeat;border:1px solid #d8d8d8;color:#555;height:20px;line-height:20px;
+-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;box-shadow: 0 0 2px #eee inset;min-width:50px}
+.customSelectInner{padding-left:5px;text-align:left}
+.customSelect.customSelectHover {border-color:#c7c7c7;background-color:#f5f5f5;}
+.customSelect.customSelectFocus {border-color:#aaa;}
+.customSelect.customSelectOpen {border-color:#aaa;}
+.customSelect.customSelectChanged {-webkit-animation: changed 0.5s;-moz-animation: changed 0.5s;-ms-animation: changed 0.5s;animation: changed 0.5s;}
+</style>
+</head>
+
+<body>
+
+				<form id="exA" class="fValidator-form" method="post" action="#">
+
+
+					<ul class="fm" id="fm">
+						
+						<li>
+                            <label for="exA_Id" class="first">必填:<span class="rq">*</span></label>
+                            <input class="validate" data-valid="elemt:'#exA_Id',tip:'#tip01',rule:'required',warn:_ZUI_请输入昵称._ZUI_,pass:'&nbsp;',passhide:1" id="exA_Id" name="id" type="text" />
+                            <dfn>如：英语听力培训、初一数学培训</dfn>
+                            <span class="Vmsg" id="tip01">如：英语听力培训、初一数学培训</span>
+                            
+                        </li>
+						<li>
+                        	<label for="exA_Password" class="first">Password:<span class="rq">*</span></label>
+                        	<input class="validate" data-valid="elemt:'#Password',tip:'#tip02',rule:'strength',warn:_ZUI_请输入'0-9，a-z'的组合字符长度为6-15._ZUI_,pass:'符合了哦'" id="Password" name="password" type="password" />
+                            <dfn>&quot;0-9,a-z&quot;字符组成</dfn>
+                        	<span class="Vmsg" id="tip02">&quot;0-9,a-z&quot;字符组成</span>
+                        </li>
+						<li>
+                            <label for="exA_cPassword" class="first">Rpassword:<span class="rq">*</span></label>
+                            <input class="validate" data-valid="elemt:'#ComPassword',tip:'#tip03',rule:'required,compare',compare:'Password',warn:_ZUI_确认密码与原始密码不一致._ZUI_,pass:'&nbsp;',passhide:1" id="ComPassword" name="cpassword" type="password" />
+                            <span class="Vmsg" id="tip03">重复输入密码</span>
+                        </li>
+
+                        <li>
+                            <label for="rangeBox" class="first">Range:<span class="rq">*</span></label>
+                            <input class="validate" data-valid="elemt:'#rangeBox',tip:'#tip04',rule:'range',range:'5,10',warn:_ZUI_输入字符长度必须大于5小于10且必须为英文._ZUI_,pass:'&nbsp;',passhide:1" id="rangeBox"  name="rangeBox" type="text" />
+                            <span class="Vmsg" id="tip04">输入5-10个字符</span>
+                            <p>注：data-range="5,"为至少5个字符；data-range="0,5"为最多5个字符汉子按1个字符算</p>
+                        </li> 
+                       <li>
+                            <label for="includes1" class="first">包含:<span class="rq">*</span></label>
+                            <input id="includes1"  name="includes1" type="text" />
+                            <span class="validate" data-valid="elemt:'#includes1',tip:'#tip05',rule:'required,includes',includes:'李天一,梦鸽,xx',warn:_ZUI_输入字符必须包含“李天一,梦鸽,xx”._ZUI_,pass:'&nbsp;',passhide:1"></span>
+                            <span class="Vmsg" id="tip05">输入包含“李天一,梦鸽,xx”的字符 [tag]</span>
+                        </li>
+                         <li>
+                            <label for="excludes1" class="first">不包含:<span class="rq">*</span></label>
+                            <input id="excludes1"  name="excludes1" type="text" />
+                            <span class="validate" data-valid="elemt:'#excludes1',tip:'#tip06',rule:'required,excludes',excludes:'李天一,梦鸽,xx',warn:_ZUI_输入字符不能包含“李天一,梦鸽,xx”._ZUI_,pass:'&nbsp;',passhide:1"></span>
+                            <span class="Vmsg" id="tip06">输入不包含"李天一,梦鸽,xx"的字符 [tag]</span>
+                        </li>
+						<li>
+                            <label for="exA_Name" class="first">昵 称:<span class="rq">*</span></label>
+                            <input class="validate" data-valid="elemt:'#exA_Name',tip:'#tip07',rule:'required,alpha',warn:_ZUI_请输入英文昵称._ZUI_,pass:'&nbsp;',passhide:1" id="exA_Name" name="name" type="text" />
+                            
+                            <span class="Vmsg" id="tip07">输入英文昵称</span>
+                        </li>
+                         <li>
+                            <label for="" class="first">性 别:</label>
+                            <label for="exA_Sex_male" class="other">male</label>
+                            <input class="validate" data-valid="elemt:'sex',tip:'#tip08',rule:'required',warn:_ZUI_选择性别._ZUI_,pass:'&nbsp;',passhide:1" id="exA_Sex_male" name="sex" type="radio" value="male" class="radio" />
+                            <label for="exA_Sex_female" class="other">female</label>
+                            <input class="validate" data-valid="elemt:'sex',tip:'#tip08',rule:'required',warn:_ZUI_选择性别._ZUI_,pass:'&nbsp;',passhide:1" id="exA_Sex_female" name="sex" type="radio" value="female" />
+                            <span class="Vmsg" id="tip08">选择性别</span>
+                        </li>
+
+						<li>
+                            <label for="exA_birthday" class="first">开课日期:<span class="rq">*</span></label>
+                            <input class="validate" data-valid="elemt:'#exA_birthday',tip:'#tip09',rule:'date',warn:_ZUI_输入日期格式为 (yyyy-mm-dd)._ZUI_,pass:'&nbsp;',passhide:1" id="exA_birthday" name="date" data-dp="1" type="text"/>
+                            
+                            <span class="Vmsg" id="tip09">输入日期格式如：2014-02-05</span>
+                        </li>
+						<li>
+                            <label for="exA_phone" class="first">电 话:<span class="rq">*</span></label>
+                            <input class="validate" data-valid="elemt:'#exA_phone',tip:'#tip10',rule:'required,phone',warn:_ZUI_请输入有效的电话号码._ZUI_,pass:'&nbsp;',passhide:1" id="exA_phone" name="phone" type="text" />
+                            
+                            <span class="Vmsg" id="tip10">提供电话有利于我们与您联系</span>
+                        </li>
+						<li>
+                            <label for="exA_email" class="first">E-mail:<span class="rq">*</span></label>
+                            <input class="validate" data-valid="elemt:'#exA_email',tip:'#tip11',rule:'email',warn:_ZUI_请输入有效的电子邮件地址._ZUI_,pass:'&nbsp;',passhide:1" id="exA_email" name="email" type="text" />
+                            <span class="Vmsg" id="tip11"> 您的邮箱地址</span>
+                        </li>
+                        <li class="hr">
+                            <label for="exA_Url" class="first">网 址:<span class="rq">*</span></label>
+                            <input class="validate" data-valid="elemt:'#exA_Url',tip:'#tip12',rule:'required,url',warn:_ZUI_请输入一个有效的网址._ZUI_,pass:'&nbsp;',passhide:1" id="exA_Url" name="url" type="text" />
+                            <span class="Vmsg" id="tip12">您的网站地址</span>
+                        </li>
+                        <li>
+                            <label for="exA_Txt" class="first">a-zA-Z0-9_:<span class="rq">*</span></label>
+                            <input class="validate" data-valid="elemt:'#exA_Txt',tip:'#tip13',rule:'alphanum',warn:_ZUI_数字字母下划线._ZUI_,pass:'&nbsp;',passhide:1" id="exA_Txt" name="number" type="text" />
+                            <span class="Vmsg" id="tip13">数字字母下划线</span>
+                        </li>
+                        <li>
+                            <label for="exA_Num" class="first">整数:<span class="rq">*</span></label>
+                            <input class="validate" data-valid="elemt:'#exA_Num',tip:'#tip14',rule:'integer',warn:_ZUI_请输入整数._ZUI_,pass:'&nbsp;',passhide:1" id="exA_Num" name="number" type="text" />
+                            <span class="Vmsg" id="tip14">请输入整数</span>
+                        </li>
+						<li>
+                            <label for="exA_Number" class="first">正整数:<span class="rq">*</span></label>
+                            <input class="validate" data-valid="elemt:'#exA_Number',tip:'#tip15',rule:'real',warn:_ZUI_请输入整数._ZUI_,pass:'&nbsp;',passhide:1" id="exA_Number" name="number" type="text" />
+                            <span class="Vmsg" id="tip15">请输入正整数</span>
+                        </li>
+                        <li>
+                            <label for="exA_cn" class="first">中文:<span class="rq">*</span></label>
+                            <input class="validate" data-valid="elemt:'#exA_cn',tip:'#tip16',rule:'chinese',warn:_ZUI_请输入中文._ZUI_,pass:'&nbsp;',passhide:1" id="exA_cn" name="number" type="text" />
+                            <span class="Vmsg" id="tip16">请输入中文</span>
+                        </li>
+						<li>
+                            <label for="qq_Number" class="first">QQ:<span class="rq">*</span></label>
+                            <input class="validate" data-valid="elemt:'#qq_Number',tip:'#tip17',rule:'required,qq',warn:_ZUI_请输入正确的QQ号码._ZUI_,pass:'&nbsp;',passhide:1" id="qq_Number" name="number" type="text" />
+                            <span class="Vmsg" id="tip17">请输入QQ号</span>
+                        </li>
+                        <li>
+                            <label for="mobi_Number" class="first">手机号[国内]:<span class="rq">*</span></label>
+                            <input class="validate" data-valid="elemt:'#mobi_Number',tip:'#tip18',rule:'moblie',warn:_ZUI_请输入正确的手机号码._ZUI_,pass:'&nbsp;',passhide:1" id="mobi_Number" name="number" type="text" />
+                            <span class="Vmsg" id="tip18">请输入手机号</span>
+                        </li>
+                        <li>
+                            <label for="ip_Number" class="first">IP地址:<span class="rq">*</span></label>
+                            <input class="validate" data-valid="elemt:'#ip_Number',tip:'#tip19',rule:'required,ip',warn:_ZUI_请输入正确IP地址，格式如：255.255.255.255 请输入IP地址._ZUI_,pass:'&nbsp;',passhide:1" id="ip_Number" name="ip" type="text" />
+                            <span class="Vmsg" id="tip19">请输入IP地址</span>
+                        </li>
+                        <li>
+							<label for="myCard" class="first">身份证:<span class="rq">*</span></label>
+                            <input class="validate" id="myCard" data-valid="elemt:'#myCard',tip:'#tip20',rule:'idCard',warn:_ZUI_身份证号不正确._ZUI_,pass:'&nbsp;',passhide:1" name="myCard" type="text" style="width: 120px;"/>
+                            <span class="Vmsg" id="tip20">请输入15位或18位的身份证</span>
+                        </li>                       
+                        <li>
+                            <label for="ip_decimal" class="first">小数:<span class="rq">*</span></label>
+                            <input class="validate" id="ip_decimal" data-valid="elemt:'#ip_decimal',tip:'#tip21',rule:'decim',warn:_ZUI_请输入小数._ZUI_,pass:'&nbsp;',passhide:1" name="decimal" type="text" />
+                            <span class="Vmsg" id="tip21">请输入小数</span>
+                        </li>
+                        <li><label for="" class="first">爱 好[group]:</label>
+                            <label><input type="checkbox" id="fav01" name="Fav" value="1"/>足球</label>
+                            <label><input type="checkbox" id="fav02" name="Fav" value="2"/>篮球</label>
+                            <label><input type="checkbox" id="fav03" name="Fav" value="3"/>网球</label>
+                            <label><input type="checkbox" id="fav04" name="Fav" value="4"/>台球</label>
+                            <span class="validate" data-valid="elemt:'Fav',tip:'#tip22',rule:'range',range:'1,3',warn:_ZUI_请选择1-3个爱好，至少选择1个._ZUI_,pass:'&nbsp;',passhide:1"></span>
+                            <span class="Vmsg" id="tip22">请选择1-3个爱好。</span>
+						</li>
+                     <li><label for="must01" class="first">确认:</label>
+                            <input class="validate" type="checkbox" data-valid="elemt:'must01',tip:'#tip23',rule:'required',warn:_ZUI_您没有同意._ZUI_,pass:'&nbsp;',passhide:1" id="must01" name="must01" value="1"/>我已同意此项
+                            <span class="Vmsg" id="tip23">我已同意此项</span>
+						</li>                        
+						 <li>
+                        <label for="exA_prov" class="first">省份:<span class="rq">*</span></label>
+						<select class="validate" name="exA_prov" data-valid="elemt:'#exA_prov',tip:'#tip24',rule:'required',warn:_ZUI_请选择一项._ZUI_,pass:'&nbsp;',passhide:1" id="exA_prov">
+						    <option value="">Select one...</option>  
+							<option value="11">北京市</option>
+							<option value="12">天津市</option>
+							<option value="13">河北省</option>
+							<option value="14">山西省</option>
+							<option value="15">内蒙古</option>
+							<option value="21">辽宁省</option>
+							<option value="22">吉林省</option>
+							<option value="23">黑龙江省</option>
+							<option value="31">上海市</option>
+							<option value="32">江苏省</option>
+							<option value="33">浙江省</option>
+							<option value="34">安徽省</option>
+							<option value="35">福建省</option>
+							<option value="36">江西省</option>
+							<option value="37">山东省</option>
+						</select>
+                        <span class="Vmsg" id="tip24">请选择一项</span>
+						</li>
+                          <li>
+                            <label for="myfile" class="first">上传文件:<span class="rq">*</span></label>
+                            <input class="validate" type="file" data-valid="elemt:'#myfile',tip:'#tip25',rule:'required',warn:_ZUI_请选择文件._ZUI_,pass:'&nbsp;',passhide:1" name="myfile" id="myfile"/>
+                            <span class="Vmsg" id="tip25">请选择文件</span>
+                        </li>                        
+                        <li>
+                            <label for="zip_Number" class="first">邮编:<span class="rq">*</span></label>
+                            <input class="validate" data-valid="elemt:'#zip_Number',tip:'#tip26',rule:'zip',warn:_ZUI_请输入邮编._ZUI_,pass:'&nbsp;',passhide:1" id="zip_Number" name="ip" type="text" />
+                            <span class="Vmsg" id="tip26">请选输入邮编</span>
+                        </li>
+
+						<li class="hr">
+                            <label for="intro" class="first">培训内容简介:<span class="rq">*</span></label>
+                            <textarea class="validate" data-valid="elemt:'#intro',tip:'#tip27',rule:'range',range:'1,10',warn:_ZUI_输入字符长度必须大于1小于10._ZUI_,pass:'&nbsp;',passhide:1" id="intro" name="" rows="5" cols="20"></textarea>
+                            <span class="Vmsg" id="tip27">输入1-10个字符</span>
+                        </li>
+                        <li>
+                            <input id="exA_submit" type="submit" value="submit" class="button"/>
+                            <input type="reset" value="reset" class="button"/>
+                            <input type="button" value="动态添加input类型" class="button" id="addli"/>
+                            <input type="button" value="动态添加tag类型" class="button" id="addtag"/>
+                            <input type="button" value="动态删除" class="button" id="delli"/>
+                            
+                            <input id="exA_re" type="button" value="Reset2" class="button"/>
+                        </li>
+					</ul>
+
+				</form>
+<!--	<script>
+ 
+//var str = "nisdhfis <img sds id = 'emoticon01' /> sdf <img sds id = 'abc01' /> aaa";
+// 
+//str = str.replace(/<\s?img[^>]*>/gi,'');
+// 
+//alert(str)
+ 
+</script>-->
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+<script src="js/asdui.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+		var valid = new ZUI.Validator("exA",{
+			ruleTag:'.validate',
+			tagClass:'Vmsg',
+			valiHide:true,
+			autoSbmit:true,
+            //submitBtn:'#exA_submit',
+            onDel:function(rule,t,fm,valids){
+                console.log(rule);
+                console.log(valids);
+            },
+            onSubmit: function(fm,err){
+                //console.log(fm);
+                console.log('erro:'+err);
+            }
+			//,
+			//submitBtn:'#exA_submit'
+			});
+		valid.addMethod('oop',{type: "oop", re:function(fild,msg){console.log(fild);console.log(msg);},custom:1});
+		//var Sexy7 = new ZUI.Dp('input.areas');
+		
+	$(document).ready(function(){
+		
+			$('#addli').bind('click',function(){
+				$('#fm').append('<li><label for="add_Id" class="first">ID:<span class="rq">*</span></label><input class="validate" data-valid="elemt:_ZUI_#add_Id_ZUI_,tip:_ZUI_#tip33_ZUI_,rule:_ZUI_range_ZUI_,range:_ZUI_5,10_ZUI_,warn:_ZUI_输入字符长度必须大于5小于10且必须为英文._ZUI_,pass:_ZUI_&nbsp;_ZUI_,passhide:1" id="add_Id" name="add_Id" type="text" /><span class="Vmsg" id="tip33">如：英语听力培训、初一数学培训</span></li>');
+				valid.reg($('#add_Id'));
+			});
+            $('#addtag').on('click',function(){
+                $('#fm').append('<li><label for="add_Tag" class="first">ID222:<span class="rq">*</span></label><input id="add_Tag" name="add_Id" type="text" /><span id="addrule" class="validate" data-valid="elemt:_ZUI_#add_Tag_ZUI_,tip:_ZUI_#tip34_ZUI_,rule:_ZUI_range_ZUI_,range:_ZUI_5,10_ZUI_,warn:_ZUI_输入字符长度必须大于5小于10且必须为英文._ZUI_,pass:_ZUI_&nbsp;_ZUI_,passhide:1"></span><span class="Vmsg" id="tip34">如：英语听力培训、初一数学培训</span></li>');
+                valid.reg($('#addrule'));
+
+            });
+			$('#delli').bind('click',function(){
+				valid.del('add_Id');
+			});
+
+
+	});
+</script>
+</body>
+</html>

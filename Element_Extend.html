@@ -1,0 +1,354 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Demo</title>
+<link rel="stylesheet" href="css/asdui1.4b.css" type="text/css" media="all" />
+
+
+<style>
+.fmli{padding:5px;}.fmli label{display:block}
+</style>
+</head>
+<body>
+<a 
+class="example" 
+href="#" 
+data-options="speed: 500,
+              easing: |abc|,
+              offset: 0,
+              updateURL: false,effe:{a:200,b:200}"
+>
+    dat-opt1
+</a>
+<a 
+class="example" 
+href="#" 
+data-options="speed: 1000,
+              easing: 'linear',
+              offset: 20,
+              updateURL: false" 
+>
+    dat-opt2
+</a>
+
+<h1>表单json序列化+本地存储</h1>
+
+     <form id="form">
+       <div class="fmli"><label>值1：</label><input type="text" name="firstkey" value="" /></div>
+       <div class="fmli"><label>带组别的值2：</label>
+	   <input type="text" name="secondkey[0]" value="" />
+       <input type="text" name="secondkey[1]" value="" />
+       <input type="text" name="secondkey[key]" value="" />
+	   </div>
+	   <div class="fmli">
+	   		<label for="k01"><input type="checkbox" name="fav[0]" id="k01" value="aa"/>选项01</label>
+			<label for="k02"><input type="checkbox" name="fav[1]" id="k02" value="bb"/>选项02</label>
+			<label for="k03"><input type="checkbox" name="fav[2]" id="k03" value="cc"/>选项03</label>
+	   </div>
+	   <div class="fmli">
+	   		<label for="x01"><input type="radio" name="one" id="x01" value="x01"/>选项04</label>
+			<label for="x02"><input type="radio" name="one" id="x02" value="x02"/>选项05</label>
+			<label for="x03"><input type="radio" name="one" id="x03" value="x03"/>选项06</label>
+	   </div>
+	   <div class="fmli">
+	   		<select name="Opts">
+	   		  <option value="">::请选择::</option>
+	   		  <option value="1">选项一</option>
+	   		  <option value="2">选项二</option>
+	   		</select>
+	   </div>
+	   <div class="fmli">
+	   	<label>描述：</label>
+	   <textarea name="message" cols="" rows="20"></textarea>
+	   </div>
+	   <div class="fmli"><button id="getFmJson" type="button">序列化表单为JSON对象</button></div>
+	   <div class="fmli"><button id="clear" type="button">清空表单</button></div>
+	   <div class="fmli"><button id="save" type="button">存储表单</button></div>
+	   <div class="fmli"><button id="getData" type="button">获取数据</button></div>
+     </form>
+
+<script src="js/jquery1.91.min.js"></script>
+<script src="js/asdui.js"></script>
+<script>
+(function($) {
+
+    /**
+     * someData: get a variable number of data attributes from an element.
+     *
+     * NOTE: only defined and non-null values will be returned.
+     *
+     * Supports three usages, all of which will return a plain object/hash:
+     *
+     *   // returns data-a, data-b, data-c as a hash
+     *   f = $(elem).someData('a', 'b', 'c');
+     *   u = $(elem).someData(['a', 'b', 'c']);
+     *
+     *   // returns the same object with matching keys replaced
+     *   n = $(elem).someData({a: 'might', b: 'be', c: 'replaced'});
+     *
+     * Can also supports an alternate syntax to work with a non-jQuery object:
+     *
+     *   o = $.someData(element, ['a', 'b', 'c']);
+     *   r = $.someData(element, {a: 'might', b: 'be', c: 'replaced'});
+     *
+     * When using the alternate syntax, an array or hash must be provided as the
+     * second argument.
+     */
+    $.fn.someData = function(list) {
+        if (!$.isArray(list) && !$.isPlainObject(list)) {
+            // http://www.sitepoint.com/arguments-a-javascript-oddity/
+            list = Array.prototype.slice.call(arguments);
+        }
+        return $.someData(this[0], list);
+    };
+
+    $.someData = function(elem, list) {
+        var $elem = $(elem)
+            ,collected_data = {}
+            ,search_for = []
+            ,key, i, m;
+
+        if ($.isArray(list)) {
+            // list of keys provided as array: ([a, b, c])
+            search_for = list;
+        } else if ($.isPlainObject(list)) {
+            // default values provided as an hash: ({default: 'values', might: 'be replaced'})
+            for (key in list) {
+                search_for.push(key);
+            }
+            // use a (deep) extend to prevent referencing
+            collected_data = $.extend(true, {}, list);
+        } else {
+            throw "Invalid list argument provided";
+        }
+
+        if ($elem.length) {
+            for (i = 0, m = search_for.length; i < m; i++) {
+                key = search_for[i];
+                // Unlike $.fn.data, a plain $.data call will never return DOM
+                // data attributes as data values. Always use $.fn.data here!
+                value = $elem.data(key);
+                if (value !== undefined && value !== null) {
+                    collected_data[key] = value;
+                }
+            }
+        }
+
+        return collected_data;
+    };
+
+})(jQuery);
+//调用
+var storePool = new ZUI.Storage();
+var Box = new ZUI.Box();
+var myInfo = new ZUI.Info({mode:'bottom',position:'right'});
+
+$( function() {
+	var autoSave = function(){
+		//1ks~=17min
+		$('body').everyTime('5s','S',function(){
+			var obj = $('#form').serialize();
+			
+			storePool.set('formdata', obj);
+			myInfo.info('表单自动保存成功', {'className': 'success'});
+			console.log('save');
+		});
+	};
+    var oldData = storePool.get('formdata');
+	if(oldData){//如果存在本地数据
+		Box.confirm('您上次退出有未提交的表单数据，是否恢复？',{
+			boxtitle:'系统提示',
+			textBoxBtnOk: '恢 复', 
+			textBoxBtnCancel: '不恢复',
+			onShow:function(a,b,c,d,e){
+				//console.log(a);console.log(b);console.log(c);console.log(d);console.log(e)
+			},
+			callback:function(){
+
+				var fillFm = function(){
+					$('#form').deserialize(oldData, true);
+				}
+				$.when(fillFm()).done(function() {
+					autoSave();
+				});				
+				
+				
+			},
+			onCancle:function(){
+				storePool.del('formdata');
+				autoSave();
+			}
+		});
+		
+	}else{
+		
+		autoSave();
+	}
+	
+
+
+
+//$.fn.extend({
+//	serForm:function(options){
+//		var defaults = {
+//			controls: [
+//			  'select',
+//			  'textarea',
+//			  'input'
+//			  // 'input[type="text"]',
+//			  // 'input[type="password"]',
+//			  // 'input[type="datetime"]',
+//			  // 'input[type="checkbox"]',
+//			  // 'input[type="radio"]',
+//			  // 'input[type="datetime-local"]',
+//			  // 'input[type="date"]',
+//			  // 'input[type="month"]',
+//			  // 'input[type="time"]',
+//			  // 'input[type="week"]',
+//			  // 'input[type="number"]',
+//			  // 'input[type="email"]',
+//			  // 'input[type="url"]',
+//			  // 'input[type="search"]',
+//			  // 'input[type="tel"]',
+//			  // 'input[type="color"]'
+//			]
+//		},
+//		options = $.extend(defaults, options);
+//		
+//		this.$controls = $(this).find(options.controls.join()).not(':file');
+//		var cache = {};
+//
+//		  this.$controls.each(function () {
+//			var $this = $(this),
+//				name = $this.attr('name'),
+//				value,
+//				val;
+//	
+//			if (!name) {
+//			  return;
+//			}
+//	
+//			value = cache[name];
+//			value = $.isArray(value) ? value : [];
+//	
+//			if (this.type === 'checkbox' || this.type === 'radio') {
+//			  value.push(this.checked);
+//			} else {
+//			  val = $this.val();
+//	
+//			  if (val) {
+//				value.push(val);
+//			  }
+//			}
+//	
+//			if (value.length) {
+//			  cache[name] = value;
+//			}
+//		  });
+//	
+//		  return cache;
+//	},
+//	deserForm: function(data,options){
+//		  var defaults = {
+//			controls: [
+//			  'select',
+//			  'textarea',
+//			  'input'
+//			  // 'input[type="text"]',
+//			  // 'input[type="password"]',
+//			  // 'input[type="datetime"]',
+//			  // 'input[type="checkbox"]',
+//			  // 'input[type="radio"]',
+//			  // 'input[type="datetime-local"]',
+//			  // 'input[type="date"]',
+//			  // 'input[type="month"]',
+//			  // 'input[type="time"]',
+//			  // 'input[type="week"]',
+//			  // 'input[type="number"]',
+//			  // 'input[type="email"]',
+//			  // 'input[type="url"]',
+//			  // 'input[type="search"]',
+//			  // 'input[type="tel"]',
+//			  // 'input[type="color"]'
+//			]
+//		},
+//		options = $.extend(defaults, options);
+//		  this.$controls = $(this).find(options.controls.join()).not(':file');
+//		  this.$controls.each(function () {
+//			var $this = $(this),
+//				name = $this.attr('name'),
+//				value,
+//				val;
+//	
+//			if (!name) {
+//			  return;
+//			}
+//	
+//			value = data[name];
+//			console.log(this);
+//			console.log(value);
+//			//value = $.isArray(value) ? value : '';
+//	
+//			if (this.type === 'checkbox' || this.type === 'radio') {
+//			  this.checked = value ?true : false;
+//			} else {
+//			  val = $this.val(value);
+//	
+//			}
+//	
+//			
+//		  });	
+//	}
+//	
+//});
+//
+//	var datObj;
+	//console.log($('#demo').datas());
+	$('#getFmJson').on('click',function(){
+		var hash = $('#form').serialize();
+		//var arr = $('#form').serializeArray();
+		console.log(hash);
+		//console.log(arr);
+		//var dat = $('#form').find(['select','textarea','input'].join()).not(':file');
+		//datObj = $('#form').serForm();
+	});
+	console.log($('#getFmJson').hasEvent('click'));
+	
+	$('#clear').on('click',function(){
+		$('#form').clearForm();
+		$('body').stopTime('S');
+		myInfo.info('表单已清空', {'className': 'success'});
+	});
+	
+	$('#save').on('click',function(){
+		var str = $('#form').serialize();
+		storePool.set('formdata', str);
+		myInfo.info('表单保存成功', {'className': 'success'});
+		
+	});
+	$('#getData').on('click',function(){
+		//var str = $('#form').serialize();
+		//storePool.set('formdata', str);
+		//myInfo.info('表单保存成功', {'className': 'success'});
+		//$('#form').deserForm(datObj);
+		//var cks = $('#form').find(['input[type="checkbox"]','input[type="radio"]'].join());
+		
+		
+	});
+	
+	$('#form').on('click',['input[type="checkbox"]','input[type="radio"]'].join(),function(){
+			console.log(this.checked);
+		});
+	
+	
+	console.log($.getDataOptions('.example'));
+	
+});
+</script>
+
+
+
+</body>
+</html>

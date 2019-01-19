@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+a:link,a:visited{color:#f00; text-decoration:underline}
+fieldset{margin:20px 10px}
+pre{border:1px solid #fc0;background:#ffd;padding:5px}
+
+
+fieldset{margin:20px;padding:20px;text-align:left}
+fieldset legend{padding:5px 10px;font-weight:700;font-size:16px}
+table{color:#333;background:#E8F5FE;border-collapse:collapse;width:100%;text-align:left;}
+thead{}
+thead th{padding:1em 1em .5em;border:1px solid #5C9CC0;font-size:120%;background:#5C9CC0;text-align:left}
+thead tr{}
+td{padding:.5em 1em;border:1px solid #BBE1F1}
+tbody td{background:#EEFAFF;}
+tfoot{background-color:#A9C9E2;}
+tfoot td{padding-bottom:1.5em;border:1px solid #BBE1F1}
+
+dl{padding:10px 5px}
+dl dt{font-weight:700;font-sie:14px;padding:5px 0;}
+dl dt span{color:#f60;padding:0 8px}
+pre{border:1px solid #ADCD3C;background-color:#F2FDDB;padding:5px;white-space: pre-wrap;
+word-wrap: break-word;}
+</style>
+</head>
+
+<body>
+<a href="javascript:;" class="tit">111111</a>
+<a href="javascript:;" class="tit">222222</a>
+<a href="javascript:;" class="tit">333333</a>
+<a href="javascript:;" class="tit">_(:3」∠)_</a>
+
+<fieldset>
+<legend>ASDUI.TitAlarm.Class(网页标题信息提示)</legend>
+<dl>
+<dt>调用方法：</dt>
+<dd>
+<pre>new ASDUI.TitAlarm(options);</pre>
+</dd>
+<dt>一个藏袍：</dt>
+<dd>
+<pre>
+var st = new ASDUI.TitAlarm();
+</pre>
+</dd>
+</dl>
+<table>
+<col id="middle" />
+<col />
+<col />
+<thead>
+	<tr><th>Option</th>
+	  <th>参数描述</th></tr>
+</thead>
+<tfoot>
+</tfoot>
+<tbody>
+		<tr>
+		  <td>tim</td>
+		  <td>闪动频率，默认值350</td>
+    </tr>
+		
+		<tr>
+		  <td>tit</td>
+		  <td>提示的内容</td>
+	  </tr>
+		<tr>
+		  <td>delay</td>
+		  <td>闪动提示时长，默认值3500</td>
+	  </tr>
+		<tr>
+		  <td>mess</td>
+		  <td>全局标识，当前闪动的内容</td>
+	  </tr>
+		<tr>
+		  <td>title</td>
+		  <td>原始标题</td>
+	  </tr>
+		<tr><td>null</td>
+		  <td>null</td>
+		</tr>
+</tbody>
+</table>
+<dl>
+<dt>外置方法：<span>.start(string);</span>开始提示</dt>
+<dd>
+<pre>
+a = new ASDUI.TitAlarm();
+a.start('[系统消息]');
+</pre>
+</dd>
+</dl>
+</fieldset>
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+
+<script type="text/javascript">
+var ZUI ={};
+(function() {
+
+	$.Class = function(classDefinition)
+	{
+		classDefinition = classDefinition || {};
+
+		// create class structure
+		var newClass = function()
+		{
+			// reset class variables. Clone arrays and objects
+			reset(this);
+
+			// run constructor
+			return (this.initialize) ? this.initialize.apply(this, arguments) : this;
+		};
+
+		// store class definition
+		newClass.$definition = classDefinition;
+
+		// apply params to class
+		extend(newClass.prototype, classDefinition);
+
+		// parent function
+		newClass.prototype.parentMethod = function() {
+			if (arguments.callee.caller === this.$parent) {
+				throw 'This function has no parent.';
+			}
+			return this.$parent.apply(this, arguments);
+		};
+
+		return newClass;
+	};
+
+	var reset = function(object){
+		for (var key in object){
+			var value = object[key];
+			switch ($.type(value)) {
+				case 'object': object[key] = $.extend(true, {}, value); break;
+				case 'array':  object[key] = $.extend(true, [], value); break;
+			}
+		}
+		return object;
+	};
+
+	var extend = function(target, object) {
+		var key, value;
+
+		for (key in object) {
+
+			if (object.hasOwnProperty(key) === false || object[key] === undefined ) {
+				continue;
+			}
+
+			if (key === 'Extends') {
+				// class overloading
+				$.each($.type(object.Extends) === 'array' ? object.Extends : [object.Extends], function() {
+					extend(target, this.$definition);
+				});
+
+			} else if ($.isFunction(target[key]) && $.isFunction(object[key])) {
+				// function overloading
+				target[key] = overload(object[key], target[key]);
+			} else {
+				// regular assigning
+				target[key] = object[key];
+			}
+		}
+	};
+
+	var overload = function(overloadFunction, parentFunction) {
+		return function() {
+			var oldParent = this.$parent;
+			this.$parent = parentFunction;
+			var result = overloadFunction.apply(this, arguments);
+			this.$parent = oldParent;
+			return result;
+		};
+	};
+
+	/**
+	 * @param string
+	 * @returns {XML|string|void}
+	 * @private
+	 */
+	var removeOn = function(string){
+		return string.replace(/^on([A-Z])/, function(full, first){
+			return first.toLowerCase();
+		});
+	};
+
+	/**
+	 * Class to send and receive events
+	 *
+	 * @class Events
+	 */
+	
+	this.Events = new $.Class({
+
+		$events: {},
+
+		/**
+		 * Add an event
+		 *
+		 * @param {String} type - the name of the event
+		 * @param {Function} fn - the function to call
+		 * @returns {*}
+		 * @public
+		 */
+		on: function(type, fn){
+			type = removeOn(type);
+			var events = this.$events[type] || [];
+			if ($.inArray(events, fn) < 0) {
+				events.push(fn);
+				this.$events[type] = events;
+			}
+			return this;
+		},
+
+		/**
+		 * Remove an event
+		 * @param {String} type - the name of the event
+		 * @param {Function} [fn] - optional the function to be removed. Otherwise all listeners
+		 * @returns {*}
+		 * @public
+		 */
+		off: function(type, fn){
+			type = removeOn(type);
+			var events = this.$events[type];
+			if (events){
+				if (fn == undefined) {
+					delete this.$events[type];
+				} else {
+					var index = events.indexOf(fn);
+					if (index != -1) delete events[index];
+				}
+			}
+			return this;
+		},
+
+		/**
+		 * Fire an event
+		 * @param {String} type the event name
+		 * @param {Array}  args an array of arguments to send to the event function
+		 * @returns {*}
+		 * @public
+		 */
+		trigger: function(type, args){
+			var events, i;
+			type = removeOn(type);
+			events = this.$events[type];
+			if (!events) return this;
+			args = $.isArray(args) ? args : [args];
+			for (i = 0; i < events.length; i++) {
+				if (events[i]) {
+					events[i].apply(this, args);
+				}
+			}
+			return this;
+		}
+	});
+
+
+}());
+
+ZUI.TitAlarm = new $.Class({
+	Extends: [Events],//继承Event
+	options:{
+		tim:350,    //闪动频率
+		tit:'_(:3」∠)_',     //提示的内容
+		circle:true,
+		delay:12, //闪动提示次数
+		mess:'',   //全局标识当前闪动的内容
+		title:null,  //原始标题
+		auto:false,
+		start:$.noop
+	},
+	initialize:function(options){
+
+		this.options = $.extend({},this.options, options);
+		this.title=this.options.title ? this.options.title : document.title;
+		this.times;
+		this.times2;
+		this.busy = false;
+		this.tit = this.getCircle(this.options.tit);
+		this.on('start', this.options.start);
+		
+		this.options.auto && this.run();
+		
+	},
+	getCircle: function(t){
+		if(this.options.circle){
+			var arr = t.split('');
+			var a =[];
+			for(i=0;i<arr.length;i++){
+				//console.log(arr.slice());
+				var newArr =[];
+				newArr = (1>0) ? arr.slice(i,arr.length).concat(arr.slice(0,i)) : arr.slice(i,arr.length);
+				a[i]=newArr.join('');
+			}		
+		
+		}else{
+			a = t;	
+		}
+
+		return a;
+	},
+	run:function(){
+		var step=0,self = this;
+		$('body').everyTime(this.options.tim+'ms','TA',function(){
+
+			step++;
+			if(self.options.circle){
+				if(step==self.tit.length) step=0;
+				document.title = self.tit[step];
+			}else{
+				if (step==3) step=1;
+				if (step==1) document.title = self.title;
+				if (step==2) document.title = self.options.tit + self.title;				
+			}
+		},this.options.delay);		  
+		  
+		this.busy = true; 
+		$.fireEvent(this.options.onStart,[this]);
+	},
+	start:function(o){
+		if(!o)return false;
+		this.busy && $('body').stopTime ('TA');//防止重复
+		this.tit=this.getCircle(o);
+		this.run();
+
+	},
+	test:function(a){
+		console.log(a);
+	}
+	
+});
+
+
+		a = new ZUI.TitAlarm({start:function(){console.log(1)}});
+		a.trigger('start');
+		a.off('start');
+		//继承示例：
+		ZUI.Box2 = new $.Class({
+			Extends: [ZUI.TitAlarm],
+			options: {
+				tim:1000,
+				tit:'oooops!',
+			},
+			initialize:function(options){
+				this.test('ppppp');//调用父类
+				//this.parentMethod();
+				//console.log(this);
+				
+				//this.parent('run');
+			}
+			
+		});
+
+
+		new ZUI.Box2();
+		//a.start('[系统消息]');
+		$('a.tit').bind('click',function(){
+			a.start($(this).text())
+		});
+
+		
+</script>
+
+</body>
+</html>

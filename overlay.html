@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title></title>
+<link rel="stylesheet" href="css/asdui1.4b.css" type="text/css" media="all" />
+<style type="text/css">
+html{padding:20px 0;}
+</style>
+
+</head>
+<body>
+<a href="javascript:;" id="trigg">show overlay</a><a href="javascript:;" id="trigg2">show overlay2</a>
+<input type="button" class="button" value="close overlay2" onclick="egg.close()"/>
+<br/>
+<br/><br/><br/><br/><br/><div id="coverme" style="border:2px solid #f00;height:200px;width:400px;margin:0 auto">111</div><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><p>1111</p>
+
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+<script src="js/asdui.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+
+
+	var egg = new ZUI.Overlay({
+		container:'coverme',
+		onOpen:function(a){
+			console.log(a)
+		},
+		onHide:function(){
+			console.log(4)
+		}
+		});
+	var egg2 = new ZUI.Overlay({onHide:function(){alert(2)}});
+
+$(function(){
+	
+$('.button').animate({marginLeft:200},{
+    duration:500,
+    start:function(){
+        console.log('start');
+    },
+    complete:function(){
+        console.log('end');
+    }
+});
+	//Overlay.creat();
+
+	//myOverlay2.open();
+	$('#trigg').on('click',function(){
+		egg.open()
+		
+	});	
+	$('#trigg2').on('click',function(){
+		egg2.open()
+		
+	});
+});
+</script>
+</body>
+</html>

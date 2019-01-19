@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-Strict.dtd">
+<html>
+<head>
+<title>VisibilityWatcher demo #2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+	body { font-family: Arial, Helvetica; background-color: #C0C0C0; }
+	p#status { padding:10px; background:#F0F0FF; margin-top:20%; }
+	p.explanation { background-color: #FFFFFF; border: 2px dashed black; }
+	div#flyer { position:fixed; top:0px; left:200px; background-color:#F0F0F0; border:2px solid black; height:50px; width:50px; text-align:center; }
+</style>
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+<script src="js/asdui.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var flyer = $('#flyer');
+	var bouncer = function(){
+		console.log(flyer);
+		$('#flyer').animate({top:1200}, 4000).animate({top:-120}, 4000);
+	}
+
+	$(function(){
+//		bouncer.periodical(12000);
+		bouncer();
+		
+		$('#flyer').everyTime('9000ms','FL',bouncer,0,true);
+		
+		
+		//flyer.store('visibilityWatcher', 
+			new ZUI.VsWatcher('#flyer', { 
+				poll_interval: 500, 
+				method: 'poll' ,
+				
+				onEnter: function(){ 
+						$('#status').css('background','#ffd').html(':) Hello Buddy !');
+					},
+				onLeft: function(){ 
+						$('#status').css('background','#c00').html(':O Hey! Come back !');
+					}
+				})
+		//);
+	});
+</script>
+</head>
+<body>
+<h1>VisibilityWatcher demo #2</h2>
+<p class="explanation">Here's an animated element detection demo.<br/>The smiley in the middle of the screen keeps track of its moving friend.</p>
+<div id="flyer">:)</div>
+<p id="status">Some text you should not see</p>
+</body>
+</html>

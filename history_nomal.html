@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+	<style>
+		.selected{color:#c00;border:1px solid #000}
+	</style>
+</head>
+
+<body><!--[if IE]><iframe id="HISTORY_ADAPTER" src="ajaxhistory.html" style="display:none"></iframe><![endif]-->
+<p id="nav">
+  <a href="#test1" class="">test 1</a>
+  <a href="#test2" class="">test 2</a>
+  <a href="#test3" class="selected">test 3</a>
+  <a href="#test4" class="">test 4</a>
+</p>
+<span id="pushState">Push State!!!</span>
+    <script>module = {};</script>
+    <script src="js/jquery1.91.min.js"></script>
+    <script src="js/asdui.js"></script>
+    <script>
+
+	
+        !function(){
+			
+
+			
+
+			
+            function callback(hash) {
+				
+               $('#nav a').each(function(){
+			   		var that = $(this);
+			   		
+					
+					that[ that.attr( 'href' ) === '#'+hash ? 'addClass' : 'removeClass' ]( 'selected' );
+			   });
+            }
+
+            // init a history instance
+            var historyObj = new ZUI.History();
+
+
+            // capture history custom event
+            $(historyObj).on("popstate", function(e, hash) {
+				
+                callback(hash);
+            });
+			
+			//外置方法
+			$('#pushState').on('click',function(){
+				historyObj.pushState('test1');
+			});
+
+
+
+        }();
+    </script>
+</body>
+
+</html>

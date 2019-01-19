@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+    <link rel="stylesheet" href="css/asdui1.4b.css" type="text/css" media="all" />
+</head>
+<body>
+        <fieldset>
+        <legend>ASDUI.Info Class</legend>
+        
+        <a href="javascript:void(0)" onclick="example.info('我是提示示例.');">系统提示</a><br />
+        <a href="javascript:void(0)" onclick="example.info(['我是提示01', '我是提示02', '我是提示03'], {'hideAfter': 3000});">一组系统提示3秒后关闭</a><br />
+        <a href="javascript:void(0)" onclick="example.info('我是提示示例点击我是不会关闭的', {'clickDismiss': false});">系统提示点击无效</a><br />
+        <a href="javascript:void(0)" onclick="example.info('系统提示（成功）', {'className': 'success','hideAfter': false});">系统提示（成功）</a><br />
+        <a href="javascript:void(0)" onclick="example.info('系统提示（错误）', {'className': 'wrong',hoverWait:true});">系统提示（错误）</a><br />
+        <a href="javascript:void(0)" onclick="example.info('系统提示（普通）', {'className': 'notice'});">系统提示（普通）</a><br />
+        <a href="javascript:void(0)" onclick="example.info('设置自定义样式!').css({'font-size':'36px','color':'#F0F'})">自定义样式</a><br />
+        <a href="javascript:void(0)" onclick="example.info('<img src=http://mootools.net/assets/images/mootools.png>');">载入图片</a><br />
+        
+        <a href="javascript:void(0)" onclick="example2.info('我是左下角系统提示');">系统提示左下角</a><br />
+        <a href="javascript:void(0)" onclick="example3.info('我是右上角系统提示');">系统提示右上角</a><br />
+        <a href="javascript:void(0)" onclick="example4.info('我是右下角系统提示');">系统提示右下角</a><br />
+        <a href="javascript:void(0)" onclick="example5.info('我是左上角系统提示');">系统提示左上角</a><br />
+        <a href="javascript:void(0)" onclick="example6.info('我是底部中系统提示');">系统提示底部中</a><br />
+        <a href="javascript:void(0)" id="lvchat">chat<img src="" id="chat_img"/></a>
+        </fieldset>
+        <div style="position:relative;border:1px solid #f00;width:500px;height:500px;" id="inbox">指定容器</div>
+	<script src="js/jquery1.91.min.js" type="text/javascript"></script>
+<script src="js/asdui.js" type="text/javascript"></script>
+
+
+    <script type="text/javascript">
+	example = new ZUI.Info({mode:'middle',position:'center'});
+	example.info('这是一个系统提示.<br/><br/>点击就消失.', {'className': 'notice','hideAfter': false});
+	
+
+
+
+	
+	example2 = new ZUI.Info({mode:'bottom',position:'left'});
+	example3 = new ZUI.Info({mode:'top',position:'right'});
+	example4 = new ZUI.Info({mode:'bottom',position:'right'});
+	example5 = new ZUI.Info({mode:'top',position:'left'});
+	example6 = new ZUI.Info({mode:'bottom',position:'center'});
+
+
+
+	function zopim_chat(){
+	  $('[__jx__id], embed#__zopnetworkswf').remove();
+	  window.$zopim = null;
+	  (function(d,s){
+		var z = $zopim = function(c){
+		  z._.push(c)
+		}, $ = z.s = d.createElement(s), e = d.body.getElementsByTagName(s)[0];
+		z.set = function(o){
+		  z.set._.push(o)
+		};
+		z._ = [];
+		z.set._ = [];
+		$.async = !0;
+		$.setAttribute('charset','utf-8');
+		$.src = 'http://zopim.com/?vovgo08F5mDhF6YTCC92Alw8E8AmukMJ';
+		z.t = +new Date;
+		$.type = 'text/javascript';
+		e.parentNode.insertBefore($,e)
+	  })(document,'script');
+	}	
+	
+	$(function(){ 
+//		$.when($.cachedGetScript('http://zopim.com/?vovgo08F5mDhF6YTCC92Alw8E8AmukMJ'),$.afterDOMReady(2000)).then(function() { 
+//			$zopim(function() {
+//				$zopim.livechat.setOnStatus(change_chat_img);
+//			});
+//			function change_chat_img(status) {
+//			var img = document.getElementById('chat_img');
+//			if (status=='online')
+//				img.src = 'http://artwedding.lv/skin/frontend/lovevox/default//images/online.gif';
+//			else if (status=='offline')
+//				img.src = 'http://artwedding.lv/skin/frontend/lovevox/default//images/offline.gif';
+//			} 
+//			
+//			$zopim.livechat.button.setPosition('br');
+//			$zopim.livechat.bubble.setTitle('Questions?');
+//			$zopim.livechat.setGreetings({
+//			'online': ['Click here to chat', 'Leave a question or comment and our agents will try to attend to you shortly =)'],
+//			'offline': ['Leave a message', 'We are offline, but if you leave your message and contact details, we will try to get back to you =)'],
+//			'away': ['Click here to chat', 'If you leave a question or comment, our agents will be notified and will try to attend to you shortly =)']}) 
+//		}, function() { 
+//			console.log(2);
+//		})
+//		.done(function() { 
+//			$('#lvchat').on('click',function(){
+//				console.log($zopim);
+//				$zopim ? $zopim.livechat.window.show() : infos.info('Live Chat is Loading,Please Wait a moment.', {'className': 'notice'});
+//			});
+//		});
+		$.when($.afterDOMReady(500)).then(function() { 
+			zopim_chat();
+ 
+		}, function() { 
+			 infos.info('The Network is Busy,Please Refresh Your Page.', {'className': 'notice'})
+		})
+		.done(function() {
+			$zopim(function() {
+				$zopim.livechat.setOnStatus(change_chat_img);
+				$zopim.livechat.button.setPosition('br');
+				$zopim.livechat.bubble.setTitle('Questions?');
+				$zopim.livechat.setGreetings({
+				'online': ['Click here to chat', 'Leave a question or comment and our agents will try to attend to you shortly =)'],
+				'offline': ['Leave a message', 'We are offline, but if you leave your message and contact details, we will try to get back to you =)'],
+				'away': ['Click here to chat', 'If you leave a question or comment, our agents will be notified and will try to attend to you shortly =)']})
+			});
+			function change_chat_img(status) {
+			var img = document.getElementById('chat_img');
+			if (status=='online')
+				img.src = 'http://artwedding.lv/skin/frontend/lovevox/default//images/online.gif';
+			else if (status=='offline')
+				img.src = 'http://artwedding.lv/skin/frontend/lovevox/default//images/offline.gif';
+			} 
+			$('#lvchat').on('click',function(){
+				$zopim.livechat.window.show();
+			});
+		});
+		
+		
+		
+	}); 
+    </script>
+</body>
+</html>

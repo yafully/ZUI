@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Countdown Timer | Demo</title>
+        
+        <!-- Our CSS stylesheet file -->
+        <link rel="stylesheet" href="assets/countdown/jquery.countdown.css" />
+<style type="text/css">
+#countdown{border:2px solid #ddd;width:400px;margin:0 auto}
+</style>
+    </head>
+    
+    <body>
+<input name="" type="text" value="1" id="a">
+<div id="countdown"></div>
+
+		<p id="note"></p>
+        <a href="javascript:;" id="update">Update Time!</a>
+        <!-- JavaScript includes -->
+		<script src="js/jquery1.91.min.js"></script>
+        <script src="js/asdui.js"></script>
+		<script type="text/javascript">
+			var myTemplate = new ZUI.Template('The TV show #{title} was created by #{author}.');
+			 // our data to be formatted by the template
+			var show = {
+			  title: 'The Simpsons',
+			  author: 'Matt Groening',
+			  network: 'FOX'
+			};
+			 // let's format our data
+			var st = myTemplate.evaluate(show);
+			
+			console.log(st);
+			
+			
+			console.log($.url.queryToJson('section=blog&tag=javascript&tag=prototype&tag=doc'));
+			var data = '{"name":{"per":"111"},"version":"1.6.1"}';
+			
+			var obj = new ZUI.Hash();
+			//var custPrice = $.object.values(obj.hash);
+			//console.log(custPrice);
+			console.log($(['a']).clone());
+//			$.each(custPrice,function(i,el){
+//				if(el.per)
+//				console.log(el.per);
+//				else
+//				console.log(el)
+//			});
+			$(function(){
+				//console.log($('#a').get(0).value);
+			});
+        </script>
+
+    </body>
+</html>
+

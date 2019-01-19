@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>ASDUI.DropMenu</title>
+<link rel="stylesheet" href="css/asdui1.4b.css" type="text/css" media="all" />
+<style type="text/css">
+a:link,a:visited{color:#f00; text-decoration:underline}
+fieldset{margin:20px 10px}
+pre{border:1px solid #fc0;background:#ffd;padding:5px}
+
+
+fieldset{margin:20px;padding:20px;text-align:left}
+fieldset legend{padding:5px 10px;font-weight:700;font-size:16px}
+table{color:#333;background:#E8F5FE;border-collapse:collapse;width:100%;text-align:left;}
+thead{}
+thead th{padding:1em 1em .5em;border:1px solid #5C9CC0;font-size:120%;background:#5C9CC0;text-align:left}
+thead tr{}
+td{padding:.5em 1em;border:1px solid #BBE1F1}
+tbody td{background:#EEFAFF;}
+tfoot{background-color:#A9C9E2;}
+tfoot td{padding-bottom:1.5em;border:1px solid #BBE1F1}
+
+dl{padding:10px 5px}
+dl dt{font-weight:700;font-sie:14px;padding:5px 0;}
+dl dt span{color:#f60;padding:0 8px}
+pre{border:1px solid #ADCD3C;background-color:#F2FDDB;padding:5px;white-space: pre-wrap;
+word-wrap: break-word;}
+
+
+#sec{padding:50px}
+.sec_li{display:inline-block;position:relative;height:26px;line-height:26px;border:1px solid #666;padding:2px;}
+.drop{display:none;width:200px;height:200px;border:1px solid #666;background:#ffd;position:absolute;left:-1px;top:30px;}
+.drop a:link,.drop a:visited,.drop dfn{display:block;height:22px;line-height:22px;}
+.drop a:hover{background:#ccc}
+.onSec{background:#ffd;z-index:1}
+
+.accord{width:400px;padding:1px;border:1px solid #5C9CC0;background:#F2FAFF}
+.context{height:200px;display:none}
+.toggle{overflow:hidden}
+.toggle{background:#5C9CC0;height:26px;line-height:26px;padding:0 5px;margin-bottom:1px;cursor:pointer}
+.onAccord{background:#666;color:#fff}
+
+.drop2{display:none}
+</style>
+    </head>
+    <body>
+    
+<fieldset>
+<legend>ASDUI.DropMenu Class</legend>
+<h2>Make Menu</h2>
+		<ul id="nav">
+		  <li class="navli"><a href="#">Blog</a></li>
+		  <li class="navli" id="a">
+              <a href="#" class="sec02" id="1">Projects +</a>
+			  <div id="01" class="drop2">
+              		asas
+              </div>
+		  </li>
+		  <li class="navli" id="b">
+              <a href="#" class="sec02" id="2">Learn +</a>
+			  <div id="02" class="drop2">3435555555</div>
+		  </li>
+		  <li class="navli" id="c">
+          	  <a href="#" class="sec02" id="3">CSS +</a>
+			  <div id="03" class="drop2">1212121212</div>
+		 
+		  </li>
+		  <li class="navli"><a href="#">Info</a></li>
+		  <li class="navli"><a href="#">Contact</a></li>
+		</ul>
+        
+<br/><hr/><br/>
+<h2>Make Select</h2>
+<a href="javascript:;" id="doSec">选择指定序列select的指定项[序列1 项1]</a>
+    <div id="sec2">
+    	
+        <span class="sec_li" id="fire"><kbd>更换背景</kbd>
+        	
+        	<div class="drop">
+            	<a href="#" data-name="选项1" data-dir="1">选项1</a>
+                <a href="#" data-name="选项2" data-dir="2">选项2</a>
+                <a href="#" data-name="选项3" data-dir="3">选项3</a>
+                <a href="#" data-name="选项4" data-dir="4">选项4</a>
+                <a href="#" data-name="选项5" data-dir="5">选项5</a>
+                <a href="#" data-name="选项6" data-dir="6">选项6</a>
+                <a href="#">显示全部</a>
+            </div>
+        </span>
+        <span class="sec_li"><kbd>更换背景1</kbd>
+            <div class="drop">
+             	<a href="#" data-name="选项a" data-dir="1">选项a</a>
+                <a href="#" data-name="选项b" data-dir="2">选项b</a>
+                <a href="#" data-name="选项c" data-dir="3">选项c</a>
+                <a href="#" data-name="选项d" data-dir="4">选项d</a>
+                <a href="#">显示全部</a>           
+            </div>
+        </span>
+        <span class="sec_li"><kbd>更换背景2</kbd>
+            <div class="drop">
+                <a href="#" data-name="选项X" data-dir="1">选项X</a>
+                <p>1</p>
+            </div>
+        </span>
+    	
+    </div>
+<h2>Make Select Multiple</h2>    
+    <div id="sec3">
+        <span class="sec_li" maxlength="5">
+        	<kbd>::请选择::</kbd>
+            <dl class="drop">
+            	<dt><dfn href="#" id="opt01"><input type="checkbox" data-op="1"/>综合类</dfn></dt>
+            	<dt>日常类</dt>
+                <dd>
+                    <dfn href="#" id="opt02_1"><input type="checkbox" data-op="2_1"/>日常安全</dfn>
+                    <dfn href="#" id="opt02_2"><input type="checkbox" data-op="2_2"/>日常交通</dfn>
+                    <dfn href="#" id="opt02_3"><input type="checkbox" data-op="2_3"/>日常消防</dfn>
+                </dd>
+            </dl>
+        </span>    
+    </div> 
+    <a href="#" id="fc">指定展开1</a> 
+    <div id="output" style="margin-top:200px;width:200px;height:90px;border:1px solid #fc0;background:#ffd"></div>
+    <div>注意：不允许sec与drop并列的情况</div> 
+    
+    <h2>According</h2>
+    <dl class="accord" id="accord">
+    	<dt class="toggle">accord01</dt>
+        <dd class="context"><h2></h2><div style="height:100px">11111</div></dd> 
+    	<dt class="toggle">accord02</dt>
+        <dd class="context"><h2></h2><div style="height:200px">222</div></dd>
+    	<dt class="toggle">accord03</dt>
+        <dd class="context"><h2></h2><div style="height:300px">33333</div></dd>        
+        
+        <dd class="toggle"><h2>accord04我的结构不对所以不展开</h2></dd>             
+    </dl>
+    <a href="javascript:;" onClick="Accord.showIndex(2)">动态切换到第3个</a>       
+</fieldset>
+
+<fieldset><legend>ASDUI.DropMenu.Class</legend>
+<dl>
+<dt>调用方法：</dt>
+<dd>
+<pre>var menu = new ASDUI.DropMenu(element,[, options]);</pre>
+</dd>
+<dt>一个藏袍：</dt>
+<dd>
+<pre>var menu = new ASDUI.DropMenu('menu')</pre>
+</dd>
+</dl>
+<table>
+<col id="middle" />
+<col />
+<col />
+<thead>
+	<tr><th>Option</th>
+	  <th>参数描述</th></tr>
+</thead>
+<tfoot>
+</tfoot>
+<tbody>
+		<tr><td>onOpen（fn）</td>
+		  <td>菜单打开时执行的方法一般是调用初始化中的效果el.show();function匿名参数分别指向,当前显示的菜单容器el,当前点击的sec</td>
+		</tr>
+		
+		<tr>
+		  <td>onClose（fn）</td>
+		  <td>菜单关闭时执行的方法一般是调用初始化中的效果el.hide();</td>
+    </tr>
+		<tr>
+		  <td>onInitialize（fn）</td>
+		  <td>初始化注册菜单的效果，els指代的是菜单的每一个子菜单对象，默认为无 也可以为el.hide();</td>
+    </tr>
+		<tr>
+		  <td>mouseoutDelay</td>
+		  <td>鼠标移开菜单区域后菜单关闭延迟的时间默认为500ms （msHover:true时有效）</td>
+    </tr>
+		<tr>
+		  <td>mselect</td>
+		  <td>一级菜单的对象（s）</td>
+    </tr>
+		<tr>
+		  <td>msHover</td>
+		  <td>是否为mouseover触发菜单默认为true，为false时为click触发</td>
+    </tr>
+		<tr>
+		  <td>msActiv</td>
+		  <td><p>鼠标在菜单上时一级菜单的样式</p>	      </td>
+    </tr>
+
+		<tr>
+		  <td>mBody</td>
+		  <td><p>二级菜单的容器对象（S）</p>	      </td>
+    </tr>
+		<tr>
+		  <td>makeSelect</td>
+		  <td>1为单选、2为多选模式，默认为false</td>
+    </tr>
+		<tr>
+		  <td>sector</td>
+		  <td>下拉框中子元素对象的标签或class（s）</td>
+    </tr>
+		<tr>
+		  <td>receiver</td>
+		  <td>接收下拉项值的对象，默认为null此时自动获取sec下第一个元素；</td>
+	  </tr>
+		<tr>
+		  <td>initialTxt</td>
+		  <td>下拉列表中还原项的名称，当选中项等于此值时默认变为初始项名称</td>
+    </tr>
+		<tr>
+		  <td>makeAccord</td>
+		  <td>是否启用Accord，默认值false</td>
+	  </tr>
+		<tr>
+		  <td>duration</td>
+		  <td>展开时动画时长，默认值500，当为小于0的值时取消展开动画</td>
+	  </tr>
+		<tr>
+		  <td>display</td>
+		  <td>初始化默认展开的panel序号默认值为0（0为第一个依次类推）当为负值时全部不展开</td>
+	  </tr>
+		<tr>
+		  <td>xmode </td>
+		  <td>是否水平模式折叠，默认值false</td>
+	  </tr>
+		<tr>
+		  <td>porps（fn）</td>
+		  <td>下拉列表每次选中时需要返回列表项上属性值的方法；</td>
+    </tr>
+		<tr>
+		  <td>onSelect（fn）</td>
+		  <td>选中下拉列表值时触发的方法</td>
+    </tr>
+		<tr>
+		  <td>onActive（fn）</td>
+		  <td>展开时执行的回调函数</td>
+    </tr>
+		<tr>
+		  <td>onEnter(fn)</td>
+		  <td>drop模式下鼠标放上去执行的回调</td>
+    </tr>
+		<tr>
+		  <td>onOut(fn)</td>
+		  <td>drop模式下鼠标移开执行的回调</td>
+	  </tr>
+		<tr>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+	  </tr>
+		<tr>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+    </tr>	
+</tbody>
+</table>
+<dl>
+<dt>外置扩展：<span></span>Element.dropMenu（options）将菜单方法绑定到该菜单的容器上</dt>
+<dd>
+<pre>	$('nav').dropMenu({
+		onOpen: function(el){
+			el.setStyle('display','block');
+		},
+		onClose: function(el){
+			el.setStyle('display','none');
+		},
+		onInitialize: function(el){
+			el.setStyle('display','none');
+		}
+	});	</pre>
+</dd>
+
+<dt>内置方法：<span></span>.porps（element）将菜单方法绑定到该菜单的容器上</dt>
+<dd>
+<pre>
+			document.id('sortId').dropMenu({
+			    mselect:'span.sortTH',
+				mBody:'div.sortBox',
+				msActiv:'',
+				makeSelect:true,
+				sector:'a',
+				onOpen: function(el){
+					el.show();
+				},
+				onClose: function(el){
+					el.hide();
+				},
+				onSelect: function(el){
+					makeSort(myTable,arr,this.options.secTxt);
+					el.getParent('div').hide();
+					
+				},
+				porps:function(el){
+				   return el.getProperties('rel','dir');//这里的el指代的是下拉菜单中的子项默认指定
+				}    
+			});
+</pre>
+</dd>
+
+<dt>外置方法：<span></span>.attach()菜单触发事件绑定</dt>
+<dt>外置方法：<span></span>.detach()菜单触发事件解除绑定</dt>
+<dd>
+<pre>
+var Dropmenu = new ASDUI.DropMenu();
+    Dropmenu.attach()//触发dropmenu
+    Dropmenu.detach()//解除dropmenu
+</pre>
+</dd>
+</dl>
+</fieldset>     
+	<script src="js/jquery1.91.min.js" type="text/javascript"></script>
+<script src="js/asdui.js" type="text/javascript"></script>
+        <script type="text/javascript">
+		
+		var Dropmenu = new ZUI.DropMenu('sec2',{
+						mselect:'span.sec_li',
+						msActiv:'onSec',
+						mBody:'div.drop',
+						msHover:false,
+						
+						makeSelect:1,
+						name:'name',
+						sector:'a',
+						onInit: function(a){
+							//console.log(a.attr('id'));
+						},
+						onOpen:function(a,b){
+							console.log(a);console.log(b);
+						},
+						onClose: function(a){
+							console.log(a);
+						},
+						onSelect: function(a,b){
+							console.log(a);
+							console.log(b);
+							//$('output').set('html','项：'+opt.get('text')+'值：'+secbox.getData('rel'));
+							//opt.getParent().hide()
+						},					   
+						porps:function(el){
+							return el.data('dir');
+						},
+						onShow:function(a,b){
+							Dropmenu.secList(a,b,1);
+						}
+			   
+			   });
+			   
+		var Dropmenu2 = new ZUI.DropMenu('sec3',{
+						mselect:'span.sec_li',
+						msActiv:'onSec',
+						mBody:'dl.drop',
+						msHover:false,
+						makeSelect:2,
+						sector:'dfn'
+			   });
+		var Accord = new ZUI.DropMenu('accord',{
+						mselect:'.toggle',
+						msActiv:'onAccord',
+						mBody:'.context',
+						msHover:false,
+						makeAccord:true,
+						duration:500,
+						display:1,
+						onActive: function(sec,el){
+							$('#output').html(sec.text()+'展开<br/>内容为：'+el.html())
+						}
+			   
+			   });
+				new ZUI.DropMenu('nav',{
+					mselect:'.navli',
+					mBody:'.drop2',
+					msHover:false,
+					hideAlways:false,
+					//display:1,
+					effects:{
+						dEf:function(el,sec,t){
+							//console.log(sec);
+							el.slideDown(t);
+						},
+						cEf:function(el,sec,t){
+							
+							el.slideUp(t);
+						},
+						duration:250
+					},
+					onOpen: function(el){
+						//el.show();
+					},
+					onClose: function(el){
+						//el.hide();
+					},
+					onInitialize: function(els){
+						//$$(els).hide();
+					}
+				});		   		
+$(document).ready(function(){
+
+			$('#fc').on('click',function(e){
+				e.stopPropagation();//阻止冒泡
+				Dropmenu2.showIndex(0);
+			});	
+			$('#doSec').on('click',function(){
+				Dropmenu.showIndex(1);
+			});
+				//===========ASDUI.Dropmenu	==========               
+});
+        </script>        
+    </body>
+</html>

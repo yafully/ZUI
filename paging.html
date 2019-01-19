@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>分页控件演示</title>
+    <link href="css/asdui1.4b.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+    <ul id="demo1-list"></ul>
+    <div id="demo1-paging" class="clear">
+    </div>
+
+    <div id="demo2-paging1" class="clear"></div>
+    <ul id="demo2-list"></ul>
+    <div id="demo2-paging2" class="clear"></div>
+
+    <div id="demo3-paging1" class="clear"></div>
+    <ul id="demo3-list"></ul>
+    <div id="demo3-paging2" class="clear"></div>
+	<a href="javascript:void(0)" id="goto">跳转</a>
+	<a href="javascript:void(0)" id="loadPage">其切换数据</a>
+
+
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+<script src="js/asdui.js" type="text/javascript"></script>
+<script type="text/javascript">
+           var pageBar = new ZUI.Paging('demo1-paging',{
+                total_records:100,
+				limit:10,
+				showNumber: true,
+		        showText:true,
+				showGoto:'select',
+				filter:[10,20,30,50],
+				display:1,
+				cookie:{key:'pageFilter',expires:30},//设置cookies[键名，时间]
+				onChange: function(currentPage,limit,page){
+				    console.log('当前页：'+currentPage+'，每页条数：'+limit+'，总页数'+page);
+				},
+				onFilter: function(limit,page,total){
+					console.log('每页条数：'+limit+'，总页数'+page+'，总数据'+total);
+				},
+				onLoad:function(limit,page,total){
+					console.log('每页条数：'+limit+'，总页数'+page+'，总数据'+total);
+				}
+            });
+
+			
+            var pageBar2 = new ZUI.Paging('demo2-paging1',{
+                total_records:500,
+				limit:20, //每页记录数
+				gap:2,
+				showGoto:'input',
+            });		
+
+	$(function(){
+		console.log($.cookie.get('pageFilter'));
+		$('#goto').on('click',function(){
+			pageBar.goPage(2);
+		});
+		$('#loadPage').on('click',function(){
+			pageBar.load({limit:5,total_records:300,curPage:3});
+		});
+	});
+	</script>		    
+</body>
+</html>

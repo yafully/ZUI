@@ -1,0 +1,109 @@
+
+<!DOCTYPE html public "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head id="Head"><title>
+	DragResize_OnlineDemo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+<script src="js/jquery1.91.min.js" type="text/javascript"></script>
+<script src="js/asdui_dev.js" type="text/javascript"></script>
+<style type="text/css"><!--
+html,body{padding:0;margin:0;width:100%;height:100%;}
+.selectArea{
+	position:absolute;
+	margin:-1px 0  0 -1px; 
+	padding:0;
+	border:1px solid #555;
+	/*display:none;*/
+	z-index:15; 
+
+	background:url(middot.gif) no-repeat center #BBB;
+}
+.zuiResize {
+	position:absolute;
+	border: 1px solid #555;
+	width:4px;
+	height:4px;
+	background-color:#CCC;
+	font-size:0;
+}
+.selectArea .north-west-resize{cursor:nw-resize;left:0;top:0;	margin-left:-1px; margin-top:-1px;}
+.selectArea .north-resize	  {cursor:n-resize;	left:50%;top:0;	margin-left:-3px; margin-top:-1px;}
+.selectArea .north-east-resize{cursor:ne-resize;right:0;top:0;	margin-right:-1px;margin-top:-1px;}
+
+.selectArea .west-resize	  {cursor:w-resize;left:0;top:50%;	margin-left:-1px; margin-top:-3px;}
+.selectArea .east-resize	  {cursor:e-resize;right:0;top:50%; margin-right:-1px;margin-top:-3px;}
+
+.selectArea .south-west-resize{cursor:sw-resize;left:0;bottom:0;  margin-left:-1px; margin-bottom:-1px;}
+.selectArea .south-resize	  {cursor:s-resize; left:50%;bottom:0;margin-left:-3px; margin-bottom:-1px;}
+.selectArea .south-east-resize{cursor:se-resize;right:0;bottom:0; margin-right:-1px;margin-bottom:-1px;}
+
+.dnrWrapper {
+	margin:10px 40px;
+	position:static;
+	width:900px;
+	height:200px;
+	/*width:500px;*/
+	border:1px solid #000;
+	border:10px solid #DDD;
+	background-color:#FFF;
+	/*position:relative*/
+}
+--></style>
+<script language="javascript"><!--
+$(function(){
+	// resize and drag
+	var dnr = new ZUI.Drag('#resize-drag-target', {
+		handle:'Drag2',
+		minWidth:120,
+		minHeight:40,
+		container:'resize-drag-wrapper',
+		resizer:true,
+		onDrag:function(a,b){
+			$('#output').append('Drag:'+a+'|'+b+'<br/>');
+		},
+		onResize:function(a,b){
+			$('#output').append('Resize:'+a+'|'+b+'<br/>');
+		},
+		onComplete:function(a,b){
+			$('#output').append(b.get(0).nodeName+'size=left:'+a.left+'|top:'+a.top+'|width:'+a.width+'|height:'+a.height+'<br/>')
+		}
+	});
+	
+
+	// drag
+	var d = new ZUI.Drag('#drag-target',{handle:'Drag',container:'resize-drag-wrapper'});
+//	$('#resize-drag-wrapper #Drag').mousedown(function(e){
+//		d.drag(e);
+//	});
+	// select
+	var s = new ZUI.Drag('#select-target',{secStyle:true});	
+//	$('#select-wrapper').mousedown(function(e){
+//		s.select(e, e.pageX, e.pageY);
+//	});
+
+});
+// --></script>
+<div>1111</div>
+<p><strong>Resize and Drag 效果：</strong>&nbsp; </p>
+
+	<div id="output" style="border:1px solid #f00;background:#ffd;width:400px;height:300px;overflow:hidden;overflow-y:auto;position:fixed;bottom:10px;right:10px;font-soze:12px"></div>
+    <div id="resize-drag-wrapper" class="dnrWrapper">
+        <div style="left: 20px; width: 110px; top: 100px; height: 50px;" id="drag-target" class="selectArea">
+        <div style="margin: 5px 10px; cursor: move; height: 20px; background-color: #f33;" id="Drag">drag</div>
+    </div>
+<div style="left: 265px; width: 150px; top: 50px; height: 100px;" id="resize-drag-target" class="selectArea">
+	<div style="margin: 5px 10px; cursor: move; height: 20px; background-color: #f33;" id="Drag2">drag</div>
+    you can resize and drag this. 
+
+</div>
+</div>
+<p><strong><span style="font-size: medium;"><span style="font-size: small;">Select 效果：</span></span></strong>&nbsp;　</p>
+<p>　　鼠标点击一下，拖动鼠标，再松开就可以得到一个矩形。&nbsp; </p>
+<div id="select-wrapper" class="dnrWrapper">
+<div style="background-color:#DDD;position:absolute;border:1px solid #555;" id="select-target"></div>
+</div>
+</body>
+</html>

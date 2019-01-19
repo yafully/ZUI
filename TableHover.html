@@ -1,0 +1,510 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+h1
+{
+	font-size: 1.3em;
+}
+table
+{
+	margin: 10px 50px;
+	border: 1px solid gray;
+	border-collapse: collapse;
+	border-spacing: 0;
+	text-align: center;
+}
+thead
+{
+	background: bisque;
+}
+tfoot
+{
+	background: khaki;
+	text-align: center;
+}
+td, th
+{
+	border: 1px solid gray;
+}
+pre
+{
+	background-color: LemonChiffon;
+	border: 1px solid gray;
+}
+div.title
+{
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+div.link
+{
+	text-align: center;
+	margin-bottom: 20px;
+}
+div.exa
+{
+	background-color: ivory;
+	//background: 0; /*for ie*/
+	border: 1px solid gray;
+	padding: 0 15px;
+	margin-bottom: 20px;
+}
+
+table
+{
+	width: 400px;
+}
+td.hover,table tbody tr:hover,.tblist tbody tr:hover
+{
+	background-color: LemonChiffon;
+}
+td.betterhover, #tabletwo tbody tr:hover
+{
+	background: LightCyan;
+}
+td.hot,th.hot{color:#f00;background:#ccc}
+table tbody tr:nth-child(even){background-color:#f1f1f1;}		
+table tbody tr:nth-child(odd){background-color:#fff;}
+table tr.even{background:#f1f1f1;}
+table
+{
+	width: 400px;
+}
+td.click, th.click
+{
+	background-color: #bbb;
+}
+td.hover, tr.hover
+{
+	background-color: #69f;
+}
+th.hover, tfoot td.hover
+{
+	background-color: ivory;
+}
+td.hovercell, th.hovercell
+{
+	background-color: #abc;
+}
+td.hoverrow, th.hoverrow
+{
+	background-color: #6df;
+}
+</style>
+</head>
+
+<body>
+	<table id="tabletwo">
+		<thead>
+			<tr><th colspan="2">A</th><th colspan="2">B</th><th colspan="2">C</th><th colspan="2">D</th></tr>
+			<tr><th>A+</th><th>A-</th><th>B+</th><th>B-</th><th>C+</th><th>C-</th><th>D+</th><th>D-</th></tr>
+		</thead>
+		<tfoot>
+			<tr><td>11</td><td>4</td><td>9</td><td>8</td><td>2</td><td>2</td><td>1</td><td>4</td></tr>
+		</tfoot>
+		<tbody id="tbd">
+			<tr><td>X</td><td>-</td><td>X</td><td>X</td><td style="background:#ffd" id="mytd">-</td><td>-</td><td>-</td><td>-</td></tr>
+			<tr><td>X</td><td>-</td><td>X</td><td>X</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+			<tr><td>X</td><td>-</td><td>X</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+			<tr><td>-</td><td>-</td><td>X</td><td>-</td><td>X</td><td>X</td><td>-</td><td>X</td></tr>
+			<tr><td>X</td><td>-</td><td>X</td><td>X</td><td>-</td><td>-</td><td>-</td><td>X</td></tr>
+			<tr><td>X</td><td>-</td><td>X</td><td>X</td><td>-</td><td>-</td><td>-</td><td>X</td></tr>
+			<tr><td>X</td><td>X</td><td>-</td><td>X</td><td>-</td><td>X</td><td>-</td><td>X</td></tr>
+			<tr><td>X</td><td>X</td><td>-</td><td>X</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+			<tr><td>X</td><td>X</td><td>-</td><td>X</td><td>-</td><td>-</td><td>X</td><td>-</td></tr>
+			<tr><td>X</td><td>-</td><td>X</td><td>-</td><td>X</td><td>-</td><td>-</td><td>-</td></tr>
+			<tr><td>X</td><td>-</td><td>X</td><td>X</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+			<tr><td>X</td><td>X</td><td>X</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+		</tbody>
+	</table>
+    <a href="javascript:;" id="getTD">get col</a>
+    <a href="javascript:;" id="addRow">addRow</a>
+   <hr/>
+    <h2>Include Colspan</h2>
+	<table id="tablethree">
+		<thead>
+			<tr><th colspan="2">A</th><th colspan="2">B</th><th colspan="2">C</th><th colspan="2">D</th></tr>
+			<tr><th>A+</th><th>A-</th><th>B+</th><th>B-</th><th>C+</th><th>C-</th><th>D+</th><th>D-</th></tr>
+		</thead>
+		<tfoot>
+			<tr><td>11</td><td>4</td><td>9</td><td>8</td><td>2</td><td>2</td><td>1</td><td>4</td></tr>
+		</tfoot>
+		<tbody>
+			<tr><td class="">X</td><td class="">-</td><td class="">X</td><td class="">X</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">-</td></tr>
+			<tr><td class="">X</td><td class="">-</td><td class="">X</td><td class="">X</td><td colspan="3" class="">-</td><td class="">-</td></tr>
+			<tr><td rowspan="3" class="">X</td><td class="">-</td><td class="">X</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">-</td></tr>
+			<tr><td class="">-</td><td class="">X</td><td class="">-</td><td class="">X</td><td class="">X</td><td class="">-</td><td class="">X</td></tr>
+			<tr><td class="">-</td><td class="">X</td><td class="">X</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">X</td></tr>
+			<tr><td class="">X</td><td class="">-</td><td class="">X</td><td class="">X</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">X</td></tr>
+			<tr><td class="">X</td><td class="">X</td><td class="">-</td><td class="">X</td><td rowspan="2" class="">-</td><td class="">X</td><td class="">-</td><td class="">X</td></tr>
+			<tr><td class="">X</td><td class="">X</td><td class="">-</td><td class="">X</td><td class="">-</td><td class="">-</td><td class="">-</td></tr>
+			<tr><td class="">X</td><td colspan="5" class="">X</td><td class="">X</td><td class="">-</td></tr>
+			<tr><td class="">X</td><td class="">-</td><td class="">X</td><td class="">-</td><td class="">X</td><td class="">-</td><td class="">-</td><td class="">-</td></tr>
+			<tr><td class="">X</td><td class="">-</td><td class="">X</td><td class="">X</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">-</td></tr>
+			<tr><td class="">X</td><td class="">X</td><td class="">X</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">-</td></tr>
+		</tbody>
+	</table> 
+    <hr/>
+  <h2>Exclude Colspan</h2>
+	<table id="tablefour">
+		<thead>
+			<tr><th colspan="2">A</th><th colspan="2">B</th><th colspan="2">C</th><th colspan="2">D</th></tr>
+			<tr><th>A+</th><th>A-</th><th>B+</th><th>B-</th><th>C+</th><th>C-</th><th>D+</th><th>D-</th></tr>
+		</thead>
+		<tfoot>
+			<tr><td>11</td><td>4</td><td>9</td><td>8</td><td>2</td><td>2</td><td>1</td><td>4</td></tr>
+		</tfoot>
+		<tbody>
+			<tr><td class="">X</td><td class="">-</td><td class="">X</td><td class="">X</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">-</td></tr>
+			<tr><td class="">X</td><td class="">-</td><td class="">X</td><td class="">X</td><td colspan="3">-</td><td class="">-</td></tr>
+			<tr><td rowspan="3" class="">X</td><td class="">-</td><td class="">X</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">-</td></tr>
+			<tr><td class="">-</td><td class="">X</td><td class="">-</td><td class="">X</td><td class="">X</td><td class="">-</td><td class="">X</td></tr>
+			<tr><td class="">-</td><td class="">X</td><td class="">X</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">X</td></tr>
+			<tr><td class="">X</td><td class="">-</td><td class="">X</td><td class="">X</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">X</td></tr>
+			<tr><td class="">X</td><td class="">X</td><td class="">-</td><td class="">X</td><td rowspan="2" class="">-</td><td class="">X</td><td class="">-</td><td class="">X</td></tr>
+			<tr><td class="">X</td><td class="">X</td><td class="">-</td><td class="">X</td><td class="">-</td><td class="">-</td><td class="">-</td></tr>
+			<tr><td class="">X</td><td colspan="5">X</td><td class="">X</td><td class="">-</td></tr>
+			<tr><td class="">X</td><td class="">-</td><td class="">X</td><td class="">-</td><td class="">X</td><td class="">-</td><td class="">-</td><td class="">-</td></tr>
+			<tr><td class="">X</td><td class="">-</td><td class="">X</td><td class="">X</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">-</td></tr>
+			<tr><td class="">X</td><td class="">X</td><td class="">X</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">-</td></tr>
+		</tbody>
+	</table>
+    <hr/>
+    <h2>Disable cols</h2>  
+	<table id="tablefive">
+
+		<tbody>
+			<tr><td class="">X</td><td class="">-</td><td class="">X</td><td class="">X</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+			<tr><td class="">X</td><td class="">-</td><td class="">X</td><td class="">X</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+			<tr><td class="">X</td><td class="">-</td><td class="">X</td><td class="">-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+			<tr><td class="">-</td><td class="">-</td><td class="">X</td><td class="">-</td><td>X</td><td>X</td><td>-</td><td>X</td></tr>
+			<tr><td class="">X</td><td class="">-</td><td class="">X</td><td class="">X</td><td>-</td><td>-</td><td>-</td><td>X</td></tr>
+			<tr><td class="">X</td><td class="">-</td><td class="">X</td><td class="">X</td><td>-</td><td>-</td><td>-</td><td>X</td></tr>
+			<tr><td class="">X</td><td class="">X</td><td class="">-</td><td class="">X</td><td>-</td><td>X</td><td>-</td><td>X</td></tr>
+			<tr><td class="">X</td><td class="">X</td><td class="">-</td><td class="">X</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+			<tr><td class="">X</td><td class="">X</td><td class="">-</td><td class="">X</td><td>-</td><td>-</td><td>X</td><td>-</td></tr>
+			<tr><td class="">X</td><td class="">-</td><td class="">X</td><td class="">-</td><td>X</td><td>-</td><td>-</td><td>-</td></tr>
+			<tr><td class="">X</td><td class="">-</td><td class="">X</td><td class="">X</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+			<tr><td class="">X</td><td class="">X</td><td class="">X</td><td class="">-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+		</tbody>
+	</table> 
+    
+    
+    
+    				<table width="100%" border="0" class="tblist colHover" id="colTable01">
+   
+							
+                            <tbody>
+							<tr class="tit">
+								<td rowspan="3" class="c_bg">Dress</td>
+								<td class="c_bg">UK</td>
+								<td colspan="2" align="center" class="c_bg">4</td>
+								<td colspan="2" align="center" class="c_bg">6</td>
+								<td colspan="2" align="center" class="c_bg">8</td>
+								<td colspan="2" align="center" class="c_bg">10</td>
+								<td colspan="2" align="center" class="c_bg">12</td>
+								<td colspan="2" align="center" class="c_bg">14</td>
+								<td colspan="2" align="center" class="c_bg">16</td>
+								<td colspan="2" align="center" class="c_bg">18</td>
+							</tr>
+							<tr>
+								<td class="strong-text">Euro</td>
+								<td colspan="2" align="center">32</td>
+								<td colspan="2" align="center">34</td>
+								<td colspan="2" align="center">36</td>
+								<td colspan="2" align="center">38</td>
+								<td colspan="2" align="center">40</td>
+								<td colspan="2" align="center">42</td>
+								<td colspan="2" align="center">44</td>
+								<td colspan="2" align="center">46</td>
+							</tr>
+                            
+                            
+							<tr>
+								<td class="strong-text">US</td>
+								<td colspan="2" align="center">2</td>
+								<td colspan="2" align="center">4</td>
+								<td colspan="2" align="center">6</td>
+								<td colspan="2" align="center">8</td>
+								<td colspan="2" align="center">10</td>
+								<td colspan="2" align="center">12</td>
+								<td colspan="2" align="center">14</td>
+								<td colspan="2" align="center">16</td>
+							</tr>
+                            
+							<tr>
+								<td colspan="2">Unit of Measure</td>
+								<td align="center">inch</td>
+								<td align="center" class="bg-gray">cm</td>
+								<td align="center">inch</td>
+								<td align="center" class="bg-gray">cm</td>
+								<td align="center">inch</td>
+								<td align="center" class="bg-gray">cm</td>
+								<td align="center">inch</td>
+								<td align="center" class="bg-gray">cm</td>
+								<td align="center">inch</td>
+								<td align="center" class="bg-gray">cm</td>
+								<td align="center">inch</td>
+								<td align="center" class="bg-gray">cm</td>
+								<td align="center">inch</td>
+								<td align="center" class="bg-gray">cm</td>
+								<td align="center">inch</td>
+								<td align="center" class="bg-gray">cm</td>
+							</tr>
+							<tr>
+								<td colspan="2">Bust</td>
+								<td align="center">32½ </td>
+								<td align="center" class="bg-gray">83</td>
+								<td align="center">33½ </td>
+								<td align="center" class="bg-gray">84</td>
+								<td align="center">34½ </td>
+								<td align="center" class="bg-gray">88</td>
+								<td align="center">35½ </td>
+								<td align="center" class="bg-gray">90</td>
+								<td align="center">36½ </td>
+								<td align="center" class="bg-gray">93</td>
+								<td align="center">38</td>
+								<td align="center" class="bg-gray">97</td>
+								<td align="center">39½ </td>
+								<td align="center" class="bg-gray">100</td>
+								<td align="center">41</td>
+								<td align="center" class="bg-gray">104</td>
+							</tr>
+							<tr>
+								<td colspan="2">Waist</td>
+								<td align="center">25½ </td>
+								<td align="center" class="bg-gray">65</td>
+								<td align="center">26½ </td>
+								<td align="center" class="bg-gray">68</td>
+								<td align="center">27½ </td>
+								<td align="center" class="bg-gray">70</td>
+								<td align="center">28½ </td>
+								<td align="center" class="bg-gray">72</td>
+								<td align="center">29½ </td>
+								<td align="center" class="bg-gray">75</td>
+								<td align="center">31</td>
+								<td align="center" class="bg-gray">79</td>
+								<td align="center">32½ </td>
+								<td align="center" class="bg-gray">83</td>
+								<td align="center">34</td>
+								<td align="center" class="bg-gray">86</td>
+							</tr>
+							<tr>
+								<td colspan="2">Hips</td>
+								<td align="center">35¾ </td>
+								<td align="center" class="bg-gray">91</td>
+								<td align="center">36¾ </td>
+								<td align="center" class="bg-gray">92</td>
+								<td align="center">37¾ </td>
+								<td align="center" class="bg-gray">96</td>
+								<td align="center">38¾ </td>
+								<td align="center" class="bg-gray">98</td>
+								<td align="center">39¾ </td>
+								<td align="center" class="bg-gray">101</td>
+								<td align="center">41¼ </td>
+								<td align="center" class="bg-gray">105</td>
+								<td align="center">42¾ </td>
+								<td align="center" class="bg-gray">109</td>
+								<td align="center">44¼</td>
+								<td align="center" class="bg-gray">112</td>
+							</tr>
+							<tr>
+								<td colspan="2">Hollow to Floor</td>
+								<td align="center">58</td>
+								<td align="center" class="bg-gray">147</td>
+								<td align="center">58</td>
+								<td align="center" class="bg-gray">147</td>
+								<td align="center">59</td>
+								<td align="center" class="bg-gray">150</td>
+								<td align="center">59</td>
+								<td align="center" class="bg-gray">150</td>
+								<td align="center">60</td>
+								<td align="center" class="bg-gray">152</td>
+								<td align="center">60</td>
+								<td align="center" class="bg-gray">152</td>
+								<td align="center">61</td>
+								<td align="center" class="bg-gray">155</td>
+								<td align="center">61</td>
+								<td align="center" class="bg-gray">155</td>
+							</tr>
+						</tbody>
+				</table>
+				<br/>
+				<table width="100%" border="0" class="tblist colHover" id="colTable02">
+
+						<tbody>
+							<tr class="tit">
+								<td rowspan="3" class="c_bg">Dress</td>
+								<td class="c_bg">UK</td>
+								<td class="c_bg" colspan="2" align="center">18</td>
+								<td class="c_bg" colspan="2" align="center">20</td>
+								<td class="c_bg" colspan="2" align="center">22</td>
+								<td class="c_bg" colspan="2" align="center">24</td>
+								<td class="c_bg" colspan="2" align="center">26</td>
+								<td class="c_bg" colspan="2" align="center">28</td>
+								<td class="c_bg" colspan="2" align="center">30</td>
+							</tr>
+							<tr>
+								<td class="strong-text">Euro</td>
+								<td colspan="2" align="center">46</td>
+								<td colspan="2" align="center">48</td>
+								<td colspan="2" align="center">50</td>
+								<td colspan="2" align="center">52</td>
+								<td colspan="2" align="center">54</td>
+								<td colspan="2" align="center">56</td>
+								<td colspan="2" align="center">58</td>
+							</tr>
+							<tr>
+								<td class="strong-text">US</td>
+								<td colspan="2" align="center">14W</td>
+								<td colspan="2" align="center">16W</td>
+								<td colspan="2" align="center">18W</td>
+								<td colspan="2" align="center">20W</td>
+								<td colspan="2" align="center">22W</td>
+								<td colspan="2" align="center">24W</td>
+								<td colspan="2" align="center">26W</td>
+							</tr>
+							<tr>
+								<td colspan="2">Unit of Measure</td>
+								<td align="center">inch</td>
+								<td align="center" class="bg-gray">cm</td>
+								<td align="center">inch</td>
+								<td align="center" class="bg-gray">cm</td>
+								<td align="center">inch</td>
+								<td align="center" class="bg-gray">cm</td>
+								<td align="center">inch</td>
+								<td align="center" class="bg-gray">cm</td>
+								<td align="center">inch</td>
+								<td align="center" class="bg-gray">cm</td>
+								<td align="center">inch</td>
+								<td align="center" class="bg-gray">cm</td>
+								<td align="center">inch</td>
+								<td align="center" class="bg-gray">cm</td>
+							</tr>
+							<tr>
+								<td colspan="2">Bust</td>
+								<td align="center">41</td>
+								<td align="center" class="bg-gray">104</td>
+								<td align="center">43</td>
+								<td align="center" class="bg-gray">109</td>
+								<td align="center">45</td>
+								<td align="center" class="bg-gray">114</td>
+								<td align="center">47</td>
+								<td align="center" class="bg-gray">119</td>
+								<td align="center">49</td>
+								<td align="center" class="bg-gray">124</td>
+								<td align="center">51</td>
+								<td align="center" class="bg-gray">130</td>
+								<td align="center">53</td>
+								<td align="center" class="bg-gray">135</td>
+							</tr>
+							<tr>
+								<td colspan="2">Waist</td>
+								<td align="center">34</td>
+								<td align="center" class="bg-gray">86</td>
+								<td align="center">36¼</td>
+								<td align="center" class="bg-gray">92</td>
+								<td align="center">38½</td>
+								<td align="center" class="bg-gray">98</td>
+								<td align="center">40¾</td>
+								<td align="center" class="bg-gray">104</td>
+								<td align="center">43</td>
+								<td align="center" class="bg-gray">109</td>
+								<td align="center">45¼</td>
+								<td align="center" class="bg-gray">115</td>
+								<td align="center">47½</td>
+								<td align="center" class="bg-gray">121</td>
+							</tr>
+							<tr>
+								<td colspan="2">Hips</td>
+								<td align="center">43½</td>
+								<td align="center" class="bg-gray">110</td>
+								<td align="center">45½</td>
+								<td align="center" class="bg-gray">116</td>
+								<td align="center">47½</td>
+								<td align="center" class="bg-gray">121</td>
+								<td align="center">49½</td>
+								<td align="center" class="bg-gray">126</td>
+								<td align="center">51½</td>
+								<td align="center" class="bg-gray">131</td>
+								<td align="center">53½</td>
+								<td align="center" class="bg-gray">136</td>
+								<td align="center">55½</td>
+								<td align="center" class="bg-gray">141</td>
+							</tr>
+							<tr>
+								<td colspan="2">Hollow to Floor</td>
+								<td align="center">61</td>
+								<td align="center" class="bg-gray">155</td>
+								<td align="center">61</td>
+								<td align="center" class="bg-gray">155</td>
+								<td align="center">61</td>
+								<td align="center" class="bg-gray">155</td>
+								<td align="center">61</td>
+								<td align="center" class="bg-gray">155</td>
+								<td align="center">61</td>
+								<td align="center" class="bg-gray">155</td>
+								<td align="center">61</td>
+								<td align="center" class="bg-gray">155</td>
+								<td align="center">61</td>
+								<td align="center" class="bg-gray">155</td>
+							</tr>
+						</tbody>
+				</table>	     
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+<script type="text/javascript" src="js/asdui.js"></script>
+<script type="text/javascript">
+<!--
+
+$(function(){;
+	//$('#tableone').columnHover();
+	//$('#tabletwo').columnHover({eachCell:true, hoverClass:'betterhover'});
+	//$('#tablethree').columnHover({eachCell:true, hoverClass:'betterhover'});
+	//$('#tablefour').columnHover({eachCell:true, hoverClass:'betterhover', includeSpans:false});
+	//$('#tablefive').columnHover({eachCell:true, hoverClass:'betterhover', ignoreCols: [5, 6, 7, 8]});
+	var cols = new ZUI.TabelHover('#tabletwo',{
+			rowClass: 'hoverrow', 
+			colClass: 'hover',
+			cellClass: 'hovercell',
+			zebraClass:'even',
+			headCols: true, 
+			footCols: true,
+			onHover:function(a,b,c){
+				console.log(a);
+				console.log(b);
+				console.log(c);
+			}
+		});
+
+	$('#getTD').on('click',function(){
+		var col = cols.getCol('#mytd');
+		$.each(col,function(){
+			$(this).html('change!');
+		});
+	});
+	$('#addRow').on('click',function(){
+		$('#tbd').append('<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>');
+		cols.loadTB();
+	});
+	
+	
+	////////
+	var cols2 = new ZUI.TabelHover('#tablethree',{rowClass: 'hoverrow', colClass: 'hover'});
+//	///////
+	var cols3 = new ZUI.TabelHover('#tablefour',{rowClass: 'hoverrow', colClass: 'hover',spanCols:false});
+//		///////
+	var cols4 = new ZUI.TabelHover('#tablefive',{rowClass: 'hoverrow', colClass: 'hover',ignoreCols :[1,4]});
+	$('.colHover').each(function(){
+		new ZUI.TabelHover(this,{rowClass: 'hoverrow', colClass: 'hover',cellClass: 'hovercell',headCols: true, footCols: true,ignoreCols:[2]});
+	});
+
+});
+-->
+</script>
+
+</body>
+</html>

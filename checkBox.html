@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/asdui1.4b.css" type="text/css" media="all" />
+<style type="text/css">
+a:link,a:visited{color:#f00; text-decoration:underline}
+fieldset{margin:20px 10px}
+pre{border:1px solid #fc0;background:#ffd;padding:5px}
+
+
+fieldset{margin:20px;padding:20px;text-align:left}
+fieldset legend{padding:5px 10px;font-weight:700;font-size:16px}
+table{color:#333;background:#E8F5FE;border-collapse:collapse;width:100%;text-align:left;}
+thead{}
+thead th{padding:1em 1em .5em;border:1px solid #5C9CC0;font-size:120%;background:#5C9CC0;text-align:left}
+thead tr{}
+td{padding:.5em 1em;border:1px solid #BBE1F1}
+tbody td{background:#EEFAFF;}
+tfoot{background-color:#A9C9E2;}
+tfoot td{padding-bottom:1.5em;border:1px solid #BBE1F1}
+
+dl{padding:10px 5px}
+dl dt{font-weight:700;font-sie:14px;padding:5px 0;}
+dl dt span{color:#f60;padding:0 8px}
+pre{border:1px solid #ADCD3C;background-color:#F2FDDB;padding:5px;white-space: pre-wrap;
+word-wrap: break-word;}
+</style>
+
+</head>
+
+<body  id="target">
+<fieldset id="box01">
+<legend id="ckbox01">Group01 获取选中</legend>
+<span class="ASD_check" data-ck="0" name="ck01"><i class="ASD_ckIcon"></i>只能选一个<input name="" type="checkbox" value="" /></span>
+<span class="ASD_check" data-ck="0" name="ck02"><i class="ASD_ckIcon"></i>选项02<input name="" type="checkbox" value="" /></span>
+<span class="ASD_ckDis" data-ck="2" name="ck03"><i class="ASD_ckIcon"></i>禁止点击<input name="" type="checkbox" value="" /></span>
+<span class="ASD_check" data-ck="0" name="ck04"><i class="ASD_ckIcon"></i>选项04<input name="" type="checkbox" value="" /></span>
+<span class="ASD_check" data-ck="0" name="ck05"><i class="ASD_ckIcon"></i>全选2<input name="" type="checkbox" value="" /></span>
+<div id="output"></div>
+</fieldset>
+
+<fieldset id="box02">
+<legend>Group02是否切换</legend>
+<span class="ASD_check ASD_check2" data-ck="0" rel="box02"><i class="ASD_ckIcon"></i>选项01</span>
+<span class="ASD_check ASD_check2" data-ck="0"><i class="ASD_ckIcon"></i>选项02</span>
+<span class="ASD_ckDis" data-ck="2" rel="all"><i class="ASD_ckIcon"></i>禁止点击</span>
+<span class="ASD_check ASD_check2" data-ck="0"><i class="ASD_ckIcon"></i>选项04</span>
+<span class="ASD_check ASD_check2" data-ck="0"><i class="ASD_ckIcon"></i>选项05</span>
+</fieldset>
+
+<fieldset id="rdio">
+<legend>Group03</legend>
+<span class="ASD_radio" data-ck="0"><i class="ASD_rdIcon"></i>选项01</span>
+<span class="ASD_radio" data-ck="0"><i class="ASD_rdIcon"></i>选项02</span>
+<span class="ASD_rdDis" data-ck="2"><i class="ASD_rdIcon"></i>禁止点击</span>
+<span class="ASD_radio" data-ck="0"><i class="ASD_rdIcon"></i>选项04</span>
+<span class="ASD_radio" data-ck="0"><i class="ASD_rdIcon"></i>全选2</span>
+</fieldset>
+
+<fieldset id="rdio2">
+<legend>Group04选中再点取消</legend>
+<span class="ASD_radio" data-ck="0"><i class="ASD_rdIcon"></i>选项01</span>
+<span class="ASD_radio" data-ck="0"><i class="ASD_rdIcon"></i>选项02</span>
+<span class="ASD_rdDis" data-ck="2"><i class="ASD_rdIcon"></i>禁止点击</span>
+<span class="ASD_radio" data-ck="0"><i class="ASD_rdIcon"></i>选项04</span>
+<span class="ASD_radio" data-ck="0"><i class="ASD_rdIcon"></i>全选2</span>
+</fieldset>
+
+<fieldset id="Switch">
+<legend>Switch01</legend>
+<span class="ASD_switch" data-ck="0"><i class="ASD_swIcon"></i></span>
+<span class="ASD_switch" data-ck="0"><i class="ASD_swIcon"></i></span>
+<span class="ASD_switch" data-ck="0"><i class="ASD_swIcon"></i></span>
+开<span class="ASD_switch" data-ck="0"><i class="ASD_swIcon"></i></span>关
+</fieldset>
+<table id="group">
+  <tr>
+    <td><span class="ASD_check" data-ck="0" rel="group01"><i class="ASD_ckIcon"></i>全选<input type="checkbox" /></span></td>
+    <td>
+        <span class="ASD_check ASD_check2" data-ck="0" data-group="group01"><i class="ASD_ckIcon"></i>选项01<input type="checkbox" class="ck_group01" /></span>
+        <span class="ASD_check ASD_check2" data-ck="0" data-group="group01"><i class="ASD_ckIcon"></i>选项02<input type="checkbox" class="ck_group01" /></span>
+        <span class="ASD_check ASD_check2" data-ck="0" data-group="group01"><i class="ASD_ckIcon"></i>选项03<input type="checkbox" class="ck_group01" /></span>    
+    </td>
+  </tr>
+  <tr>
+    <td><span class="ASD_check" data-ck="0" rel="group02"><i class="ASD_ckIcon"></i>全选</span></td>
+    <td id="group02">
+        <span class="ASD_check ASD_check2" data-ck="0"><i class="ASD_ckIcon"></i>选项01</span>
+        <span class="ASD_check ASD_check2" data-ck="0"><i class="ASD_ckIcon"></i>选项02</span>
+        <!--<span class="ASD_check ASD_check2" data-ck="0"><i class="ASD_ckIcon"></i>选项03</span>-->    
+    </td>
+  </tr>
+  <tr>
+    <td><span class="ASD_check" data-ck="0" rel="group03"><i class="ASD_ckIcon"></i>全选</span></td>
+    <td id="group03">
+        <span class="ASD_check ASD_check2" data-ck="0"><i class="ASD_ckIcon"></i>选项01</span>
+        <span class="ASD_check ASD_check2" data-ck="0"><i class="ASD_ckIcon"></i>选项02</span>
+        <span class="ASD_check ASD_check2" data-ck="0"><i class="ASD_ckIcon"></i>选项03</span>    
+    </td>
+  </tr>
+</table>
+
+
+<fieldset>
+<legend>ASDUI.CR.Class(Checkbox & Radio渲染)</legend>
+<dl>
+<dt>调用方法：</dt>
+<dd>
+<pre>var bling = new ASDUI.CR(element,options);</pre>
+</dd>
+<dt>一个藏袍：</dt>
+<dd>
+<pre>
+var myChk = new ASDUI.CR('box01',{Selector:"span.ASD_check",chkClass: "checked"});
+</pre>
+</dd>
+</dl>
+<table>
+<col id="middle" />
+<col />
+<col />
+<thead>
+	<tr><th>Option</th>
+	  <th>参数描述</th></tr>
+</thead>
+<tfoot>
+</tfoot>
+<tbody>
+		<tr>
+		  <td>Selector</td>
+		  <td>附加checkbox事件的子元素（s,选择器）</td>
+	  </tr>
+		<tr>
+		  <td>chkClass</td>
+		  <td>选中时的样式名，默认值为checked</td>
+	  </tr>
+		<tr>
+		  <td>chkOne</td>
+		  <td>是否执行单选，默认为false</td>
+	  </tr>
+		<tr>
+		  <td>onClick(fn)</td>
+		  <td>点击选项时触发的回调</td>
+	  </tr>
+		<tr>
+		  <td>onCheck</td>
+		  <td>勾选时触发的回调</td>
+	  </tr>
+		<tr>
+		  <td>onUncheck</td>
+		  <td>勾选取消时触发的回调</td>
+	  </tr>
+		<tr>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+	  </tr>
+		<tr>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+	  </tr>
+		<tr><td>null</td>
+		  <td>null</td>
+		</tr>
+</tbody>
+</table>
+</fieldset>
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+<script src="js/asdui.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+
+   var myChk = new ZUI.CR('box01',{
+	   Selector:"span.ASD_check",
+	   chkClass: "checked",
+	   chkOne:true,
+	   chkOneCancle:false,
+	   tarCk:true,
+	   onClick:function(a){console.log(a)},
+	   onCheck:function(a,b){
+		   
+			
+	   },
+	   onUncheck:function(a,b){
+		   
+	   }
+   });
+   var myChk2 = new ZUI.CR('box02',{Selector:"span.ASD_check",chkClass: "checked"});
+   var myChk3 = new ZUI.CR('group',{
+	   Selector:"span.ASD_check",
+	   chkClass: "checked",
+	   onCheck:function(a,m,sib,gp,doall){
+		   	
+			if(doall){
+			  $('.ck_'+gp).prop('checked',true);
+			  a.find('input').prop('checked',true);
+			}else{
+			  a.find('input').prop('checked',true);
+			}
+	   },
+	   onUncheck:function(a,m,sib,gp,doall){
+		   if(doall){
+			  $('.ck_'+gp).prop('checked',false);
+			  a.find('input').prop('checked',false);
+			}else{
+			  a.find('input').prop('checked',false);
+			}
+	   },
+	   onAll:function(m,noAll){
+		 //console.log(noAll);
+	     m.find('input').prop('checked',noAll?false:true); 
+	   }
+	  });
+   var myRad = new ZUI.CR("rdio",{Selector:"span.ASD_radio",chkClass: "checked",chkOne:true});
+   var myRad = new ZUI.CR("rdio2",{Selector:"span.ASD_radio",chkClass: "checked",chkOne:true,chkOneCancle:true});
+   
+   var myChk2 = new ZUI.CR('Switch',{Selector:".ASD_switch",chkClass: "checked"});
+   
+//   
+   $('#ckbox01').on('click',function(){
+      $('#output').html(myChk3.getChecked());
+   });	
+   
+</script>
+</body>
+</html>

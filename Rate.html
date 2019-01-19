@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/asdui1.4b.css" />
+<style type="text/css">
+html,body{font-size:12px;padding:0;margin:0}
+.datasSent{font-size:12px;margin-top:20px;width:470px;height:73px;border:1px solid #F0F0F0;background-color:#F8F8F8;padding:10px;float:left;margin-right:10px;width:200px;position:fixed;left:680px;top:0}
+.demoBox{padding:10px;}
+.demoBox li{padding:5px 0;list-style:none;}
+
+.rates{position:relative;display:inline-block;vertical-align:middle;height:20px;min-width:115px;overflow:hidden;z-index:1;cursor:default;}
+.rates em,.rates dfn,.rates abbr{position:absolute;top:0;left:0;display:block;height:100%;}
+.rates em{background-color:#0CF;z-index:1;}/*normal*/
+.rates dfn{background-color:#f4c239;z-index:2;}/*hover*/
+.rates abbr{z-index:3;width:100%;background:url(images/rate/stars.png) repeat-x transparent;}
+.rateDis{opacity:.7;filter:alpha(opacity=70)}
+.rateInfo{display:inline-block;vertical-align:middle;height:20px;overflow:hidden;line-height:20px;padding:0 5px;background:#f9f9f9;color:#666;}
+
+/*style2*/
+.ratesSmall{position:relative;display:inline-block;vertical-align:middle;height:10px;min-width:115px;overflow:hidden;z-index:1;cursor:default;}
+.ratesSmall em,.ratesSmall dfn,.ratesSmall abbr{position:absolute;top:0;left:0;display:block;height:100%;}
+.ratesSmall em{background-color:#0CF;z-index:1;}/*normal*/
+.ratesSmall dfn{background-color:#f4c239;z-index:2;}/*hover*/
+.ratesSmall abbr{z-index:3;width:100%;background:url(images/rate/stars_small.png) repeat-x transparent;}
+.rateInfoSmall{display:inline-block;vertical-align:middle;height:10px;overflow:hidden;line-height:10px;padding:0 5px;background:#f9f9f9;color:#666;}
+</style>
+</head>
+
+<body>
+<div class="datasSent">
+	Datas sent to the server :
+	<p></p>
+</div>
+<ul class="demoBox">
+<li>
+物流速度：<span class="rates rate1" data-average="50" data-id="rate01"><em></em><dfn></dfn><abbr></abbr></span> [custom info by callback]
+</li>    
+<li>
+服务态度：<span class="rates rate2" data-average="10" id="rate02"><em></em><dfn></dfn><abbr></abbr></span> [disabled]
+</li>
+<li>
+产品质量：<span class="rates rate3" id="rate03"><em></em><dfn></dfn><abbr></abbr></span> [step & longLength]
+</li>
+<li>
+<span id="opt1">产品质量：</span><span class="rates rate4" id="rate04" data-label="#opt1"><dfn></dfn><abbr></abbr></span> [rateAgain x3 times]
+</li>
+
+<li>
+小评价：<span class="ratesSmall rate5" id="rate05"><em></em><dfn></dfn><abbr></abbr></span> [small style]
+</li>
+</ul>
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+<script type="text/javascript" src="js/asdui.js"></script>        
+<script type="text/javascript">
+
+	var rate1 = new ZUI.Rate('.rate1',{
+			rateInfo:'请点击星星为此项评分',
+			step:true,
+			rateMax : 5,
+			onClick:function(a,b,c){
+
+				$('.datasSent p').html('<strong>idBox : </strong>'+b+'<br /><strong>rate : </strong>'+c+'<br /><strong>action :</strong> rating');
+			},
+			onRating:function(a,b,c){
+
+				var rank = b/c,txt;
+				switch(true){
+					case rank > 0.8 :
+					txt = "非常好";
+					break;
+					case rank > 0.6 :
+					txt = "很好";
+					break;
+					case rank > 0.4 :
+					txt = "一般";
+					break;
+					case rank > 0.2 :
+					txt = "差";
+					break;
+					default :
+					txt = "很差";
+					break;
+				}
+				a.html(txt);
+			},
+			onError:function(a,b,c){
+				alert(c)
+			}
+	});
+	
+	var rate2 = new ZUI.Rate('.rate2',{isDisabled:true});
+	
+	var rate3 = new ZUI.Rate('.rate3',{
+					step:true,
+					length : 20,
+					onClick:function(a,b,c){
+						$('.datasSent p').html('<strong>idBox : </strong>'+b+'<br /><strong>rate : </strong>'+c+'<br /><strong>action :</strong> rating');
+					}
+	});
+	var rate4 = new ZUI.Rate('.rate4',{
+				length :5,
+				canRateAgain: true,
+				nbRates : 3,
+				decimalLength:0,
+				rateInfo:'请点击星星评分',
+				onRating:function(a,b,c){
+					a.html(b+'/'+c);
+				},
+				onClick:function(a,b,c,d){
+					var label = $($(a).data('label'));
+					console.log(d);
+					switch(d){
+						case 2:
+						label.html('物流速度：');
+						break;
+						case 1:
+						label.html('总体评价：');
+						break;
+						case 0:
+						default:
+						break;
+					}
+					
+					
+				}
+	});	
+	
+	var rate5 = new ZUI.Rate('.ratesSmall',{length : 40,starSize:{x:12,y:10},rateInfoClass:'rateInfoSmall'});		
+</script>
+</body>
+</html>

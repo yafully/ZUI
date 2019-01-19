@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Print Area</title>
+<link href="css/asdui1.4b.css" rel="stylesheet" media="screen" type="text/css" />
+
+
+</head>
+<body>
+<div class="hideform" id="fm002">
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="table02">
+    	<colgroup>
+    		<col width="22%"><col width="25%"><col width="20%"><col>
+    	</colgroup>
+  		<thead>
+			  <tr><th colspan="4">临时明火作业申请数据&nbsp;	</th></tr>
+			</thead>
+  		<tbody>
+		  	<tr>
+				<td class="t_bg"> 编号:<input type="hidden" name="txtId" value="3" style="display: none;"> </td>
+				<td colspan="3">
+					<input type="text" style="width: 100px; display: none;" name="txtCode" title="请您输入 编号(字符1-75之间)"><div></div>
+					<div class="msg">请您输入 编号(字符1-75之间)</div><ui:v require="false" pass="验证正确" tips="请您输入 编号(字符1-75之间)" warn=" 编号字符长度为1-75之间" empty="请您输入 编号" max="75" min="1" rule="limit" for="txtCode">
+				</ui:v></td>
+			</tr>
+			<tr>
+				<td class="t_bg"> 用工部门: </td>
+				<td>
+				<select name="txtYgdept" style="display: none;"><option value="工艺质量管理科">工艺质量管理科</option><option value="审计科">审计科</option><option value="财务科">财务科</option><option value="营销服务部">营销服务部</option><option value="临时部门">临时部门</option><option value="厂领导">厂领导</option><option value="综合办公室">综合办公室</option><option value="安全保卫科">安全保卫科</option><option value="人力资源科">人力资源科</option><option value="工会办公室">工会办公室</option><option value="企业管理科">企业管理科</option><option value="卷包车间">卷包车间</option><option value="制丝车间">制丝车间</option><option value="动力车间">动力车间</option><option value="生产管理科">生产管理科</option><option value="设备工程科">设备工程科</option><option value="物资供应科">物资供应科</option></select><span>工艺质量管理科</span>
+					<!-- 
+					<input id="txtYgdept" name="txtYgdept" type="text" style="width: 100px;" />
+					 <ui:v for="txtYgdept" rule="limit" min="1" max="100" empty="请您输入 用工部门" warn=" 用工部门字符长度为1-100之间" tips="请您输入 用工部门(字符1-100之间)" pass="验证正确" require='false'/>
+					 -->
+				</td>
+				<td class="t_bg"> 用工部门负责人: </td>
+				<td>
+					<input type="text" style="width: 100px; display: none;" name="txtYgduty" title="请您输入 用工部门负责人(字符1-10之间)"><div></div>
+					<div class="msg">请您输入 用工部门负责人(字符1-10之间)</div><ui:v require="false" pass="验证正确" tips="请您输入 用工部门负责人(字符1-10之间)" warn=" 用工部门负责人字符长度为1-10之间" empty="请您输入 用工部门负责人" max="10" min="1" rule="limit" for="txtYgduty">
+				</ui:v></td>
+			</tr>
+			<tr>
+				<td class="t_bg"> (施工)单位:<font color="red">*</font> </td>
+				<td>
+					<input type="text" style="width: 100px; display: none;" name="txtUnits" title="请您输入 (施工)单位(字符1-50之间)"><div>fdsf</div>
+					<div class="msg">请您输入 (施工)单位(字符1-50之间)</div><ui:v pass="验证正确" tips="请您输入 (施工)单位(字符1-50之间)" warn=" (施工)单位字符长度为1-50之间" empty="请您输入 (施工)单位" max="50" min="1" rule="limit" for="txtUnits">
+				</ui:v></td>
+				<td class="t_bg"> (施工)部门负责人:<font color="red">*</font> </td>
+				<td>
+					<input type="text" style="width: 100px; display: none;" name="txtBmpeo" title="请您输入 (施工)部门负责人(字符1-10之间)"><div>fsf</div>
+					<div class="msg">请您输入 (施工)部门负责人(字符1-10之间)</div><ui:v pass="验证正确" tips="请您输入 (施工)部门负责人(字符1-10之间)" warn=" (施工)部门负责人字符长度为1-10之间" empty="请您输入 (施工)部门负责人" max="10" min="1" rule="limit" for="txtBmpeo">
+				</ui:v></td>
+			</tr>
+			<tr>
+					<td class="t_bg"> 施工地点:<font color="red">*</font> </td>
+				<td colspan="3">
+					<input type="text" style="width: 400px; display: none;" name="txtAddress" title="请您输入 施工地点(字符1-100之间)"><div>fsdf</div>
+					<div class="msg">请您输入 施工地点(字符1-100之间)</div><ui:v pass="验证正确" tips="请您输入 施工地点(字符1-100之间)" warn=" 施工地点字符长度为1-100之间" empty="请您输入 施工地点" max="100" min="1" rule="limit" for="txtAddress">
+				</ui:v></td>
+			</tr>
+			<tr>
+				<td class="t_bg"> 开始时间: </td>
+				<td>
+					<input type="text" readonly="" class="DatePicker" style="width: 100px; display: none;" name="txtStarttime"><div></div>
+									</td>
+				<td class="t_bg"> 结束时间: </td>
+				<td>
+					<input type="text" readonly="" class="DatePicker" style="width: 100px; display: none;" name="txtEndtime"><div></div>
+									</td>
+			</tr>
+		
+			<tr>
+				<td class="t_bg"> 操作人:<font color="red">*</font> </td>
+				<td>
+					<input type="text" style="width: 100px; display: none;" name="txtOperation" title="请您输入 操作人(字符1-10之间)"><div>sdfsd</div>
+					<div class="msg">请您输入 操作人(字符1-10之间)</div><ui:v pass="验证正确" tips="请您输入 操作人(字符1-10之间)" warn=" 操作人字符长度为1-10之间" empty="请您输入 操作人" max="10" min="1" rule="limit" for="txtOperation">
+				</ui:v></td>
+				<td class="t_bg"> 操作证号:<font color="red">*</font> </td>
+				<td>
+					<input type="text" style="width: 100px; display: none;" name="txtMaipro" title="请您输入 操作证号(字符1-100之间)"><div>fsdfsdf</div>
+					<div class="msg">请您输入 操作证号(字符1-100之间)</div><ui:v pass="验证正确" tips="请您输入 操作证号(字符1-100之间)" warn="操作证号字符长度为1-100之间" empty="请您输入 操作证号" max="100" min="1" rule="limit" for="txtMaipro">
+				</ui:v></td>
+			</tr>
+			<tr>
+				
+				<td class="t_bg">施工方监护人:<font color="red">*</font> </td>
+				<td colspan="3">
+					<input type="text" style="width: 100px; display: none;" name="txtSefepeo" title="请您输入 施工方监护人(字符1-10之间)"><div>dsfsdf</div>
+					<div class="msg">请您输入 施工方监护人(字符1-10之间)</div><ui:v pass="验证正确" tips="请您输入 施工方监护人(字符1-10之间)" warn=" 施工方监护人字符长度为1-10之间" empty="请您输入 施工方监护人" max="10" min="1" rule="limit" for="txtSefepeo">
+				</ui:v></td>
+			
+				<td style="display:none" class="t_bg"> 单位安全负责人: </td>
+				<td style="display:none">
+					<input type="text" style="width: 100px; display: none;" name="txtUnitduty" title="请您输入 单位安全负责人(字符1-10之间)"><div></div>
+					<div class="msg">请您输入 单位安全负责人(字符1-10之间)</div><ui:v require="false" pass="验证正确" tips="请您输入 单位安全负责人(字符1-10之间)" warn=" 单位安全负责人字符长度为1-10之间" empty="请您输入 单位安全负责人" max="10" min="1" rule="limit" for="txtUnitduty">
+				</ui:v></td>
+			</tr>
+			<tr>
+				<td class="t_bg"> 用工部门交底: </td>
+				<td colspan="3">
+					<textarea cols="80" rows="4" name="txtSafemapp" title="请您输入 用工部门交底(字符1-4000之间)" style="display: none;"></textarea><div></div>
+					<div class="msg">请您输入 用工部门交底(字符1-4000之间)</div><ui:v require="false" pass="验证正确" tips="请您输入 用工部门交底(字符1-4000之间)" warn=" 用工部门交底字符长度为1-4000之间" empty="请您输入 用工部门交底" max="4000" min="1" rule="limit" for="txtSafemapp">
+				</ui:v></td>
+			</tr>
+			<tr>
+				
+				<td class="t_bg"> 作业类别: </td>
+				<td>
+					<input type="checkbox" class="checkbox" name="txtWorktype" style="display: none;"><label for="txtWorktype01" style="display: none;">氧割</label>&nbsp; 
+					<input type="checkbox" class="checkbox" name="txtWorktype" style="display: none;"><label for="txtWorktype02" style="display: none;">电焊</label>&nbsp;
+					<input type="checkbox" class="checkbox" name="txtWorktype" style="display: none;"><label for="txtWorktype03" style="display: none;">其他</label>
+				</td>
+				<td class="t_bg"> 特种作业证号: </td>
+				<td>
+					<input type="text" style="width: 100px; display: none;" name="txtOpeercard" title="请您输入 特种作业证号(字符1-25之间)"><div></div>
+					<div class="msg">请您输入 特种作业证号(字符1-25之间)</div><ui:v require="false" pass="验证正确" tips="请您输入 特种作业证号(字符1-25之间)" warn=" 特种作业证号字符长度为1-25之间" empty="请您输入 特种作业证号" max="25" min="1" rule="limit" for="txtOpeercard">
+				</ui:v></td>
+			</tr>
+			<tr style="display:none">
+				<td class="t_bg"> 火灾安全现场: </td>
+				<td>
+					<select name="txtFireplace" style="display: none;">
+		     			<option value="1">H&mdash;1级</option>
+						<option value="2">H&mdash;2级</option>
+				  		<option value="3">H&mdash;3级</option>
+				  	</select><span>H&mdash;1级</span>
+				</td>
+				<td style="text-align:right;">
+					<span style="display: block;">消防干事同意签字:</span>
+					<span style="display:none;">护卫队长同意签字:</span>
+					<span style="display:none;">护卫队长同意签字:</span>
+				</td>
+				<td>
+					<input type="text" style="width: 100px; margin-left: 10px; display: none;" name="txtFireplace1"><div></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="t_bg"> 作业点防火措施: </td>
+				<td colspan="3">
+					<table width="100%" cellspacing="0" cellpadding="0" border="0">
+			            <tbody><tr>
+			                <td style="padding-left: 20px;">灭火器: </td>
+							<td><input type="text" style="width: 100px; display: none;" name="txtM1"><div></div></td>
+							<td style="padding-left: 20px;">种类: </td>
+							<td><input type="text" style="width: 100px; display: none;" name="txtZ1"><div></div></td>
+							<td style="padding-left: 20px;">数量: </td>
+							<td><input type="text" style="width: 100px; display: none;" name="txtS1"><div></div></td>
+			            </tr>
+			            <tr>
+			                <td style="padding-left: 20px;">消防水: </td>
+							<td><input type="text" style="width: 100px; display: none;" name="txtM2"><div></div></td>
+							<td style="padding-left: 20px;">种类: </td>
+							<td><input type="text" style="width: 100px; display: none;" name="txtZ2"><div></div></td>
+							<td style="padding-left: 20px;">数量: </td>
+							<td><input type="text" style="width: 100px; display: none;" name="txtS2"><div></div></td>
+			            </tr>
+			            <tr>
+			                <td style="padding-left: 20px;">沙: </td>
+							<td><input type="text" style="width: 100px; display: none;" name="txtM3"><div></div></td>
+							<td style="padding-left: 20px;">种类: </td>
+							<td><input type="text" style="width: 100px; display: none;" name="txtZ3"><div></div></td>
+							<td style="padding-left: 20px;">数量: </td>
+							<td><input type="text" style="width: 100px; display: none;" name="txtS3"><div></div></td>
+			            </tr>
+			            <tr>
+			                <td style="padding-left: 20px;">器具盛水: </td>
+							<td><input type="text" style="width: 100px; display: none;" name="txtM4"><div></div></td>
+							<td style="padding-left: 20px;">种类: </td>
+							<td><input type="text" style="width: 100px; display: none;" name="txtZ4"><div></div></td>
+							<td style="padding-left: 20px;">数量: </td>
+							<td><input type="text" style="width: 100px; display: none;" name="txtS4"><div></div></td>
+			            </tr>
+			        </tbody></table>
+
+				</td>
+			</tr>
+			<tr style="display:none">
+				<td class="t_bg"> 10米是否有易爆品: </td>
+				<td colspan="3">
+
+					
+					<input type="radio" class="radio checked" name="rdoIstenmb" style="display: none;"><span>是</span><label for="txtIstenmb01" style="display: none;">是</label> &nbsp;&nbsp;
+					<input type="radio" class="radio" name="rdoIstenmb" style="display: none;"><label for="txtIstenmb02" style="display: none;">否</label>
+				
+				</td>
+			</tr>
+		
+			
+			<tr>
+				
+				<td class="t_bg"> 说明: </td>
+				<td style="color:blue;" colspan="3">
+					<span>一、火灾危险场所等级划分</span><br>
+					<span style="padding-left:30px;">1、H&mdash;1级：是指在生产过程中，生产、使用、加工、贮存或转运闪点高于场所环境温度的可燃液体，在数量和配置上，能引起火灾危险的场所。</span><br>
+					<span style="padding-left:60px;">可燃液体：如柴油、润滑油、香精香料等。</span><br>
+					<span style="padding-left:30px;">2、H&mdash;2级：是指在生产过程中，不可能形成爆炸性混合物的悬浮状或堆积状可燃粉尘或可燃纤维，在数量上和配置上，能引起火灾危险的场所。</span><br>
+					<span style="padding-left:60px;">可燃粉尘有：烟叶粉尘；</span><br>
+					<span style="padding-left:60px;">可燃纤维有：木屑等（木工房）</span><br>
+					<span style="padding-left:30px;">3、H&mdash;3级：是指有固体状可燃物质，在数量上和配置上，能引起火灾危险的场所。如烟叶、烟丝、纸张等。</span><br>
+					<span>二、动火作业申请表经审核批准后，24小时有效。</span><br>
+					<span>三、作业前，施工单位必须做好防火措施，否则不准施工。</span><br>
+					<span>四、H-1级、H-2级作业后施工单位安全员必须留守1小时，经安全管理职能部门（护卫队）检查无火灾危险后，方可离开。</span><br>
+				</td>
+			</tr>
+				<tr>
+				<td class="t_bg"> 申请人: </td>
+				<td>
+					<input type="text" style="width: 100px; display: none;" name="txtFiller" title="申请人(字符1-10之间)"><div></div>
+					<div class="msg">申请人(字符1-10之间)</div><ui:v require="false" pass="验证正确" tips="申请人(字符1-10之间)" warn=" 申请人字符长度为1-10之间" empty="请您输入 申请人" max="10" min="1" rule="limit" for="txtFiller">
+				</ui:v></td>
+				<td class="t_bg"> 填写时间: </td>
+				<td>
+					<input type="text" readonly="" class="DatePicker" style="width: 100px; display: none;" name="txtFilldate"><div>2013-05-01</div>
+				</td>
+			</tr>
+			<tr class="c_k noprint"> 
+			<td class="t_bg"> 审核进度: </td>
+			<td style="text-align: left;" colspan="3"><ul class="stepNavigation"> <li class="lastDone"><a title="" href="javascript:;"><em>1:发出申请</em></a></li> <li class="current"><a title="" href="javascript:;"><em>2:安保部审核</em></a></li> <li class="lastStep"><a title="" href="javascript:;"><em>3:审核完成</em></a></li></ul></td>
+			</tr>
+			<tr class="c_k">
+			<td class="t_bg">审核人</td><td><input type="text" style="width: 250px; display: none;" value="" readonly="readonly"><div></div><input type="hidden" value="1" style="display: none;"> </td>
+			<td class="t_bg checkop">审核详情</td><td class="checkop"><input type="radio" value="1" name="checkoption" style="display: none;"><label for="sure_ok" style="display: none;"> 同意 </label>  <input type="radio" value="2" name="checkoption" style="display: none;"><label for="sure_no" style="display: none;">不同意</label></td>
+			</tr>
+			</tbody>
+		 	<tfoot>
+		 	<!--endprint1-->
+  		<tr>
+		  	<td colspan="4" style="padding: 0px;text-align: center; height: 50px;">
+		  	   <input type="button" value="打印预览" class="print button" rel="fm002">
+		  		<input type="submit" class="button opModify" value="完成" style="display: none;">
+		  		<input type="button" rel="back" class="button" value="返回" style="display: inline-block;">
+		  		<input type="button" style="display: none;position: absolute;left: -1000px;top:-1000px;" value="完成">
+		  	</td>
+		  </tr>
+		  </tfoot>
+  	</table></div>
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+<script src="js/asdui.js" type="text/javascript"></script>
+<script type="text/javascript">
+var Pr = new ZUI.PrArea({mode:'popup',Prurl:'css/print.css'});
+$(document).ready(function(){
+		$('.print').bind('click',function(){
+					var container = $(this).attr('rel');
+					Pr.doPrint(container);	
+		});
+});		
+</script>
+
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<!-- This plugin took long time to create it... Please support it if you like it! -->
+<html>
+<head>
+<title>Metro Menu</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="css/asdui1.4b.css" type="text/css" media="all" />
+<link rel="stylesheet" href="css/metromenu.css" type="text/css" media="all" />
+<style type="text/css">
+*{padding:0;margin:0}
+body{font-family:"微软雅黑",Arial,"";font-size:14px;}
+ol{margin:0;padding: 0 1.5em;}
+
+div{padding:10px 20px}
+div p{padding-left:10px}
+fieldset{margin:150px;padding:20px;text-align:left}
+fieldset legend{padding:5px 10px;font-weight:700;font-size:16px}
+table{color:#333;background:#E8F5FE;border-collapse:collapse;width:100%;text-align:left;}
+thead{}
+thead th{padding:1em 1em .5em;border:1px solid #5C9CC0;font-size:120%;background:#5C9CC0;text-align:left}
+thead tr{}
+td{padding:.5em 1em;border:1px solid #BBE1F1}
+tbody td{background:#EEFAFF;}
+tfoot{background-color:#A9C9E2;}
+tfoot td{padding-bottom:1.5em;border:1px solid #BBE1F1}
+
+dl{padding:10px 5px}
+dl dt{font-weight:700;font-sie:14px;padding:5px 0;}
+dl dt span{color:#f60;padding:0 8px}
+pre{border:1px solid #ADCD3C;background-color:#F2FDDB;padding:5px;white-space: pre-wrap;
+word-wrap: break-word;}
+body,td,th {
+	font-family: "微软雅黑", Arial,;
+}
+</style>
+
+</head>
+<body>
+<div class="metroNav" id="menu">
+	<a href="#" class="mm_item"><em class="icon50" data-icon="&#xe00e;" aria-hidden="true"></em><span>Calendar</span></a>
+    <a href="#" class="mm_item"><em class="icon50" data-icon="&#xe00b;" aria-hidden="true"></em><span>Mailing</span></a>
+    <a href="#" class="mm_item"><em class="icon50" data-icon="&#xe070;" aria-hidden="true"></em><span>Adobe Suit</span></a>
+    <a href="#" class="mm_item"><em class="icon50" data-icon="&#xe07c;" aria-hidden="true"></em><span>Options</span></a>
+</div>
+<div class="mm_tip" id="memu_tip"></div>
+
+<fieldset>
+<legend>ASDUI.MetroMenu.Class(win8菜单)</legend>
+<dl>
+<dt>调用方法：</dt>
+<dd>
+<pre>new ASDUI.MetroMenu(element,{options,});</pre>
+</dd>
+<dt>一个藏袍：</dt>
+<dd>
+<pre>
+var metroMenu = new ASDUI.MetroMenu('menu',{pos: 'left',easing:'bounceIn',navs:'a.mm_item',duration:'fast',autoLoad:true,tip:'memu_tip'});
+</pre>
+</dd>
+</dl>
+<table>
+<col id="middle" />
+<col />
+<col />
+<thead>
+	<tr><th>Option</th>
+	  <th>参数描述</th></tr>
+</thead>
+<tfoot>
+</tfoot>
+<tbody>
+		<tr>
+		  <td>pos</td>
+		  <td>菜单位置，top,left,right,bottom可选，为空则不使用位置样式</td>
+    </tr>
+		
+		<tr>
+		  <td>easing</td>
+		  <td>菜单载入动画样式，.fadeIn,.fadeOut,.fadeInRight,.fadeInLeft,.bounceInLeft,.bounceInRight,.bounceIn,.bounceInUp,.bounceInDown,.flipInX,.flipInY可选，参见Animate core.css</td>
+	  </tr>
+		<tr>
+		  <td>navs</td>
+		  <td>附加动画样式的目标菜单项</td>
+	  </tr>
+		<tr>
+		  <td>duration</td>
+		  <td>动画持续时间fast,normal可选</td>
+	  </tr>
+		<tr>
+		  <td>autoLoad</td>
+		  <td>是否初始化自动载入菜单，true,false可选</td>
+	  </tr>
+		<tr><td>tip</td>
+		  <td>是否启用菜单提示，默认值null为不启用，启用时为tip的Id</td>
+		</tr>
+		<tr>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+	  </tr>
+	</tbody>
+</table>
+<dl>
+<dt>外置方法：<span>.render(pos,easing,dura)</span>构建菜单</dt>
+<dd>
+<pre>
+var metroMenu = new ASDUI.MetroMenu('menu',{pos: 'left',easing:'bounceIn',navs:'a.mm_item',duration:'fast',autoLoad:true,tip:'memu_tip'});
+metroMenu.render('left','bounceInRight','fast')
+</pre>
+</dd>
+<dt>Demo:</dt>
+<dd>
+	<a href="javascript:metroMenu.render('bottom')">底部</a> |
+    <a href="javascript:metroMenu.render('top')">顶部</a> |
+    <a href="javascript:metroMenu.render('left')">左边</a> |
+    <a href="javascript:metroMenu.render('right')">右边</a> |
+    <br/>
+    <a href="javascript:metroMenu.render('left','fadeIn')">fadeIn</a> |
+    <a href="javascript:metroMenu.render('left','fadeInRight')">fadeInRight</a> |
+    <a href="javascript:metroMenu.render('left','fadeInLeft')">fadeInLeft</a> |
+    <a href="javascript:metroMenu.render('left','bounceInLeft','fast')">bounceInLeft</a> |
+    <a href="javascript:metroMenu.render('left','bounceInRight','fast')">bounceInRight</a> |
+    <a href="javascript:metroMenu.render('left','bounceIn','fast')">bounceIn</a> |
+    <a href="javascript:metroMenu.render('left','bounceInUp','normal')">bounceInUp</a> |
+    <a href="javascript:metroMenu.render('left','bounceInDown','normal')">bounceInDown</a> |
+    <a href="javascript:metroMenu.render('left','flipInX','fast')">flipInX</a> |
+    <a href="javascript:metroMenu.render('left','flipInY','fast')">flipInY</a> |
+</dd>
+<dt>说明:</dt>
+<dd>
+该插件在IE6-9等不支持css animation的浏览器下除位置参数有效外其他参数均无效；
+</dd>
+</dl>
+</fieldset>
+</body>
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+<script src="js/asdui.js" type="text/javascript"></script>
+<script language="javascript">
+ZUI.MetroMenu = new $.Class({
+	options: {
+		pos: 'top',
+		easing:'fadeIn',
+		navs:'a.mm_item',
+		duration:'normal',
+		autoLoad:true,
+		tip:null
+	},
+	initialize: function(menu, options){
+		this.options = $.extend({},this.options, options);
+		this.menu = $('#'+menu).fadeOut();
+		this.tip = this.options.tip ? $('#'+this.options.tip) : null;
+		this.Navs = this.menu.find(this.options.navs);
+		this.options.autoLoad && this.render();		
+	},
+	render: function(pos,easing,dura){
+		this.menu.fadeIn(150);
+		this.pos = pos || this.options.pos;
+		this.easing = easing || this.options.easing;
+		this.dura = dura || this.options.duration;
+		this.menu.data('p') && this.menu.removeClass(this.menu.data('p'));
+		
+		if(this.tip){ 
+			this.tip.data('t') && this.tip.removeClass(this.tip.data('t'));
+			this.tip.addClass('mt_' + this.pos).data('t','mt_' + this.pos);
+		}
+		switch(this.pos){
+			case 'left' :
+				this.menu.addClass('mm_left').data('p','mm_left');			
+			break;
+			case 'right' :
+				this.menu.addClass('mm_right').data('p','mm_right');				
+			break;
+			case 'top' :
+				this.menu.addClass('mm_top').data('p','mm_top');					
+			break;
+			case 'bottom' :	
+				this.menu.addClass('mm_bottom').data('p','mm_bottom');				
+			break;
+			default:				
+			break;
+		}
+		this.Navs.each($.proxy(function(i,item) {
+				if (!$.support.ani) {
+					$(item).css({'visibility':'visible'});
+					
+					switch(i){
+						case i%2 :
+							$(item).hide().delay(i*300 +300).fadeIn();				
+						break;
+						case i%3 :
+							$(item).hide().delay(150).fadeIn();			
+						break;
+						default:
+							$(item).hide().delay(i*200).fadeIn();
+						break;
+					}
+										
+				}else{
+					
+					$(item).data('e') && $(item).removeClass($(item).data('e'));
+					$(item).data('t') && $(item).removeClass($(item).data('t'));
+					var sty = this.dura +' '+this.easing;
+
+					switch(i){
+						case i%2 :
+
+							setTimeout($.proxy(function() {
+								$(item).addClass(sty).data('e',this.easing).data('t',this.dura);
+							},this),i*100 +100);												
+						break;
+						case i%3 :
+
+							setTimeout($.proxy(function() {
+								$(item).addClass(sty).data('e',this.easing).data('t',this.dura);
+							},this),300);				
+						break;
+						default:
+
+							setTimeout($.proxy(function() {
+								$(item).addClass(sty).data('e',this.easing).data('t',this.dura);
+							},this),i*50);	
+						break;
+					}
+				}
+				this.tip && $(item).on({
+					'mouseenter':function(){
+						$('#memu_tip').show().html($(this).html())
+					},
+					'mouseout':function(){
+						$('#memu_tip').hide()
+					}
+				});			
+		},this));				
+	}
+});
+
+var metroMenu = new ZUI.MetroMenu('menu',{pos: 'left',easing:'bounceIn',navs:'a.mm_item',duration:'fast',tip:'memu_tip'});
+
+</script>
+</html>

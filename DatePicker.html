@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/asdui1.4b.css" type="text/css" media="all" />
+<style type="text/css">
+a:link,a:visited{color:#f00; text-decoration:underline}
+fieldset{margin:20px 10px}
+pre{border:1px solid #fc0;background:#ffd;padding:5px}
+
+
+fieldset{margin:20px;padding:20px;text-align:left}
+fieldset legend{padding:5px 10px;font-weight:700;font-size:16px}
+table.op{color:#333;background:#E8F5FE;border-collapse:collapse;width:100%;text-align:left;}
+thead{}
+table.opt head th{padding:1em 1em .5em;border:1px solid #5C9CC0;font-size:120%;background:#5C9CC0;text-align:left}
+table.op thead tr{}
+table.op td{padding:.5em 1em;border:1px solid #BBE1F1}
+table.op tbody td{background:#EEFAFF;}
+table.op tfoot{background-color:#A9C9E2;}
+table.op tfoot td{padding-bottom:1.5em;border:1px solid #BBE1F1}
+
+dl{padding:10px 5px}
+dl dt{font-weight:700;font-sie:14px;padding:5px 0;}
+dl dt span{color:#f60;padding:0 8px}
+pre{border:1px solid #ADCD3C;background-color:#F2FDDB;padding:5px;white-space: pre-wrap;
+word-wrap: break-word;}
+
+#here{width:250px;height:350px;border:2px solid #f00}
+.dpholiy{background-color:#ffd}
+</style>
+</head>
+
+<body>
+<fieldset style="top:inherit" id="Dps">
+ <legend>YafullyBox.Dp Class</legend>
+  <input name="" type="text" class="areas" value="12/02/2014"/>
+  <input name="" id="b" type="text" class="areas" value=""/>
+  <input name="" type="text" class="areas2" id="eXDP" style="border:1px solid #f00"/>
+  <button id="callDp">调用日历</button>
+  <button onClick="Sexy7.detach()">禁用日历</button>
+  <button onClick="Sexy7.attach()">启用日历</button>
+</fieldset>
+
+<fieldset style="top:inherit" id="Dps">
+ <legend>范围限定日期选择</legend>
+  <input name="" type="text" class="dates" />
+
+</fieldset>
+<div style="position:absolute;top:50px;right:5px;"><input name="" type="text" class="areas"/></div>
+<div style="position:absolute;bottom:0;right:5px;"><input name="" type="text" class="areas"/></div>
+<div style="position:absolute;bottom:50px;left:5px;"><input name="" type="text" class="areas"/></div>
+<br><br><br>
+<div id="here"><input name="" type="text" class="comeDp" id="ExDp" value=""/></div>
+<fieldset><legend>ASDUI.Dp.Class</legend>
+<dl>
+<dt>调用方法：</dt>
+<dd>
+<pre>var myshake = new ASDUI.Dp(elements,[, options]);</pre>
+</dd>
+<dt>一个藏袍：</dt>
+<dd>
+<pre>
+Sexy7 = new ASDUI.Dp('input.areas',{time:true});
+Sexy8 = new ASDUI.Dp('input.areas');
+</pre>
+</dd>
+
+</dl>
+<table class="op">
+<col id="middle" />
+<col />
+<col />
+<thead>
+	<tr><th>Option</th>
+	  <th>参数描述</th></tr>
+</thead>
+<tfoot>
+</tfoot>
+<tbody>
+		<tr>
+		  <td>Dparea</td>
+		  <td>需要委托日期控件的容器Id，可以为空，当为空时默认容器对象为document.body；</td>
+    </tr>
+		<tr><td>CzIndex</td>
+		  <td>日期控件的z-index</td>
+		</tr>
+		
+		<tr>
+		  <td>Cwidth</td>
+		  <td>日期控件的宽度</td>
+    </tr>
+	    <tr>
+	      <td>Cheight</td>
+	      <td>日期控件的高度（一般不需要设置默认为&quot;auto"）</td>
+    </tr>
+	    
+	    <tr>
+	      <td>hovClass</td>
+	      <td>鼠标经过日期的样式，默认值为dp_roll</td>
+      </tr>
+	    <tr>
+	      <td>secClass</td>
+	      <td>选择日期的样式，默认值为dp_selected</td>
+      </tr>
+	    <tr>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+      </tr>
+	    <tr>
+	      <td>onSelect（fn）</td>
+	      <td>当选择日期后执行的回调函数,该函数指向DP外框</td>
+    </tr>
+
+	    
+	    <tr>
+	      <td>onChange（fn）</td>
+	      <td>当年份、月份改变时执行的回调函数,该函数指向DOM本身</td>
+    </tr>	    
+	    
+	    <tr>
+	      <td>static</td>
+	      <td>日期控件显示在指定的目标元素的ID，默认值为false</td>
+      </tr>
+	    <tr>
+	      <td>mark</td>
+	      <td>需要指定标识的日期，默认为空数组；格式为['2013|1|1','2013|2|14',...]</td>
+      </tr>
+	    <tr>
+	      <td>time</td>
+	      <td>是否显示时间选项（可选true，false）</td>
+    </tr>
+	    <tr>
+	      <td>yearRange</td>
+	      <td>最大可选年个数</td>
+    </tr>
+	    <tr>
+	      <td>yearOrder</td>
+	      <td>年的排列顺序（可选desc，asc）</td>
+    </tr>
+	    <tr>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+    </tr>
+</tbody>
+</table>
+<dl>
+<dt>外置方法：<span>.create(element,empt);</span>在新的对象上附加日历</dt>
+<dd>
+<pre>
+//empt true,false可选是否以当前系统日期为起始否为上一次调用的时间
+Sexy7 = new ASDUI.Dp('areas',{time:true});
+var mydp = $('a');
+$('callDp').addEvent('click',function(e){
+e.stopPropagation();
+
+ Sexy7.create(mydp,true)
+});
+
+</pre>
+</dd>
+
+<dt>外置方法：<span>.attach();</span>启用日历</dt>
+<dd>
+<pre>
+Sexy7.attach()
+
+</pre>
+</dd>
+
+<dt>外置方法：<span>.attach();</span>禁用日历</dt>
+<dd>
+<pre>
+Sexy7.detach()
+
+</pre>
+</dd>
+</dl>
+</fieldset>
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+<script src="js/asdui.js" type="text/javascript"></script>
+<script>
+	Sexy7 = new ZUI.Dp('input.areas',{format:'mm/dd/yyyy'});
+
+	dp = new ZUI.Dp('input.comeDp',{
+		time:false,
+		static:'here',
+		mark:['2016|1|1','2016|2|14','2016|3|12','2016|6|1','2016|6|8','2016|6|12','2013|6|15','2013|6|20','2013|6|22'],
+		onSelect:function(){
+			//console.log(this.dpBox);
+		},
+		onChange:function(){
+			//console.log(this.Boxon);
+		}
+	}).create($('#ExDp'),true);
+	
+	
+	var now = new Date(),
+	DatePicker = new ZUI.Dp('.dates',{
+		yearRange: 0,
+		yearRangeLeft:1,
+		yearStart: now.getFullYear(),
+		yearEnd: now.getFullYear()+1,
+		monthStart: now.getMonth(),
+		monthEnd:now.getMonth(),
+		dayStart:now.getDate(),
+		dayEnd:now.getDate()
+	});
+	
+	$(function(){
+		var mydp = $('#eXDP');
+		$('#callDp').on('click',function(e){
+			e.stopPropagation();
+			Sexy7.create(mydp,true)
+		});	
+		
+	});
+
+</script>
+</body>
+</html>

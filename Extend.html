@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/asdui1.4b.css" type="text/css" media="all" />
+<style type="text/css">
+	#output{border:4px solid #ccc;position:fixed;height:90%;width:350px;overflow:hidden;overflow-y:auto}
+	.gray{color:#c00}
+	i{color:#f00}
+	h2{text-align:center;background:#f8f8f8}
+</style>
+</head>
+
+<body>
+<div id="output">
+	
+</div>
+<input type="checkbox" value="pbridge01" id="aa"/>
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+<script type="text/javascript" src="js/asdui.js"></script>
+<script>
+$(function(){
+	console.log($('#aa').is('[value^="apbridge"]'));
+	console.log($.devicePixelRatio);
+	console.log($.browser.name);
+	
+	
+	
+	var output = $('#output');
+
+	//String
+	output.append('<h2>----String扩展----</h2>');
+	output.append('<p class="gray">String替换:</p>');
+	output.append($.string.replaceAll("  abcdefg,higklmn  "," ", "_")+'<br/>');
+	output.append($.string.replaceAll("aA","a", "b",true)+'<br/>');
+	
+	output.append('<p class="gray">String HTML转码:</p>');
+	output.append($.string.decodeHTML('<h1><a href="#">cool</a></h1>'));
+	output.append('<p class="gray">String HTML解码:</p>');
+	output.append($.string.encodeHTML('<p class="gray">String HTML转码:</p>'));
+	output.append('<p class="gray">String 全角转换:</p>');
+	output.append($.string.toHalfWidth('０１２３４５６７８９ＡＢＣＤＥＦＧＨａ'));
+	output.append('<p class="gray">String 从左截取5字符:</p>');
+	output.append($.string.left('Enlighten team',5));
+	output.append('<p class="gray">String 从右截取8字符:</p>');
+	output.append($.string.right('Enlighten team',8));
+	
+	
+	output.append('<p class="gray">去除所有标签</p>');
+	output.append($.string.stripTags("<b>This is a string with <i>html</i> in it.</b>"));
+	output.append('<p class="gray">去除所有标签i</p>');
+	output.append($.string.stripTags("<b>This is a string with <i>html</i> in it.</b>",'i'));
+	output.append('<p class="gray">去除所有标签i包括标签内容</p>');
+	output.append($.string.stripTags("<b>This is a string with <i>html</i> in it.</b>",'i',true));
+	console.log(($.string.stripTags("<b>This is a string with <i>html</i> in it.</b>")));
+	output.append('<p class="gray">获取标签i内容</p>');
+	output.append($.string.getTags("<b>This is a string with <i>html</i> in it.</b>",'i',true));
+
+	output.append('<h2>----Array扩展----</h2>');
+	output.append('<p class="gray">判断一个数组中是否包含给定元素</p>');
+	output.append($.array.contains(['a','vvvv',1,2,'999'],'a'));
+	
+	output.append('<p class="gray">从数组中寻找符合条件的第一个元素</p>');
+	var pck = $.array.pick([1,'a',-1,'c',1,111],function(item,i){
+		return item>0
+	});
+	output.append(pck);
+	output.append('<p class="gray">查询数组中指定元素的索引位置</p>');
+	output.append($.array.indexOf([1,2,'a','c','a','ccc','556','999','xyz',556,'c'],'999'));
+	output.append('<p class="gray">反向查询数组中指定元素的索引位置</p>');
+	output.append($.array.lastIndexOf([1,2,'a','c','a','ccc','556','999','xyz',556,'c'],'a',3));
+	
+	output.append('<p class="gray">删除数组元素(无参数则清空数组)</p>');
+	output.append($.array.remove([1,2,'a','c','a',2],'a').join(','));
+	
+	output.append('<p class="gray">通过索引删除数组元素</p>');
+	
+	output.append($.array.removeAt([1,2,'a','c'],1).join(','));
+	output.append('<p class="gray">通过索引删除数组元素2</p>');
+	output.append($.array.removeAt([1,2,'a','c'],1,2).join(','));
+	output.append('<p class="gray">反向通过索引删除数组元素</p>');
+	output.append($.array.removeAt([1,2,'a','c'],-2).join(','));
+	output.append('<p class="gray">反向通过索引删除数组元素2(注意参数顺序)</p>');
+	output.append($.array.removeAt([1,2,'a','c'],-2,-1).join(','));
+	
+	output.append('<p class="gray">指定位置插入数组元素</p>');
+	output.append($.array.insert([1,2,'a','c'],1,'xxx').join(','));
+	
+	output.append('<p class="gray">指定位置插入数组</p>');
+	output.append($.array.insertArrayAt([1,2,'a','c'],1,['xxx','yyy']).join(','));
+	
+	output.append('<p class="gray">向数组插入一个元素如果该元素不存在</p>');
+	output.append($.array.include([1,2,'a','c'],'b').join(','));
+	
+	output.append('<p class="gray">联合2个数组并去掉重复项</p>');
+	output.append($.array.combine([1,2,'a','c'],[1,'e',2,'d']).join(','));
+	
+	output.append('<p class="gray">去掉数组中的重复项</p>');
+	output.append($.array.unique([1,2,'a',2,'c','a']).join(','));
+	
+	output.append('<p class="gray">2个数组交集</p>');
+	output.append($.array.intersect([1,2,'a',2,'c','e'],['a',1]).join(','));
+	
+	output.append('<p class="gray">2个数组差集</p>');
+	output.append($.array.differentiate([1,2,'a'],['a',1]).join(','));
+	
+	output.append('<p class="gray">随机打乱数组</p>');
+	output.append($.array.shuffle([1,2,'a','b']).join(','));
+	
+	output.append('<p class="gray">获取数组指定项组成新数组</p>');
+	output.append($.array.pluck([{name : 'moe', age : 40}, {name : 'larry', age : 50}],'name').join(','));
+	
+	output.append('<p class="gray">仿Linq条件查询</p>');
+
+	output.append($.array.where([{name : 'moe', age : 40}, {name : 'larry', age : 50}],function(item,index){return item.name=="larry"}).join(','));
+
+	output.append('<p class="gray">迭代</p>');
+	output.append($.array.reduce([1, 2, 3, 4],function (previous, current, index, array) {
+	  return previous + current;
+	}));
+
+	output.append($.array.reduce([[1, 2],[3, 4],[5, 6]],function (previous, current, index, array) {
+	  return previous.concat(current);
+	}));
+	
+
+	output.append('<h2>----Date扩展----</h2>');
+	output.append('<p class="gray">计算目标日期是星期几</p>');
+	output.append($.date.getWeek($.date.now('2015-01-21')));
+	output.append($.date.getWeek($.date.now('2015-01-21'),"星期"));
+	output.append($.date.getWeek($.date.now('2015-01-21'),"En"));
+	output.append($.date.getWeek($.date.now('2015-01-21'),"Short"));
+	
+	output.append('<p class="gray">是否闰年</p>');
+	output.append($.date.isLeapYear($.date.now("2015-01-21"))?"是":"否");
+	output.append('<p class="gray">该月有多少天</p>');
+	output.append($.date.daysInMonth($.date.now("2015-01-21")));
+	
+	output.append('<p class="gray">计算时间差(day, hour, minute, seconds)</p>');
+	output.append($.date.compare("2015-01-20","2015-01-21","hour"));
+	
+	output.append('<p class="gray">日期格式化</p>');
+	output.append($.date.format($.date.now(),'yyyy-MM-ddThh:mm:ss'));
+	
+	output.append('<p class="gray">日期反格式化</p>');
+	output.append($.date.parse($.date.now('2014-05-06T12:20:35')));
+	
+	output.append('<h2>----Object扩展----</h2>');
+	
+	
+	output.append('<p class="gray">Object.keys IE7</p>');
+	output.append(Object.keys({"key1":"a","key2":"b"}));
+	
+	
+	output.append('<p class="gray">Object.toQueryString生成一个Get请求格式的字符串(已URI编码).</p>');
+	output.append($.object.toQueryString({apple: 'red', lemon: 'yellow'})+'<br/>');
+	output.append($.object.toQueryString({apple: 'red', lemon: 'yellow'},'Item')+'<br/>');
+	output.append($.object.toQueryString({apple: 'red', lemon: 'yellow'},false,true)+'<br/>');
+	output.append('<p class="gray">Object.values返回一个数组包含对象所有的值,键的顺序与Object.values返回值数组的顺序一样.</p>');
+	output.append($.object.values({apple: 'red', lemon: 'yellow'})+'<br/>');
+	output.append('<p class="gray">Object.keyOf返回指定值的键</p>');
+	output.append($.object.keyOf({apple: 'red', lemon: 'yellow'},'yellow')+'<br/>');
+	output.append('<p class="gray">Object.subset获取对象的子集</p>');
+	var stObj = $.object.subset({apple: 'red', lemon: 'yellow', grape:'grape'},['apple','lemon']);
+	output.append($.object.toQueryString(stObj)+'<br/>');
+	
+	output.append('<p class="gray">Object.erase删除对象指定键</p>');
+	var eaObj = $.object.erase({a: 'red', b: 'yellow', c:'grape'},'c');
+	output.append($.object.toQueryString(eaObj)+'<br/>');
+	
+	output.append('<p class="gray">Object.cleanValues删除对象键值</p>');
+	var clobj = $.object.cleanValues({foo: 'bar',something: 'else',missing: null});
+	output.append($.object.toQueryString(clobj)+'<br/>');
+	var clobj2 = $.object.cleanValues({a: -1,b: 2,c: 0,d: -5},function(value){
+		
+		return value > 0;
+	});
+	output.append($.object.toQueryString(clobj2)+'<br/>');
+	//URI
+	output.append('<h2>----URI扩展----</h2>');
+	var urlpram = $.url.getQueryValue('http://user:password@www.test.com:8383/the/path.html?query=value&page=12','page');
+	output.append('获取URI指定参数'+urlpram+'<hr/>');
+	var urljson = $.url.queryToJson('http://user:password@www.test.com:8383/the/path.html?query=value&page=12');
+	output.append('转化URI参数为JSON'+urljson+'<hr/>');
+	// Remove the second item from the array
+//	array.remove(1);
+//	// Remove the second-to-last item from the array
+//	array.remove(-2);
+//	// Remove the second and third items from the array
+//	array.remove(1,2);
+//	// Remove the last and second-to-last items from the array
+//	array.remove(-2,-1);
+});//Dom
+</script>
+</body>
+</html>

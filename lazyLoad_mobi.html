@@ -1,0 +1,57 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<title>页面图片等元素滚动动态加载</title>
+
+<style>
+.zxx_test_list{font-size:13px;}
+.zxx_test_list img{margin-bottom:5px;}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div class="zxx_out_box">
+    <div class="zxx_in_box">
+        <div class="zxx_header">
+
+        </div>
+        <h1 class="zxx_title">页面图片等元素滚动动态加载技术</h1>
+        <div id="zxxMainCon" class="zxx_main_con">
+			<script>
+				var tempHTML = "";
+				for (var i=1; i<=30; i+=1) {
+					if (i == 6) {
+						//tempHTML += '<div class="zxx_test_list scrollLoading" data-url="loaded.html"><div style="padding:100px 0; text-align:center;"><img src="http://www.zhangxinxu.com/study/image/loading.gif" style="margin:0 8px -8px 0;" />加载中...</div></div>';
+					} else {
+						tempHTML += '<div class="zxx_test_list tc"><img class="scrollLoading" data-url="http://image.zhangxinxu.com/image/study/head/s180/'+i+'.jpeg" src="http://www.zhangxinxu.com/study/image/pixel.gif" data-original="http://image.zhangxinxu.com/image/study/head/s180/'+(i+1)+'.jpeg"  width="180" height="180" style="background:url(http://www.zhangxinxu.com/study/image/loading.gif) no-repeat center;" /><br />图片'+i+'(新浪微博提供)</div>';
+					}
+				}
+				document.getElementById("zxxMainCon").innerHTML = tempHTML;
+			</script>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" src="js/zepto.js"></script>
+<script src="js/asdui_mobi.js" type="text/javascript"></script>
+<script>
+var egg2 = new ZUI.Lazyload('.scrollLoading',{mouseAttr:'data-original',callback: function() {
+        console.log(this)
+    }});
+$(function(){
+//	$('#zxxMainCon').on('mouseover','.scrollLoading',function(){
+//		var orgUrl =$(this).data('original');
+//		$(this).attr('src',orgUrl);
+//	});
+//	$('#zxxMainCon').on('mouseout','.scrollLoading',function(){
+//		var Url =$(this).data('url');
+//		$(this).attr('src',Url);
+//	});
+});
+</script>
+
+
+</body>
+</html>

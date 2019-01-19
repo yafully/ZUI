@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/asdui1.4bmobi.css" type="text/css" media="all" />
+<style type="text/css">
+a:link,a:visited{color:#f00; text-decoration:underline}
+fieldset{margin:20px 10px}
+pre{border:1px solid #fc0;background:#ffd;padding:5px}
+
+
+fieldset{margin:20px;padding:20px;text-align:left}
+fieldset legend{padding:5px 10px;font-weight:700;font-size:16px}
+table{color:#333;background:#E8F5FE;border-collapse:collapse;width:100%;text-align:left;}
+thead{}
+thead th{padding:1em 1em .5em;border:1px solid #5C9CC0;font-size:120%;background:#5C9CC0;text-align:left}
+thead tr{}
+td{padding:.5em 1em;border:1px solid #BBE1F1}
+tbody td{background:#EEFAFF;}
+tfoot{background-color:#A9C9E2;}
+tfoot td{padding-bottom:1.5em;border:1px solid #BBE1F1}
+
+dl{padding:10px 5px}
+dl dt{font-weight:700;font-sie:14px;padding:5px 0;}
+dl dt span{color:#f60;padding:0 8px}
+pre{border:1px solid #ADCD3C;background-color:#F2FDDB;padding:5px;white-space: pre-wrap;word-wrap: break-word;}
+
+.fcenter{float:left;position:relative;left:50%;}
+.fcenter li{float:left;display:block;position:relative;right:50%;overflow:hidden;}
+
+
+</style>
+</head>
+
+<body>
+<fieldset id="album" class="photo">
+<legend id="change01">ASDUI.Img Pictrue Viewer Class相册01</legend>
+<a href="images/thumb01.jpg" data-url="images/test.jpg" data-title="123" rel="YafullyImg" id="001" class="views">Pic01</a>
+<a href="images/thumb02.jpg" data-url="images/b2.jpg" data-title="456" rel="YafullyImg" id="002" class="views">PIC02</a>
+<a href="images/thumb03.jpg" data-url="images/calendar.png" data-title="多拉A梦" rel="YafullyImg" id="003" class="views">Pic03</a>
+<a href="images/thumb04.jpg" data-url="images/test/checkbox.gif" data-title="多拉B梦" rel="YafullyImg" id="004" class="views">Pic04</a>
+<a href="images/thumb05.jpg" data-url="http://image.zcool.com.cn/3/16/1307025516828.jpg" data-title="789" rel="YafullyImg" id="005" class="views">Pic05</a>
+<a href="images/thumb01.jpg" data-url="http://image.zcool.com.cn/48/9/1307167830571.jpg" data-title="abc" rel="YafullyImg" id="006" class="views">Pic06</a>
+<a href="javascript:;" onclick="PicViewer.showIndex(0)">customShow</a>
+</fieldset>
+<br />
+<fieldset id="album2" class="photo">
+<legend id="change02">ASDUI.Img Pictrue Viewer Class相册02</legend>
+<div style="position:relative;">
+	<a href="javascript:;" data-url="http://image.zcool.com.cn/img3/41/30/1348333144536.jpg" data-title="xxxx1" rel="YafullyImg" id="007" style="position:absolute;left:0">Pic07</a>
+	<a href="javascript:;" data-url="http://image.zcool.com.cn/img3/35/46/1350103814063.jpg" data-title="xxxx2" rel="YafullyImg" id="008" style="position:absolute;left:-999px">PIC02</a>
+	<a href="javascript:;" data-url="http://image.zcool.com.cn/img3/10/26/1350103846677.jpg" data-title="xxxx3" rel="YafullyImg" id="009" style="position:absolute;left:-999px">Pic03</a>
+	<a href="javascript:;" data-url="http://image.zcool.com.cn/img3/52/32/m_1350104124702.jpg" data-title="xxxx4" rel="YafullyImg" id="010" style="position:absolute;left:-999px">Pic04</a>
+    
+    <hr/><br/>
+    <a href="javascript:;" onclick="PicViewer.prepair({album:'album2',thumbs:'.views2'})">change</a>
+    <a href="images/thumb05.jpg" class="views2"></a>
+    <a href="images/thumb04.jpg" class="views2"></a>
+    <a href="images/thumb03.jpg" class="views2"></a>
+    <a href="images/thumb02.jpg" class="views2"></a>
+</div>
+
+</fieldset>
+
+<fieldset><legend>ASDUI.Img.Class</legend>
+<dl>
+<dt>调用方法：</dt>
+<dd>
+<pre>
+Sexy3 = new ASDUI.Img({,options});
+
+</pre>
+
+</dd>
+<dt>一个藏袍：</dt>
+<dd>
+<pre>
+Sexy3 = new ASDUI.Img({album:'album'});
+</pre>
+</dd>
+</dl>
+<table>
+<col id="middle" />
+<col />
+<col />
+<thead>
+	<tr><th>Option</th>
+	  <th>参数描述</th></tr>
+</thead>
+<tfoot>
+</tfoot>
+<tbody>
+		<tr><td>moveDuration</td>
+		  <td>浏览图片时窗体动画的时间值；默认为400</td>
+		</tr>
+		
+		<tr>
+		  <td>moveEffect</td>
+		  <td>浏览图片时窗体动画的模式；默认为Fx.Transitions.linear</td>
+    </tr>
+	    <tr>
+	      <td>event</td>
+	      <td>相册触发委托的事件类型可以为'click','mouseover'等；默认为'click';</td>
+    </tr>
+	    <tr>
+	      <td>album</td>
+	      <td>相册的Id，不可为空；</td>
+    </tr>
+	    <tr>
+	      <td>Selector</td>
+	      <td>相册下需要显示图片的Selector；例如：'a.pic',默认为a[rel=YafullyImg]，注意这里的a标签或其他标签必须带有href属性且带需要显示图片的路径；</td>
+    </tr>
+	    <tr>
+	      <td>onLoad（fn）</td>
+	      <td>图片每次加载完毕时触发的回调方法；</td>
+    </tr>
+	    <tr>
+	      <td>onShow（fn）</td>
+	      <td>图片每次显示时触发的回调方法；</td>
+    </tr>
+
+	    <tr>
+	      <td>bnb</td>
+	      <td><p>相册是否第一次运行的标记；请勿擅自修改此参数；</p>          </td>
+    </tr>
+	    <tr>
+	      <td>imgToolbar</td>
+	      <td>是否允许执行删除操作</td>
+      </tr>
+	    <tr>
+	      <td>onDelet(fn)</td>
+	      <td>删除图片后执行的回调方法</td>
+      </tr>
+	    <tr>
+	      <td>onLoad(fn)</td>
+	      <td>图片请求完毕时执行的回调方法</td>
+      </tr>
+	    <tr>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+      </tr>          
+</tbody>
+</table>
+<dl>
+<dt>外置方法：<span>prepair({,options});</span>重新构建相册</dt>
+<dt>附加说明：</dt>
+<dd>
+<pre>
+当需要在多个相册间切换或在同一相册内动态添加新图片时用以上方法；
+</pre>
+</dd>
+</dl>
+</fieldset>
+<script type="text/javascript" src="js/zepto.js"></script>
+<script src="js/asdui_mobi.js" type="text/javascript"></script>
+<script type="text/javascript">
+var example = new ZUI.Info({'mode':'middle','position':'center'});
+var PicViewer = new ZUI.Img({
+		Selector:'a[rel=YafullyImg]',
+		urlAttr:'url',
+		titAttr:'title',
+		album:'album',
+		//thumbs: $.os.phone ? false:'.views',
+		clickHide:true,
+		preload:true
+});
+	
+$(function() {
+	
+	
+	$('.photo').on('mousedown',function(){
+	    //console.log(this.id);
+		//PicViewer.prepair({album:this.id,thumbs:'.views2'})
+	});
+});//dom
+</script>
+</body>
+</html>

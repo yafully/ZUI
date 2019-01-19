@@ -1,0 +1,44 @@
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}
+body,button,input,select,textarea{font:12px/1.5  "宋体", tahoma,arial,\5b8b\4f53,sans-serif;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+address,cite,dfn,em,var{font-style:normal;}
+body{padding:0 10px}
+ul,ol{list-style:none;}
+a{text-decoration:none;}
+a:hover{text-decoration:underline;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+
+fieldset,img{border:0;}
+table{border-collapse:collapse;border-spacing:0;empty-cells:show}
+.PrNextPg{page-break-after:always;}
+.Prview{overflow:hidden}
+
+.table01{width:100%;*width:99.5%;padding: 0;margin:0 auto;border-collapse:collapse;empty-cells:show;font-size:18px}
+.table01 caption{padding: 0 0 5px 0;text-align: center;font-size:16px;caption-side:top;}
+.table01 th,.table01 td{color: #000;letter-spacing: 2px;text-transform: uppercase;
+text-align: left;padding: 6px 6px 6px 12px;}
+
+.table02{width:100%;*width:99.9%;height:99%;background:#fff;border-bottom:1px solid #000}
+.table02 caption{font-size:150%;font-weight:700}
+.table02 thead tr{height:35px;}
+.table02 thead th{font-size:150%;border-bottom:2px solid #000;color:#000;font-weight:blod;height:33px;}
+.table02 td,.table02 tbody th,.table02 tfoot th{border:1px solid #000;line-height:22px;padding:3px 5px}
+.table02 td{font-size:100%}
+
+input.txt,.submitbox,input.radio,.input.checkbox,textarea,select,.hideform div.msg,.hide,.none,.table02 tfoot,.prArea tfoot,.prArea .msg,.noprint{display:none}
+.bigzoom{zomm:.8}
+.alignR{text-align:right}
+.checkbox,.radio{ visibility:hidden}
+
+
+/*报告*/
+.cover{font-size:42px;text-align:center}
+.cover p{font-size:18px;padding-top:30px}
+h3.rpt_tit{font-size:22px;text-align:center}
+h4.rpt_name{font-size:18px;padding:60px 0 10px 10px}
+.rpt_txt{padding-left:10px;font-size:18px;}
+.rpt_txt p,h4.rpt_name p{text-indent:36px}
+.rpt_ps{font-size:14px;}
+
+.prArea{padding:5px;overflow:hidden;}

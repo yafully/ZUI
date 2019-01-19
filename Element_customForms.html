@@ -1,0 +1,236 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Custom Select</title>
+
+
+
+<style>
+body,html{font-size:12px}
+select {vertical-align:middle;border:1px solid #C8C8C8;padding:4px 2px;*height:26px;*line-height:26px}
+/*custom select*/
+.ZUIwrapper{display:inline-block;position:relative;vertical-align:middle;}
+.ZUIwrapper select{border:none;}
+.ZUIcustomSelect{position:absolute;z-index:0;background:#fff url(images/slelect_ar.jpg) right center no-repeat;border:1px solid #d8d8d8;color:#555;height:24px;line-height:24px;
+box-shadow: 0 0 2px #eee inset;min-width:40px;padding:0 16px 0 2px;text-indent:3px;vertical-align:middle}
+.ZUIcustomSelectInner{text-align:left;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;border-right:1px solid #d8d8d8}
+.ZUIcustomSelect.ZUIcustomSelectHover {border-color:#e9e9e9;background-color:#fafafa;}
+.ZUIcustomSelect.ZUIcustomSelectFocus {border-color:#888;}
+.ZUIcustomSelect.ZUIcustomSelectOpen {border-color:#aaa;}
+.ZUIcustomSelect.ZUIcustomSelectChanged {-webkit-animation: changed 0.5s;-moz-animation: changed 0.5s;-ms-animation: changed 0.5s;animation: changed 0.5s;}
+
+span.areacode2 {position:static}
+.hide{display:none}
+
+
+
+.prevCont{width:22px;height:22px;display:inline-block;vertical-align:top;border:1px solid #d6d6d6;padding:1px;background:#fff;}
+.prevCont img{vertical-align:top}
+.upload-pre-view{-moz-user-select:none;cursor:pointer;display:inline-block;background:#f3f3f3;border:1px solid #d6d6d6;color:#666;height: 24px;line-height: 24px;text-align:center;vertical-align:top;white-space:nowrap;overflow:hidden;position:relative;}
+.upload-pre-view .twbtn-grey{border:1px solid #fff;height:22px;line-height:22px;display:block;width:220px;text-align:center}
+.upload-pre-view:hover{color:#000;border-color:#ccc;}
+.filePrew{width:9999px;display:block;cursor:pointer;direction:ltr;font-size:200px;margin:0;opacity:0;filter:alpha(opacity=0);height:100%;*+font-size:130%;position:absolute;right:0;top:0;font-family:inherit;}
+/*comelet*/
+.completer-wrap{position:relative;z-index:10}
+.completer-container {position: absolute;z-index:1;-webkit-box-sizing: border-box;box-sizing: border-box;padding: 0;margin: 0;font-family: inherit;font-size: 14px;line-height: normal;list-style: none;background-color: #fff;border: 1px solid #ccc;border-bottom-color: #39f;}
+.completer-container li {padding: .5em .8em;margin: 0;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;cursor: pointer;background-color: #fff;border-bottom: 1px solid #eee;
+}
+.completer-container .completer-selected,.completer-container li:hover {margin-left: -1px;background-color: #eee;border-left: 1px solid #39f;}
+.ckLoad .Ov,.ckLoad .OvTxt{display:block}
+.Ov{position:absolute;width:100%;height:100%;top:0;left:0;z-index:1;background:#fff;opacity:.7;display:none}
+.OvTxt{position:absolute;z-index:2;width:100%;text-align:center;height:22px;line-height:22px;left:0;top:50%;margin-top:-11px;color:#999;display:none}
+
+.newsletter{border:1px solid #c0c1c1;color:#666;font-size:11px;height:15px;margin-right:10px;padding:5px;width:458px;*width:438px;vertical-align:middle}
+
+/*AddList*/
+.ASDaddList{width:100%}
+.ASDaddItem{position:relative;padding:3px 0;}
+.ASDaddItem .input{width:80%}
+.ASDaddItem:hover .input{border-color:#7abd54}
+.ASDaddItem .icon{line-height:22px;margin-left:4px;border:1px solid #ccc;cursor:pointer;}
+.ASDaddItem .ai{}
+</style>
+</head>
+<body>
+<h2>Normal Use:</h2>
+
+<select name="areacode1" id="areacode" class="styled">
+    <option value="">::Area Code::</option>
+    <option value="1">028 (USA)</option>
+    <option value="2">029 (USA)</option>
+    <option value="3">010 (CN)</option>
+</select>
+
+<a href="javascript:;" id="change">Change Value</a>
+
+<h2>Special Use:</h2>
+<div style="position:relative">
+<select name="areacode2" id="areacode2" class="styled2" data-width="200">
+    <option value="">::Area Code::</option>
+    <option value="1">028 (USA)</option>
+    <option value="2">029 (USA)</option>
+    <option value="3">010 (CN)</option>
+</select>
+have fun~~~
+</div>
+<h2>hide Use:</h2>
+<a href="javascript:;" id="change2">Change Value</a>
+<div class="hide" id="hideBox">
+<select name="areacode3" id="areacode3" class="styled">
+    <option value="">::Area Code::</option>
+    <option value="1">028 (USA)</option>
+    <option value="2">029 (USA)</option>
+    <option value="3">010 (CN)</option>
+	<option value="4">ADD a Select</option>
+</select>
+</div>
+<select name="areacode4" id="areacode4" class="styled hide">
+    <option value="">::Area Code::</option>
+    <option value="1">028 (USA)</option>
+    <option value="2">029 (USA)</option>
+    <option value="3">010 (CN)</option>
+	<option value="4">opps</option>
+</select>
+
+<h2>Picupload preview</h2>
+
+<input type="file" data-text="Choose Files (Front View)" id="picFront" name="picFront" size="3" class="filePrew">
+<span id="container" class="prevCont"></span>
+
+
+
+
+<h2>Auto compelete</h2>
+<div class="completer-wrap">
+    <input type="text" autocomplete="off" title="Sign up for Newsletter" class="newsletter" id="newsletter">
+    <div class="Ov"></div>
+    <div class="OvTxt">正在请求数据...</div>
+</div>
+
+
+<div class="ASDaddList" id="urls" data-groupname="url">
+    <div class="ASDaddItem">
+        <input name="url1" type="text" class="input"/><em class="icon24 icon ai">+</em>
+        
+    </div>
+</div>
+
+<h2>Loading Element</h2>
+<button class="loadSty button" type="button"><span>Add to Cart</span></button>
+<script src="js/jquery1.91.min.js"></script>
+
+<script src="js/asdui.js"></script>
+<script src="js/lovevox_more.js"></script>
+<script>
+//调用
+$(function() {
+	
+	$('.styled').customSelect();
+	$('#change').on('click',function(){
+		$("#areacode").val('1');
+		$('.styled').trigger('render');
+	});
+	
+	var customSel = $('#areacode2').customSelect({absolute:true});	
+	
+	var hideBox = $('#hideBox')
+	$('#change2').on('click',function(){
+		hideBox.toggleClass('hide');
+		$('.styled').customSelect();
+	});
+	
+	$('#areacode3').on('change',function(){
+		if($(this).val()==4){
+			$('.areacode4').css('display','inline-block');
+			$('#areacode4').removeClass('hide');		
+			$('.styled').customSelect();
+		}else{
+			$('.areacode4').css('display','none');
+			$('#areacode4').addClass('hide');
+		}
+		
+	});
+	
+	
+	$('#picFront').uploadPreview({container:'#container',text:$('#picFront').data('text')});
+	
+	var mails =["gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "live.com", "aol.com", "mail.com", "qq.com", "163.com", "126.com"];
+
+	var Completer = new ZUI.Completer('newsletter',{
+			container:'.completer-wrap',
+			sugType:'custom',//ajax,normal,custom
+			source: mails,//Array or url
+			dataAttr:'data-val',
+			position: 'south',
+			pos:{x:0,y:28}, 	
+			separator: "@",
+			highlight:true,
+			
+			selectedClass: 'completer-selected',
+			loadClass:'ckLoad',
+			onComplete:function(a,b){
+			  $('#steps').val(b)
+			}
+		});
+//		//Ajax demo
+//        var Completer = new ZUI.Completer('search',{
+//            template: '<div class="completer-container"></div>',
+//            container:'#searchBox',
+//            loadClass:'srhLoad',
+//            sugType:'ajax',//ajax,normal,custom
+//            source: '<?php echo $_url ?>',//Array or url
+//            reader:{
+//                "cat":"cat",                
+//                "key":"q"
+//            },
+//            dataAttr:'data-url',
+//            position: 'south',
+//            pos:{x:0,y:28},     
+//            separator: "@",
+//            highlight:false,
+//            queryMinChars:<?php echo Mage::getStoreConfig('searchautocomplete/general/min_chars') ?>,
+//            delay:<?php echo Mage::getStoreConfig('searchautocomplete/general/delay') ?>,
+//            selectedClass: 'completer-selected',
+//            loadClass:'ckLoad',
+//            dataRender:function(d,dom){
+//               try{
+//                   if(d.success){
+//                        var data = $.trim(d.items);
+//                        dom.fill(data.length>0 ? data :"<div>No resault</div>",d.query);
+//
+//                   }
+//               }catch(e){console.log(e);} 
+//            },
+//            ItemClick:function(item,dom){
+//              dom.setValue(item.find('.name').text());
+//              window.location.href = item.data('url');
+//            }
+//        });		
+	$('#urls').addList({
+		name: 'groupname',
+		defVal:'www.xxx.com',
+		addTar:'.ai',
+		delTar:'.di',
+		temp:'<div class="ASDaddItem"><input id="{#myName}" name="{#myName}" type="text" class="input" value="{#myVal}"/><em class="icon24 icon di">-</em></div>',
+		maxium:12,
+		onAdd: function(a){
+			$('#'+a).select()
+		},
+		onDel:function(a,b){
+			b.parent('.ASDaddItem').remove();
+		}
+	});	
+	console.log($('.styled'));
+	$('.loadSty').on('click',function(){
+		
+		console.log($('body').serializeHash($('.styled').get(0)));
+	});
+});
+</script>
+
+
+
+</body>
+</html>

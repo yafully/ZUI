@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="description" content="表单序列、规则分离下的含单选组的结算表单计算 » 张鑫旭-鑫空间-鑫生活" />
+<meta name="description" content="张鑫旭web前端学习实例页面 表单序列、规则分离下的含单选组的结算表单计算" />
+<meta name="keywords" content="jQuery, 表单序列化, 计算" />
+<meta name="author" content="张鑫旭, zhangxixnu" />
+<title>表单序列、规则分离下的含单选组的结算表单计算 » 张鑫旭-鑫空间-鑫生活</title>
+<link rel="stylesheet" href="../css/demo.css" type="text/css" />
+<link rel="stylesheet" href="../css/zxx.lib.css" type="text/css" />
+<style>
+.box {
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 12px;
+}
+.gtlt {
+	font-family: simsun;
+	letter-spacing: -.5em;
+	*zoom: 1;
+}
+.table_caption {
+	margin-top: .5em;
+	margin-bottom: .5em;
+	padding-left: 10px;
+	font-size: 14px;
+	font-family: '微软雅黑';
+	color: #666;
+}
+.table {
+	text-align: center;
+}
+.table th {
+	padding: 5px 20px;
+	border-bottom: 1px solid #ccc;
+	background-color: #eee;
+}
+.table td {
+	padding: 20px;
+	border-bottom: 1px solid #ddd;
+}
+.cho_desc,.cho_asc{display:inline-block; width:16px; height:17px; margin-bottom:-3px; background:url(../image/choose_bg.png) no-repeat;}
+.cho_desc{background-position:0 -50px;}
+.cho_desc:hover{background-position:0 -80px;}
+.cho_desc_off{background-position:0 -110px;}
+.cho_asc{background-position:0 -140px;}
+.cho_asc:hover{background-position:0 -170px;}
+.cho_asc_off{background-position:0 -200px;}
+.cho_input{width:42px; height:15px; margin:0 5px; border:1px solid #beceeb; padding:3px 0 2px; text-align:center; vertical-align:middle;}
+.cho_input:focus{border-color:#a3b0d6; box-shadow:inset 0 1px #eee;}
+
+.total{color: #f30; font-size: 20px; }
+</style>
+</head>
+
+<body>
+
+<div id="main">
+	<h1>表单序列、规则分离下的含单选组的结算表单计算实例页面</h1>
+    <div id="body" class="light">
+    	<div id="content" class="show">
+        	<h3>展示</h3>
+            <div class="demo">
+            	<div class="box">
+                	<h4 class="table_caption"><strong class="gtlt mr10">&gt;&gt;</strong>提成结算</h4>
+                    <form id="calForm" action="" method="post">
+                    	<p>就餐人数：<input type="number" name="person" class="mr20" size="8" min="0" value="0">
+                        	就餐金额：<input type="number" name="expense" class="mr20" size="8" min="0" value="0">
+                            支付定金：<input type="number" name="order" class="mr20" size="8" min="0" value="0">
+                        </p>
+                        <h4 class="f12">计算规则：</h4>
+                    	<div class="mt5"><input type="radio" name="rule" id="calRule1" value="1" class="vn"><label for="calRule1">按照人数计算<span class="g9">（每人次20元）</span></label></div>
+                        <div class="mt5"><input type="radio" name="rule" id="calRule2" value="2" class="vn"><label for="calRule2">按照金额计算<span class="g9">（就餐总金额1.2%）</span></label></div>
+                        <div class="mt5"><input type="radio" name="rule" id="calRule3" value="3" class="vn"><label for="calRule3">按照定金计算<span class="g9">（定金1.5% + 余额的1%）</span></label></div>
+                        <p>最终提成：<span class="total vn totalPrice">0</span>元</p>
+                        <input type="hidden" class="totalPrice" value="0">
+                    </form>
+                </div>              
+            </div>
+        </div>       
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+<script src="js/asdui.js" type="text/javascript"></script>
+<script>
+(function() {
+	// 计算规则
+	var oRule = {
+		".totalPrice": function() {
+			// 单选组的值为返回的是数值
+			switch (this.rule) {
+				case 1: {
+					return this.person * 20;
+					break;	
+				}
+				case 2: {
+					return this.expense * 0.12;
+					break;	
+				}
+				case 3: {
+					return this.order * 0.15 + (this.expense - this.order) * 0.1;
+					break;	
+				}
+				default: {
+					return 0;
+				}
+			}
+		}
+	};
+	
+	
+	// 事件们
+	var eleForm = $("#calForm"), isInputSupport = typeof window.screenX + "" != "undefined";
+	eleForm.find("input").each(function() {
+		var type = this.type, eventType = isInputSupport? "input" : "keyup";
+		if (type === "radio") {
+			eventType = "click";	
+		}
+		$(this).bind(eventType, function() {
+			if (eventType !== "click") {
+				var value = $(this).val(),
+					minVal = $(this).attr("min"),
+					intVal = Number(value) || minVal;
+
+				if (minVal && intVal < minVal) {
+					intVal = minVal;
+				}
+				
+				if (intVal != value) {
+					$(this).val(intVal);
+				}
+			}
+			
+			eleForm.calculate(oRule);										  
+		});									
+	});
+})();
+</script>
+
+
+
+
+</body>
+</html>

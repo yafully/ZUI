@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>FullBg</title>
+<link rel="stylesheet" href="css/asdui1.4b.css" type="text/css" media="all" />
+<style type="text/css">
+html,body{width:100%;height:100%;overflow:hidden}
+
+</style>
+    </head>
+    <body>
+    <div style="position:fixed;width:300px;height:40px;padding:10px;left:200px;top:200px;border:1px solid #03C;background:#ffd" id="sec">
+    <a href="http://image.zcool.com.cn/28/1/1307169089283.jpg" class="newurl">更换背景</a>
+    <a href="http://image.zcool.com.cn/3/16/1307025516828.jpg" class="newurl">更换背景</a>
+    <a href="http://image.zcool.com.cn/48/9/1307167830571.jpg" class="newurl">更换背景</a>
+    <a href="http://image.zcool.com.cn/img3/52/32/m_1350104124702.jpg" class="newurl">更换背景</a>
+    <div id="output"></div>
+    </div>
+    <div class="Fbg_wrapper" id="back">
+    	
+    </div>
+		<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+        <script src="js/asdui.js" type="text/javascript"></script>
+        <script type="text/javascript">
+		   var fitBg = new ZUI.FullBg('images/b2.jpg', {
+				center: true,
+				primary: 'auto',
+				injectElement:'back',
+				onBusy: function(){
+					$('#output').html('您点击过于频繁...')	
+				},
+				onLoad:function(){
+					$('#output').html('正在请求数据...')	
+				},
+				onComplete:function(){
+					$('#output').html('背景更换完成...')
+				}
+			});
+           $(function(){
+				$('.newurl').on('click',function(e){
+					e.preventDefault();
+					fitBg.BgLoad($(this).attr('href'))
+				});	
+
+            });
+        </script>        
+    </body>
+</html>

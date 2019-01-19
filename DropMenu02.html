@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>ASDUI.DropMenu</title>
+<link rel="stylesheet" href="css/asdui1.4b.css" type="text/css" media="all" />
+	<style type="text/css">
+    	.menu{position:absolute;width:240px;top:0;left:0;height:100%;z-index:10;background:#191B1F}
+		.menu li{display:block;background:#1F2228;}
+		.menu li.hover{background:#ffd}
+		.menu li.hover .mlink{color:#333}
+		.mTxt{font-family:"微软雅黑","黑体";font-size:20px;line-height:36px;}
+		.mlink:link,.mlink:visited{height:48px;border-bottom:1px solid #191B1F;border-top: 1px solid #262930;display:block;padding-top:12px;padding-left:50px;width:190px;color:#fff;}
+		.mlink:hover{text-decoration:none}
+		.mopen{width:60px;}
+		.mopen .mlink{padding-left:15px;width:45px;}
+		.mopen .mTxt{display:none}
+		.logo{text-align:center}
+		.logo img{width:100px;margin:0 auto}
+		.mopen .logo img{width:60px;}
+		.drop{display:none;position:absolute;top:0;left:60px;width:180px;height:100%;background:#ffd}
+		.menu,.menu li,.mlink,.drop,#mOverlay{-webkit-transition: all 200ms ease;-moz-transition: all 200ms ease;-o-transition: all 200ms ease;transition: all 200ms ease;}
+		
+		.mcuver{position:absolute;z-index:-1;top:0;left:0;width:100%;height:100%;background:#000;opacity:0;filter:alpha(opacity=0)}
+		.mshow{opacity:.2;filter:alpha(opacity=20);z-index:1}
+    </style>
+    </head>
+    <body>
+    <ul class="menu" id="menu">
+    	<li class="logo">
+        	<a href="#"><img src="images/17.jpg"/></a>
+        </li>
+    	<li class="mtem">
+        	<a href="#" class="mlink"><em class="icon32" data-icon="&#xe06e;"></em><span class="mTxt">日常应用</span></a>
+            <div class="drop">111</div>
+        </li>
+        <li class="mtem">
+        	<a href="#" class="mlink"><em class="icon32" data-icon="&#xe06a;"></em><span class="mTxt">数字创意</span></a>
+            <div class="drop">2222</div>
+        </li>
+        <li class="mtem">
+        	<a href="#" class="mlink"><em class="icon32" data-icon="&#xe07c;"></em><span class="mTxt">行业应用</span></a>
+            <div class="drop">3333</div>
+        </li>
+    </ul>
+    <div id="mOverlay" class="mcuver"></div>
+	<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+    <script src="js/asdui.js" type="text/javascript"></script>
+    <script type="text/javascript">
+		var Dropmenu = new ZUI.DropMenu('menu',{
+						mselect:'li.mtem',
+						msActiv:'hover',
+						mBody:'div.drop',
+						msHover:true,
+						onInit: function(a){
+							($.browser.msie && $.browser.version < 8) && a.ie7font('em.icon32');
+						},
+						onOpen:function(el,sec){
+							$('#menu').addClass('mopen');
+							$('#mOverlay').addClass('mshow');
+
+						},
+						onClose: function(el,sec){
+							$('#menu').removeClass('mopen');
+							$('#mOverlay').removeClass('mshow');
+						
+
+						}
+			   });    	
+    </script>
+    </body>
+</html>

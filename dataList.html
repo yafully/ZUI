@@ -1,0 +1,556 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="css/asdui1.4b.css" media="screen" />
+
+</head>
+
+<body>
+<table class="table02 makelist" id="sortList">
+<!--       <colgroup>
+         <col style="width:40px"/>
+         <col style="width:40px"/>
+         <col style="width:120px"/>
+         <col style="width:90px"/>
+         <col style="width:90px"/>
+         <col style="width:100px"/>
+         <col style="width:60px"/>
+         
+
+         
+         <col/>
+         <col style="width:200px"/>
+       </colgroup>-->
+            <thead id="first">
+                <tr>
+                  <th colspan="9">					  
+                  <div class="tableBar">
+                    <span class="thR">
+                        <a href="#" class="button primary action" data-action="4"><em class="icon16 icon" data-icon="&#xf067;"></em>添加</a>
+                        <a href="#" class="button primary action" data-action="5"><em class="icon16 icon" data-icon="&#xe602;"></em>刷新</a>
+                        <a href="#" class="button primary action" data-action="6"><em class="icon16 icon" data-icon="&#xe609;"></em>批量删除</a>
+                    </span>
+                    普通数据列表
+                    
+                  </div>
+                  </th>
+                </tr>
+                <tr>
+                  <td class="t_bg">&nbsp;</td>
+                  <td class="t_bg"><input name="" type="checkbox" value="" class="ckall"></td>
+                    <td class="t_bg">显示名称</td>
+                    <td align="center" class="t_bg">图标</td>
+                    <td class="t_bg">排序</td>
+                    <td class="t_bg">功能ID</td>
+                    <td class="t_bg">菜单可见</td>
+                    <td class="t_bg">Winform窗体类型</td>
+                    <td class="t_bg">操作</td>
+                </tr>
+            </thead>				
+            <tbody id="dataList">
+            </tbody>
+            <tfoot>
+               <tr>
+               <td colspan="9">
+                   <div id="pageBox" class="pagingBox">
+                   </div>
+               </td>
+               </tr>
+            </tfoot>                    
+  </table>
+  
+  <br/>
+  <br/>
+<table class="table02 makelist" id="sortList2">
+   <colgroup>
+     <col style="width:40px"/>
+     <col style="width:40px"/>
+     <col style="width:120px"/>
+     <col style="width:90px"/>
+     <col style="width:90px"/>
+     <col style="width:100px"/>
+     <col style="width:100px"/>
+     <col/>
+     <col style="width:200px"/>
+   </colgroup>
+        <thead id="first">
+            <tr>
+              <th colspan="9">					  
+              <div class="tableBar">
+                <span class="thR">
+                    <a href="#" class="button primary action" data-action="4"><em class="icon16 icon" data-icon="&#xf067;"></em>添加</a>
+                    <a href="#" class="button primary action" data-action="5"><em class="icon16 icon" data-icon="&#xe602;"></em>刷新</a>
+                    <a href="#" class="button primary action" data-action="6"><em class="icon16 icon" data-icon="&#xe609;"></em>批量删除</a>
+                </span>
+                过滤数据列表
+                
+              </div>
+              </th>
+            </tr>
+            <tr>
+              <td class="t_bg">&nbsp;</td>
+              <td class="t_bg"><input name="" type="checkbox" value="" class="ckall"></td>
+                <td class="t_bg">显示名称</td>
+                <td align="center" class="t_bg">图标</td>
+                <td class="t_bg">
+                	<span class="sortTH">
+                        <a href="#" class="sortRev" data-name="sorts">排序</a>
+                        <div class="sortBox">
+                            <a href="javascript:;" data-name="升序" data-dir="0" data-name="sorts">升序</a>
+                            <a href="javascript:;" data-name="降序" data-dir="1" data-name="sorts">降序</a>
+                            <a href="javascript:;" data-name="全部" data-dir="2" data-name="sorts">全部</a>
+                        </div>
+                    </span>
+                </td>
+                <td class="t_bg">功能ID</td>
+                <td class="t_bg">
+                	
+                	<span class="sortTH">
+                        <a href="#" class="sortRev">菜单可见</a>
+                        <div class="sortBox">
+                            <a href="javascript:;" data-name="是" data-dir="0">是</a>
+                            <a href="javascript:;" data-name="否" data-dir="1">否</a>
+                            <a href="javascript:;" data-name="全部" data-dir="2">全部</a>
+                        </div>
+                    </span>
+                </td>
+                <td class="t_bg">Winform窗体类型</td>
+                <td class="t_bg">操作</td>
+            </tr>
+        </thead>				
+        <tbody id="dataList2">
+        </tbody>
+                       
+</table>
+
+<br/>
+<br/>
+<table class="table02" id="editTable">
+	<colgroup>
+     <col style="width:120px"/>
+     <col style="width:200px"/>
+     <col style="width:120px"/>
+     <col/>
+   </colgroup>
+
+  <tbody>
+      <tr>
+        <td align="right" class="t_bg">登录用户ID：</td>
+        <td>1</td>
+        <td align="right" class="t_bg">登录名称：</td>
+        <td>admin</td>
+      </tr>
+      <tr>
+        <td align="right" class="t_bg">姓名：</td>
+        <td>王大锤</td>
+        <td align="right" class="t_bg">日志描述：</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right" class="t_bg">IP地址：</td>
+        <td>&nbsp;</td>
+        <td align="right" class="t_bg">Mac地址：</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right" class="t_bg">记录日期：</td>
+        <td>
+        	<span class="selBox">
+            	<dfn>--请选择--</dfn>
+                <em class="icon24 icon" data-icon="&#xe614;"></em>
+                <input name="" type="hidden">
+                <div class="selDrop">
+                	<ul class="iconList">
+                        <li data-name="gear" data-val="1" class="icName"><span class="fright">Action</span><em class="icon20 icon16" data-icon="&#xe610;"></em><span>gear</span></li>
+                        <li data-name="abs" data-val="2" class="icName"><span class="fright">Action</span><em class="icon20 icon16" data-icon="&#xe613;"></em><span>abs</span></li>
+                    </ul>
+                </div>
+            </span>
+        </td>
+        <td align="right" class="t_bg">系统编号：</td>
+        <td>&nbsp;</td>
+      </tr>
+  </tbody>
+  <tfoot>
+  	 <tr>
+        <td colspan="4" align="center" class="t_bg">
+        	 <a href="javascript:;" class="button" id="backBtn"><em class="icon16 icon" data-icon="&#xe605;"></em>返 回</a>
+        </td>
+      </tr>
+  </tfoot>
+</table>
+
+
+<br/>
+<br/>
+
+<div class="tbTit">
+	<div class="tableBar">
+        <span class="thR">
+            <a href="#" class="button primary action" data-action="4"><em class="icon16 icon" data-icon="&#xf067;"></em>添加</a>
+            <a href="#" class="button action" id="freezR"><em class="icon16 icon" data-icon="&#xe602;"></em>刷新</a>
+            <a href="#" class="button primary action" data-action="6"><em class="icon16 icon" data-icon="&#xe609;"></em>批量删除</a>
+        </span>
+        过滤数据列表
+    </div>
+</div>
+<table class="table02 makelist" id="freezePanes1">
+            <!-- confused? see the testData() call -->
+            <thead><tr><td class="t_bg">1, 1 </td><td class="t_bg">1, 2 </td><td class="t_bg">1, 3 </td><td class="t_bg">1, 4 </td><td class="t_bg">1, 5 </td><td class="t_bg">1, 6 </td><td class="t_bg">1, 7 </td><td class="t_bg">1, 8 </td><td class="t_bg">1, 9 </td><td class="t_bg">1, 10 </td><td class="t_bg">1, 11 </td><td class="t_bg">1, 12 </td><td class="t_bg">1, 13 </td><td class="t_bg">1, 14 </td><td class="t_bg">1, 15 </td><td class="t_bg">1, 16 </td><td class="t_bg">1, 17 </td><td class="t_bg">1, 18 </td><td class="t_bg">1, 19 </td><td class="t_bg">1, 20 </td><td class="t_bg">1, 21 </td><td class="t_bg">1, 22 </td><td class="t_bg">1, 23 </td><td class="t_bg">1, 24 </td><td class="t_bg">1, 25 </td></tr></thead>
+            
+            <tbody id="freezbd"><tr><td>2, 1 </td><td>2, 2 </td><td>2, 3 </td><td>2, 4 </td><td>2, 5 </td><td>2, 6 </td><td>2, 7 </td><td>2, 8 </td><td>2, 9 </td><td>2, 10 </td><td>2, 11 </td><td>2, 12 </td><td>2, 13 </td><td>2, 14 </td><td>2, 15 </td><td>2, 16 </td><td>2, 17 </td><td>2, 18 </td><td>2, 19 </td><td>2, 20 </td><td>2, 21 </td><td>2, 22 </td><td>2, 23 </td><td>2, 24 </td><td>2, 25 </td></tr><tr><td>3, 1 </td><td>3, 2 </td><td>3, 3 </td><td>3, 4 </td><td>3, 5 </td><td>3, 6 </td><td>3, 7 </td><td>3, 8 </td><td>3, 9 </td><td>3, 10 </td><td>3, 11 </td><td>3, 12 </td><td>3, 13 </td><td>3, 14 </td><td>3, 15 </td><td>3, 16 </td><td>3, 17 </td><td>3, 18 </td><td>3, 19 </td><td>3, 20 </td><td>3, 21 </td><td>3, 22 </td><td>3, 23 </td><td>3, 24 </td><td>3, 25 </td></tr><tr><td>4, 1 </td><td>4, 2 </td><td>4, 3 </td><td>4, 4 </td><td>4, 5 </td><td>4, 6 </td><td>4, 7 </td><td>4, 8 </td><td>4, 9 </td><td>4, 10 </td><td>4, 11 </td><td>4, 12 </td><td>4, 13 </td><td>4, 14 </td><td>4, 15 </td><td>4, 16 </td><td>4, 17 </td><td>4, 18 </td><td>4, 19 </td><td>4, 20 </td><td>4, 21 </td><td>4, 22 </td><td>4, 23 </td><td>4, 24 </td><td>4, 25 </td></tr><tr><td>4, 1 </td><td>4, 2 </td><td>4, 3 </td><td>4, 4 </td><td>4, 5 </td><td>4, 6 </td><td>4, 7 </td><td>4, 8 </td><td>4, 9 </td><td>4, 10 </td><td>4, 11 </td><td>4, 12 </td><td>4, 13 </td><td>4, 14 </td><td>4, 15 </td><td>4, 16 </td><td>4, 17 </td><td>4, 18 </td><td>4, 19 </td><td>4, 20 </td><td>4, 21 </td><td>4, 22 </td><td>4, 23 </td><td>4, 24 </td><td>4, 25 </td></tr><tr><td>4, 1 </td><td>4, 2 </td><td>4, 3 </td><td>4, 4 </td><td>4, 5 </td><td>4, 6 </td><td>4, 7 </td><td>4, 8 </td><td>4, 9 </td><td>4, 10 </td><td>4, 11 </td><td>4, 12 </td><td>4, 13 </td><td>4, 14 </td><td>4, 15 </td><td>4, 16 </td><td>4, 17 </td><td>4, 18 </td><td>4, 19 </td><td>4, 20 </td><td>4, 21 </td><td>4, 22 </td><td>4, 23 </td><td>4, 24 </td><td>4, 25 </td></tr><tr><td>4, 1 </td><td>4, 2 </td><td>4, 3 </td><td>4, 4 </td><td>4, 5 </td><td>4, 6 </td><td>4, 7 </td><td>4, 8 </td><td>4, 9 </td><td>4, 10 </td><td>4, 11 </td><td>4, 12 </td><td>4, 13 </td><td>4, 14 </td><td>4, 15 </td><td>4, 16 </td><td>4, 17 </td><td>4, 18 </td><td>4, 19 </td><td>4, 20 </td><td>4, 21 </td><td>4, 22 </td><td>4, 23 </td><td>4, 24 </td><td>4, 25 </td></tr><tr><td>4, 1 </td><td>4, 2 </td><td>4, 3 </td><td>4, 4 </td><td>4, 5 </td><td>4, 6 </td><td>4, 7 </td><td>4, 8 </td><td>4, 9 </td><td>4, 10 </td><td>4, 11 </td><td>4, 12 </td><td>4, 13 </td><td>4, 14 </td><td>4, 15 </td><td>4, 16 </td><td>4, 17 </td><td>4, 18 </td><td>4, 19 </td><td>4, 20 </td><td>4, 21 </td><td>4, 22 </td><td>4, 23 </td><td>4, 24 </td><td>4, 25 </td></tr><tr><td>4, 1 </td><td>4, 2 </td><td>4, 3 </td><td>4, 4 </td><td>4, 5 </td><td>4, 6 </td><td>4, 7 </td><td>4, 8 </td><td>4, 9 </td><td>4, 10 </td><td>4, 11 </td><td>4, 12 </td><td>4, 13 </td><td>4, 14 </td><td>4, 15 </td><td>4, 16 </td><td>4, 17 </td><td>4, 18 </td><td>4, 19 </td><td>4, 20 </td><td>4, 21 </td><td>4, 22 </td><td>4, 23 </td><td>4, 24 </td><td>4, 25 </td></tr></tbody>
+<!--            <tfoot><tr><td>5, 1 </td><td>5, 2 </td><td>5, 3 </td><td>5, 4 </td><td>5, 5 </td><td>5, 6 </td><td>5, 7 </td><td>5, 8 </td><td>5, 9 </td><td>5, 10 </td><td>5, 11 </td><td>5, 12 </td><td>5, 13 </td><td>5, 14 </td><td>5, 15 </td><td>5, 16 </td><td>5, 17 </td><td>5, 18 </td><td>5, 19 </td><td>5, 20 </td><td>5, 21 </td><td>5, 22 </td><td>5, 23 </td><td>5, 24 </td><td>5, 25 </td></tr></tfoot>-->
+        </table>
+
+
+<script src="js/jquery1.91.min.js" type="text/javascript"></script>
+<script src="js/asdui.js" type="text/javascript"></script>
+<script src="js/tmpl.js" type="text/javascript"></script>
+<script id="dataTemplate" type="text/x-jquery-tmpl">
+	<tr id="${bindData()}">
+		<td align="center">${listNum()}</td>
+		<td align="center"><input class="ckItem" type="checkbox" value="" name="#${id}"></td>
+		<td align="center">{{= name}}</td>
+		<td align="center">${icon}</td>
+		<td align="center">${sortNum}</td>
+		<td align="center">${fnId}</td>
+		<td align="center">
+			{{if visible}}
+				是
+			{{else}}
+				<span class="red">否</span>
+			{{/if}}
+		</td>
+		<td><div class="ell">${winform}</div></td>
+		<td align="center">
+			{{each action}}
+					{{if $value.view}}<a href="javascript:;" class="action" data-action="1" data-id="${id}" data-val="${dataStr()}">查看</a>{{/if}}
+					{{if $value.edit}} | <a href="javascript:;" class="action" data-action="2" data-id="${id}">编辑</a>{{/if}}
+					{{if $value.del}} | <a href="javascript:;" class="action" data-action="3" data-id="${id}">删除</a>{{/if}}
+					
+			{{/each}}
+		</td>
+	</tr>
+</script>
+<script id="dataTemplate2" type="text/x-jquery-tmpl">
+	<tr id="${id}">
+		<td align="center">${listNum()}</td>
+		<td align="center"><input class="ckItem" type="checkbox" value="" name="#${id}"></td>
+		<td align="center">{{= name}}</td>
+		<td align="center">${icon}</td>
+		<td align="center">${sortNum}</td>
+		<td align="center">${fnId}</td>
+		<td align="center">
+			{{if visible}}
+				是
+			{{else}}
+				<span class="red">否</span>
+			{{/if}}
+		</td>
+		<td><div class="ell">${winform}</div></td>
+		<td><div class="ell">${winform}</div></td>
+		<td><div class="ell">${winform}</div></td>
+		<td><div class="ell">${winform}</div></td>
+		<td><div class="ell">${winform}</div></td>
+		<td><div class="ell">${winform}</div></td>
+		<td><div class="ell">${winform}</div></td>
+		<td><div class="ell">${winform}</div></td>
+		<td><div class="ell">${winform}</div></td>
+		<td><div class="ell">${winform}</div></td>
+		<td><div class="ell">${winform}</div></td>
+		<td><div class="ell">${winform}</div></td>
+		<td><div class="ell">${winform}</div></td>
+		<td><div class="ell">${winform}</div></td>
+		<td><div class="ell">${winform}</div></td>
+		<td><div class="ell">${winform}</div></td>
+		<td><div class="ell">${winform}</div></td>
+		<td align="center">
+			{{each action}}
+					{{if $value.view}}<a href="javascript:;" class="action" data-action="1" data-id="${id}">查看</a>{{/if}}
+					{{if $value.edit}} | <a href="javascript:;" class="action" data-action="2" data-id="${id}">编辑</a>{{/if}}
+					{{if $value.del}} | <a href="javascript:;" class="action" data-action="3" data-id="${id}">删除</a>{{/if}}
+					
+			{{/each}}
+		</td>
+	</tr>
+</script>
+<script>
+var bindData = function(){
+	console.log(this);
+}
+var listNum = function() {
+	return $.inArray( this.data, datas) + 1;
+}
+var dataStr = function(){
+	var str = '';
+    for (var p in this.data) {
+        if (this.data.hasOwnProperty(p)) {
+            str += p + '::' + this.data[p] + '|';
+        }
+    }
+    return str;
+
+}
+//"{{= name}}"等价于${name}
+var datas = [
+	{
+		id:"row01",
+		name: "仓库管理",
+		icon: "gear",
+		sortNum: "001",
+		fnId:"Takeout",
+		visible:true,
+		winform:"据说Chrome34+支持响应式图片，就是直接标签上使用特定属性，就可以实现图片自动的响应式获取，大伙可以试试~",
+		action:[
+			{view:true},
+			{edit:true},
+			{del:true}
+		]
+	},
+	{
+		id:"row02",
+		name: "营销管理",
+		icon: "mang",
+		sortNum: "002",
+		fnId:"Sale",
+		visible:false,
+		winform:"据说Chrome33+支持响应式图片，就是直接标签上使用特定属性，就可以实现图片自动的响应式获取，大伙可以试试~",
+		action:[
+			{view:true},
+			{edit:false},
+			{del:true}
+		]
+	},
+	{
+		id:"row03",
+		name: "网站管理",
+		icon: "site",
+		sortNum: "003",
+		fnId:"Sale",
+		visible:false,
+		winform:"据说Chrome33+支持响应式图片，就是直接标签上使用特定属性，就可以实现图片自动的响应式获取，大伙可以试试~",
+		action:[
+			{view:true},
+			{edit:true},
+			{del:true}
+		]
+	},
+	{
+		id:"row04",
+		name: "财务系统",
+		icon: "money",
+		sortNum: "005",
+		fnId:"money",
+		visible:true,
+		winform:"据说Chrome22+支持响应式图片，就是直接标签上使用特定属性，就可以实现图片自动的响应式获取，大伙可以试试~",
+		action:[
+			{view:true},
+			{edit:true},
+			{del:true}
+		]
+	}
+],datas2 = [
+	{
+		id:"row01",
+		name: "仓库管理2",
+		icon: "gear",
+		sortNum: "006",
+		fnId:"Takeout",
+		visible:false,
+		winform:"据说Chrome34+支持响应式图片，就是直接标签上使用特定属性，就可以实现图片自动的响应式获取，大伙可以试试~",
+		action:[
+			{view:true},
+			{edit:false},
+			{del:false}
+		]
+	},
+	{
+		id:"row02",
+		name: "营销管理2",
+		icon: "mang",
+		sortNum: "007",
+		fnId:"Sale",
+		visible:false,
+		winform:"据说Chrome33+支持响应式图片，就是直接标签上使用特定属性，就可以实现图片自动的响应式获取，大伙可以试试~",
+		action:[
+			{view:true},
+			{edit:false},
+			{del:true}
+		]
+	},
+	{
+		id:"row03",
+		name: "网站管理",
+		icon: "site",
+		sortNum: "003",
+		fnId:"Sale",
+		visible:false,
+		winform:"据说Chrome33+支持响应式图片，就是直接标签上使用特定属性，就可以实现图片自动的响应式获取，大伙可以试试~",
+		action:[
+			{view:true},
+			{edit:true},
+			{del:true}
+		]
+	},
+	{
+		id:"row04",
+		name: "财务系统",
+		icon: "money",
+		sortNum: "005",
+		fnId:"money",
+		visible:true,
+		winform:"据说Chrome22+支持响应式图片，就是直接标签上使用特定属性，就可以实现图片自动的响应式获取，大伙可以试试~",
+		action:[
+			{view:true},
+			{edit:true},
+			{del:true}
+		]
+	}
+];
+
+var myBox = new ZUI.Box(),Infos = new ZUI.Info({mode:'middle',position:'center'});
+var pageBar = new ZUI.Paging('pageBox',{
+		total_records:100,
+		limit:10,
+		showNumber: true,
+		showText:true,
+		showGoto:'select',
+		filter:[10,20,30,50],
+		display:1,
+		cookie:{key:'pageFilter',expires:30},//设置cookies[键名，时间]
+		onChange: function(currentPage,limit,page){
+			console.log('切换当前页：'+currentPage+'，每页条数：'+limit+'，总页数'+page);
+		},
+		onFilter: function(limit,page,total){
+			console.log('切换显示条数-每页条数：'+limit+'，总页数'+page+'，总数据'+total);
+		},
+		onLoad:function(limit,page,total){
+			console.log('每页条数：'+limit+'，总页数'+page+'，总数据'+total);
+		}
+});
+
+
+$(function(){
+	var table = $('#sortList'),dataList = $("#dataList"),tem = $("#dataTemplate");
+	table.on('click','.action',function(e){
+		e.preventDefault();
+		switch($(this).data('action')){
+			//1查看
+			//2编辑
+			//3删除
+			//4新增
+			//5刷新
+			//6批删
+			case 1:
+				console.log($(this).attr('name').id);
+				myBox.myframe('menuAdd.html',{mywidth:'800',myheight:'310',boxtitle:'查看信息'});
+			break;
+			case 2:
+				myBox.myframe('menuAdd.html',{mywidth:'800',myheight:'310',boxtitle:'编辑信息'});
+			break;
+			case 3:
+				myBox.confirm('您确定要删除本条记录？',{
+					boxtitle:'系统提示',
+					textBoxBtnOk: '确 定', 
+					textBoxBtnCancel: '取 消',
+					callback:function(){
+						//Refresh Data
+					}
+				});
+			break;
+			case 4:
+				myBox.myframe('menuAdd.html',{mywidth:'800',myheight:'310',boxtitle:'新增用户'});
+			break;
+			case 5:
+				datas = datas2;
+				tem.tmpl(datas).appendTo(dataList.empty());	
+				Infos.info('系统提示（成功）',{'className':'success'});
+			break;
+			case 6:
+				var checked = $('.ckItem:checked');
+				checked.length >0 ?
+				$.each($.array.pluck(checked,'name'),function(i,el){
+					$(el).remove();
+				}) :
+				Infos.info('请勾选您要删除的条目.', {'className': 'wrong'});
+
+			break;
+			default:
+			break;
+		}
+	});
+	//全选反选
+	$('#sortList').checkEvt('ckall','ckItem',{CallBack:function(el,isAll,items,ckedArr){
+		var cked = el.prop('checked');
+		isAll ?
+		$.each($.array.pluck(items,'name'),function(i,el){
+			$(el)[(cked ? 'add' : 'remove')+'Class']('rowSec');
+		}):
+		$(el.attr('name')).toggleClass('rowSec');
+		//console.log(ckedArr);
+		console.log($.array.pluck(ckedArr,'name'));
+	}});
+	//数据填充
+	tem.tmpl(datas).appendTo(dataList);
+	
+	/////=====Demo2=====//////
+	var dataList2 = $("#dataList2");
+	tem.tmpl(datas2).appendTo(dataList2);
+	var Dropmenu = new ZUI.DropMenu('sortList2',{
+		mselect:'.sortTH',
+		//msActiv:'onSec',
+		mBody:'.sortBox',
+		msHover:false,
+		makeSelect:1,
+		sector:'a',
+		initialTxt:'全部',
+		onSelect: function(a,b){
+			console.log('对数据列'+a.data('name')+'进行'+a.data('dir')+'类型排序');
+			//根据返回参数值进行数据库排序
+			//console.log(b);
+		},					   
+		porps:function(el){
+			return el.data('dir');
+		}
+	 });
+	////=======Demo3=======/////
+	 var selDrop = new ZUI.DropMenu('editTable',{
+		mselect:'.selBox',
+		mBody:'.selDrop',
+		msActiv:'selOn',
+		msHover:false,
+		makeSelect:1,
+		receiver:'dfn',
+		name:'name',
+		sector:'.icName',
+		onSelect: function(a,b,sec){
+			sec.find('input').val(a.data('name'));
+		}
+	});
+	////=======Demo4=======/////
+	var freezbd = $('#freezbd'),tem2 = $("#dataTemplate2");
+	tem2.tmpl(datas).appendTo(freezbd);
+	
+		
+//	$("#freezePanes1").freezePanes({
+//		width:'auto',
+//        height: 300,
+//		fixedColumnWidth: 200,
+//		ignoreCols: [1,2]
+//	});
+var frozen = new ZUI.Frozen('freezePanes1',{
+		width:'auto',
+        height: 300,
+		fixedColumnWidth: 300,
+		ignoreCols: [1,2,3]
+	});
+	
+	$('#freezR').on('click',function(){
+		tem2.tmpl(datas2).appendTo(freezbd.empty());
+	})
+});		
+</script>           
+</body>
+</html>

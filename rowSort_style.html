@@ -1,0 +1,235 @@
+<!DOCTYPE>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery.rowsorter.js</title>
+
+</head>
+<body>
+
+<style>.unSecable{-o-user-select: none;-webkit-user-select: none;-moz-user-select: -moz-none;-khtml-user-select: none;-ms-user-select: none;user-select: none;}
+	table {float: left; margin: 20px; font-size: 14px; font-family: tahoma, arial, sans-serif;}
+	.sorting-table {cursor: ns-resize; box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);}
+	table thead th {background-color: #ccc; padding: 5px 8px;}
+	table td {background-color: #ddd; padding: 5px 8px;}
+	table tr.sorting-row td {background-color: #8b8;}
+	table td.sorter {background-color: #f80; width: 10px; cursor: ns-resize;}
+	table tr.nodrag td.sorter {cursor: default; background-color: #ddd;}
+	.sort-handler {float: right; background-color: #f80; width: 14px; height: 14px; margin: 2px 0 0 6px; cursor: ns-resize;}
+
+	.sorting-table tr:not(.sorting-row) td {opacity: 0.2;}
+
+	/* some styling for table1 */
+	#table1 tr.sorting-row td {background-color: #ccc;}
+	#table1.sorting-table {cursor: ns-resize; box-shadow: none; outline: 1px solid #333;}
+	#table1.sorting-table tbody tr:not(.sorting-row) td {opacity: 1; color: #bbb; text-shadow: 0 1px 0 rgba(255, 255, 255, 1);}
+</style>
+
+<table>
+	<thead>
+		<tr>
+			<th colspan="3">Default Sorting</th>
+		</tr>
+	</thead>
+	<tbody style="cursor:ns-resize" id="table1">
+		<tr>
+			<td>Row 1</td>
+			<td>Record 1</td>
+			<td>Record 1</td>
+		</tr>
+		<tr>
+			<td>Row 2</td>
+			<td>Record 2</td>
+			<td>Record 2</td>
+		</tr>
+		<tr>
+			<td>Row 3</td>
+			<td>Record 3</td>
+			<td>Recrod 3</td>
+		</tr>
+		<tr>
+			<td>Row 4</td>
+			<td>Record 4</td>
+			<td>Record 4</td>
+		</tr>
+		<tr>
+			<td>Row 5</td>
+			<td>Record 5</td>
+			<td>Record 5</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="3">&nbsp;</td>
+		</tr>
+	</tfoot>
+</table>
+
+<table>
+	<thead>
+		<tr>
+			<th colspan="4">handler: "td.sorter"</th>
+		</tr>
+	</thead>
+	<tbody id="table2">
+		<tr>
+			<td class="sorter"></td>
+			<td>Row 1</td>
+			<td>Record 1</td>
+			<td>Record 1</td>
+		</tr>
+		<tr>
+			<td class="sorter"></td>
+			<td>Row 2</td>
+			<td>Record 2</td>
+			<td>Record 2</td>
+		</tr>
+		<tr>
+			<td class="sorter"></td>
+			<td>Row 3</td>
+			<td>Record 3</td>
+			<td>Recrod 3</td>
+		</tr>
+		<tr>
+			<td class="sorter"></td>
+			<td>Row 4</td>
+			<td>Record 4</td>
+			<td>Record 4</td>
+		</tr>
+		<tr>
+			<td class="sorter"></td>
+			<td>Row 5</td>
+			<td>Record 5</td>
+			<td>Record 5</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="4">&nbsp;</td>
+		</tr>
+	</tfoot>
+</table>
+
+<table>
+	<thead>
+		<tr>
+			<th colspan="3">handler: "span.sort-handler"</th>
+		</tr>
+	</thead>
+	<tbody id="table3">
+		<tr>
+			<td>Row 1</td>
+			<td>Record 1 <span class="sort-handler"></span></td>
+			<td>Record 1</td>
+		</tr>
+		<tr>
+			<td>Row 2</td>
+			<td>Record 2 <span class="sort-handler"></span></td>
+			<td>Record 2</td>
+		</tr>
+		<tr>
+			<td>Row 3</td>
+			<td>Record 3 <span class="sort-handler"></span></td>
+			<td>Recrod 3</td>
+		</tr>
+		<tr>
+			<td>Row 4</td>
+			<td>Record 4 <span class="sort-handler"></span></td>
+			<td>Record 4</td>
+		</tr>
+		<tr>
+			<td>Row 5</td>
+			<td>Record 5 <span class="sort-handler"></span></td>
+			<td>Record 5</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="3">&nbsp;</td>
+		</tr>
+	</tfoot>
+</table>
+
+<table>
+	<thead>
+		<tr>
+			<th colspan="4">Disabled row</th>
+		</tr>
+	</thead>
+	<tbody id="table4">
+		<tr>
+			<td class="sorter"></td>
+			<td>Row 1</td>
+			<td>Record 1</td>
+			<td>Record 1</td>
+		</tr>
+		<tr>
+			<td class="sorter"></td>
+			<td>Row 2</td>
+			<td>Record 2</td>
+			<td>Record 2</td>
+		</tr>
+		<tr class="nodrag">
+			<td class="sorter"></td>
+			<td>Row 3</td>
+			<td>Record 3</td>
+			<td>Recrod 3</td>
+		</tr>
+		<tr>
+			<td class="sorter"></td>
+			<td>Row 4</td>
+			<td>Record 4</td>
+			<td>Record 4</td>
+		</tr>
+		<tr>
+			<td class="sorter"></td>
+			<td>Row 5</td>
+			<td>Record 5</td>
+			<td>Record 5</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="4">&nbsp;</td>
+		</tr>
+	</tfoot>
+</table>
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+    <script type="text/javascript" src="js/asdui.js"></script>
+<script type="text/javascript">
+
+
+	
+  var sort1 = new ZUI.Rowsort('table1',{
+   		onDrop: function(tbody, row, new_index, old_index) {
+   			//$("#log").html(old_index + ". row moved to " + new_index);
+  		}
+   });	
+
+
+	
+  var sort2 = new ZUI.Rowsort('table2',{
+  		handler: "td.sorter",
+   		onDrop: function(tbody, row, new_index, old_index) {
+   			//$("#log").html(old_index + ". row moved to " + new_index);
+  		}
+   });
+
+  var sort3 = new ZUI.Rowsort('table3',{
+  		handler: "span.sort-handler",
+   		onDrop: function(tbody, row, new_index, old_index) {
+   			//$("#log").html(old_index + ". row moved to " + new_index);
+  		}
+   });
+
+var sort4 = new ZUI.Rowsort('table4',{
+  		handler: "td.sorter",
+   		onDrop: function(tbody, row, new_index, old_index) {
+   			//$("#log").html(old_index + ". row moved to " + new_index);
+  		}
+   });
+   alert(1)
+</script>
+
+</body>
+</html>

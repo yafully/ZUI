@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Countdown Timer | Demo</title>
+        
+        <!-- Our CSS stylesheet file -->
+        <link rel="stylesheet" href="assets/countdown/jquery.countdown.css" />
+<style type="text/css">
+#countdown{border:2px solid #ddd;width:400px;margin:0 auto}
+</style>
+    </head>
+    
+    <body>
+
+<div id="countdown"></div>
+
+		<p id="note"></p>
+        <a href="javascript:;" id="update">Update Time!</a>
+        <!-- JavaScript includes -->
+		<script src="js/jquery1.91.min.js"></script>
+        <script src="js/asdui.js"></script>
+		<script type="text/javascript">
+		console.log((new Date) + 50000);
+			var time1 = new ZUI.Countdown('countdown',{
+				date: +(new Date) + 50000,//"June 7, 2015 15:03:25",
+				onEnd:function(a,b){
+					b.html('Time Out!');
+				},
+				render:function(a,b,date){
+					b.html(a.leadingZeros(date.years, 2) +'Years'+ a.leadingZeros(date.days, 3) +'Days'+ a.leadingZeros(date.min, 2) +'Min'+ a.leadingZeros(date.sec, 2) +'Sec');
+				}
+			});
+			
+			var time2 = new ZUI.Countdown('note',{
+				date:"June 7, 2015 15:03:25",
+				onEnd:function(a,b){
+					b.html('活动结束');
+				},
+				render:function(a,b,date){
+					b.html(a.leadingZeros(date.years, 2) +'Years'+ a.leadingZeros(date.days, 3) +'Days'+ a.leadingZeros(date.min, 2) +'Min'+ a.leadingZeros(date.sec, 2) +'Sec');
+				}
+			});
+			
+			
+			$(function(){
+				$('#update').on('click',function(){
+					time1.update(+(new Date) + 10000);
+				});
+			});
+        </script>
+
+    </body>
+</html>
+

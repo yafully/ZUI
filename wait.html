@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+$.wait jQuery extension that wraps setTimeout in a Deferred object.
+
+Basic example:
+
+$.wait(500).then(function(){
+  console.log('A half-second later.');
+});
+Passing the context as the 2nd parameter:
+
+$.wait(500, someContext).then(function(){
+  this.something(); // "this" is the context parameter that you pass in
+});
+This utility is similar to _.delay, except that you can cancel the done callbacks by calling .reject() on the returned Deferred object:
+
+var deferred = $.wait(5000);
+
+deferred.done(function(){
+  console.log('This won\'t run if the deferred object is rejected within 5 seconds.');
+});
+
+if (confirm('Should we cancel the queued action?')) {
+  deferred.reject();
+}
+Use it along side the Promise-enhanced jqXHR object returned from $.ajax:
+
+var jqXHR = $.ajax({
+  // ajax options here
+});
+
+$.when(jqXHR, $.wait(500)).done(function(){
+  console.log('This won\'t run until the AJAX has returned and at least 500 ms have passed.');
+});
+<script src="js/jquery1.91.min.js" type="text/javascript"></script>
+<script src="js/asdui.js" type="text/javascript"></script>
+<script>
+       $(function(){
+	   		$.wait(2000).then(function(){
+			  console.log('A half-second later.');
+			});
+	   }); 
+   
+    </script>
+</body>
+</html>

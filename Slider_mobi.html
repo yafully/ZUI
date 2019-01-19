@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>mooTipsy</title>
+<link rel="stylesheet" href="css/asdui1.4bmobi.css" type="text/css" media="all" />
+<style type="text/css">
+a:link,a:visited{color:#f00; text-decoration:underline}
+fieldset{margin:20px 10px}
+pre{border:1px solid #fc0;background:#ffd;padding:5px}
+
+
+fieldset{margin:20px;padding:20px;text-align:left}
+fieldset legend{padding:5px 10px;font-weight:700;font-size:16px}
+table{color:#333;background:#E8F5FE;border-collapse:collapse;width:100%;text-align:left;}
+thead{}
+thead th{padding:1em 1em .5em;border:1px solid #5C9CC0;font-size:120%;background:#5C9CC0;text-align:left}
+thead tr{}
+td{padding:.5em 1em;border:1px solid #BBE1F1}
+tbody td{background:#EEFAFF;}
+tfoot{background-color:#A9C9E2;}
+tfoot td{padding-bottom:1.5em;border:1px solid #BBE1F1}
+
+dl{padding:10px 5px}
+dl dt{font-weight:700;font-sie:14px;padding:5px 0;}
+dl dt span{color:#f60;padding:0 8px}
+pre{border:1px solid #ADCD3C;background-color:#F2FDDB;padding:5px;white-space: pre-wrap;
+word-wrap: break-word;}
+
+.animate:nth-child(2){
+	-webkit-transition-delay: 1s;
+	-moz-transition-delay: 1s;
+	-o-transition-delay: 1s;
+	-ms-transition-delay: 1s;
+	transition-delay: 1s;
+
+}
+.animate:nth-child(3){
+	-webkit-transition-delay: 0.5s;
+	-moz-transition-delay: 0.5s;
+	-o-transition-delay: 0.5s;
+	-ms-transition-delay: 0.5s;
+	transition-delay: 0.5s;
+
+}
+.SL_box3{    color: #ccc;
+    display: inline-block;
+    height: 180px;
+    overflow: hidden;
+    padding: 10px;
+    position: absolute;
+    text-align: justify;
+    width: 680px;}
+</style>
+    </head>
+    <body>
+        
+        	<!--<div id="output" style="border:2px solid blue;background:#fff;width:300px;height:50px;position:absolute;right:10px;top:40px;"></div>-->
+        
+            <div id="SL" style="width:100%;">
+            	<div id="Slin" style="width:100%;margin:0 auto;position:relative">
+            
+                    <div class="SL_box" id="S1" style="background:#F60;color:#fff">	
+                        <h2 class="animate">First article1</h2>
+                        <p class="animate">Some description</p>	
+                        
+                    </div>
+    
+                    <div class="SL_box" id="S2" style="background:#060">	
+                        <h2 class="animate">First article2</h2>
+                        <p class="animate">Some description</p>	
+                        
+                    </div>
+        
+                    <div class="SL_box" id="S3" style="background:#f30;color:#fff">	
+                        <h2 class="animate">First article3</h2>
+                        <p class="animate">Some description</p>	
+                        
+                    </div>
+                    
+                    <div class="SL_box" id="S4" style="background:#ffd;color:#888">	
+                        <h2 class="animate">First article4</h2>
+                        <p class="animate">Some description</p>	
+                        
+                    </div>
+                </div>    
+            </div>
+            <a href="javascript:void(0)" id="nextBtn">下一个</a> | <a href="javascript:void(0)" id="prevBtn">上一个</a> | <a href="javascript:void(0)" onClick="Sl.goToSlide(2)">跳转到第3个</a> | <a href="javascript:void(0)" id="CgSL">动态改变</a>
+            
+            <div class="SL_nav" id="SL_nav"><a href="#" title="Click to navigate" class="active"></a><a href="#" title="Click to navigate" class=""></a><a href="#" title="Click to navigate" class=""></a><a href="#" title="Click to navigate" class=""></a></div>
+      
+        
+<!--       <fieldset>
+        <legend>ASDUI.SL fade demo</legend>
+            <div id="SL2" style="position:relative;width:500px;height:250px">
+					<div id="SLin2">
+                        
+                        <div class="SL_box" style="background:#fc0;color:#fff">	
+                            <h2>1111111111</h2>
+                            <p>Some description</p>	
+                            <div class="SL_info">1111111</div>
+                        </div>
+        
+                        <div class="SL_box">	
+                            <h2>22222222222</h2>
+                            <p>Some description</p>	
+                            <div class="SL_info">2222222</div>
+                        </div>
+            
+                        <div class="SL_box" id="dltMe" style="background:#f30;color:#fff">	
+                            <h2>333333333</h2>
+                            <p>Some description</p>	
+                            <div class="SL_info">33333333</div>
+                        </div>
+					</div>
+            </div>
+
+            <div class="SL_nav" id="SL_nav2">
+                <a href="#" title="Click to navigate" class="active"></a>
+                <a href="#" title="Click to navigate" class=""></a>
+                <a href="#" title="Click to navigate" class=""></a>
+            </div>
+        </fieldset> -->
+
+
+
+<script type="text/javascript" src="js/zepto.js"></script>
+<script src="js/asdui_mobi.js" type="text/javascript"></script>
+        <script type="text/javascript">
+		Sl = new ZUI.SL($('#SL'),{
+				moveBox:'Slin',
+				slides: 'SL_box',
+				slideDuration:8000,
+				effectDuration:500,
+				//effect:Fx.Transitions.Expo.easeInOut,
+				effect:'linear',
+				//fadeDist:700,
+				fadePosition: 'left',
+				stopSlideOnClick: true,
+				autoSlide: true,
+				navigationNums: true, // if true, numbers will appear
+				//circle:false,
+				navbox:'SL_nav',
+				//circle:false,//是否首尾相连
+				nextBtn:'nextBtn',
+				prevBtn:'prevBtn',
+				onStart:function(D,E){
+					//$('Slin').fade(.7);
+					$.spAni && D.find('.animate').each(function(i,item){
+						$(item).removeClass('bounceInLeft')
+					});
+					
+				},
+				onFinish:function(D,E){
+					//$('Slin').fade('in');
+					D.find('.animate').addClass('bounceInLeft');
+					
+					//$('#output').html(D.attr('id')+'显示'+E.attr('id')+'隐藏');
+				}
+		
+			});
+			
+//		 Sl2 = new ZUI.SL('SL2',{
+//				moveBox:'SLin2',
+//				slides:'SL_box',
+//				slideDuration:5000,
+//				effectDuration:500,
+//				fadeDist:600,
+//				fadePosition:'fade',
+//				stopSlideOnClick: false,
+//				autoSlide: false,
+//				navigationNums: true, // if true, numbers will appear
+//				navbox:'SL_nav2',
+//				onStart:function(){
+//					//alert('begin')
+//				},
+//				onFinish:function(){
+//					//alert('finish')
+//				}			
+//		
+//			});	
+
+
+			
+			//window.shake()   
+        </script>        
+    </body>
+</html>

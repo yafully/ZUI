@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/asdui1.4b.css" type="text/css" media="all" />
+
+
+<style type="text/css">
+a:link,a:visited{color:#f00; text-decoration:underline}
+fieldset{margin:20px 10px}
+pre{border:1px solid #fc0;background:#ffd;padding:5px}
+#oop{position:absolute;z-index:65566;top:10px;right:100px;}
+.highlight{color:#000}
+#output{border:1px solid #fc0;background:#ffd;position:fixed;top:5px;right:5px;width:300px;height:500px;overflow-x:hidden;overflow-y:auto;padding:5px;}
+</style>
+</head>
+
+<body>
+<div id="output">
+	
+</div>
+<fieldset style="top:inherit" id="Dps">
+ <legend><h1>Element.implement</h1></legend>
+ <h2>Element.mystep</h2>
+ <div style="width:906px;">
+    <a href="javascript:void(0)" id="dostep">stepp+</a>
+        <ul class="stepNavigation" id="step">
+            <li data-name="a" class="q"><a href="javascript:;" title=""><em>1:确认购买信息</em></a></li>
+            <li data-name="b" class="q1"><a href="javascript:;" title=""><em>2:选择支付方式</em><div>111111</div></a></li>
+            <li data-name="c"class="lastStep"><a href="javascript:;" title=""><em>3:确认收货</em></a></li>
+
+        </ul> 
+ </div>
+ <div style="border:1px solid #fc0;background:#ffd;color:#f90" id="hlt">a1asa3s1213</div>
+<h2>高亮标识</h2>
+<a href="javascript:void(0)" onClick="$('#hlt').highlight('a')">高亮所有“a”</a>
+<a href="#" onClick="$('#hlt').removeHighlight()">还原高亮</a>
+<h2>Element.progress</h2>
+<a href="javascript:void(0)" class="progre" rel="20">20%</a>
+<a href="javascript:void(0)" class="progre" rel="50">50%</a>
+<a href="javascript:void(0)" class="progre" rel="90">90%</a>
+<div id="Pgress">检查任务总体完成度：<span class="Progress"><dfn id="abc"></dfn></span><em>40%</em></div>
+
+<a href="javascript:void(0)" onClick="$.toFullScreen(document.documentElement)">Full Screen</a>
+</fieldset>
+<div id="fla" style="border:1px solid #f00;width:300px;height:250px;"></div>
+<a href="http://www.hisea.cn" rel="sidebar" id="fav">加入收藏</a>
+<input name="" type="text" id="testMe"/>
+<script type="text/javascript" src="js/jquery1.91.min.js"></script>
+<script src="js/easing.js" type="text/javascript"></script>
+<script src="js/asdui.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(function(){
+		var output = $('#output');
+		$('#fav').on('click',function(e){
+				
+				var url = $(this).attr('href'),title=$(this).attr('rel');
+					try {
+					window.external.addFavorite(url, title);//ie
+					
+				} catch (e) {
+					try {
+						window.sidebar.addPanel(title, url, '');
+					} catch (e) {
+						if(!$.browser.mozilla)alert('加入收藏失败，请使用 Ctrl+D 进行添加');
+
+					}
+				}
+				if(!$.browser.mozilla)e.preventDefault();
+		});
+		
+		output.append('ZUI ver:'+ZUI.version+'<hr/>');
+		output.append('浏览器名称'+$.browser.name+'<hr/>');
+		output.append('浏览器版本'+$.browser.version+'<hr/>');
+		output.append('oldIE:'+$.browser.oldIE+'<hr/>');
+		output.append('flashVer.'+$.swf.version+'<hr/>');
+		output.append('动画'+$.support.ani+'<hr/>');
+		output.append('画布'+$.support.canvas()+'<hr/>');
+		//$.Audio('sound/','smallbox');
+		$.swf.create('fla',{id:'myswf',url:'http://www.tudou.com/a/ked7zsQPnDk/&iid=132289910&resourceId=0_04_05_99/v.swf',width:'300px',height:'250px',bgcolor:'#ffffdd'});
+	  v = -1;
+	  $('#dostep').on('click',function(){
+	  	v++;
+		$('#step').steps(v);
+	  	
+	  });
+	  	//String
+		output.append('<h2>String扩展:</h2><hr/>');
+		
+		
+		//output.append(str);
+	  	var decode = $.string.encodeHTML('<h1><a href="#">cool</a></h1>');
+		output.append('string转码'+decode);
+		var encode = $.string.decodeHTML(decode);
+		output.append('string解码:<pre>'+encode+'<pre/>');
+		
+		var half = $.string.toHalfWidth('０１２３４５６７８９ＡＢＣＤＥＦＧＨａ');
+		output.append('全角转换'+half+'<hr/>');
+		
+		var srcTag1 = $.string.stripTags("<b>This is a string with <i>html</i> in it.</b>");
+		var srcTag2 = $.string.stripTags("<b>This is a string with <i>html</i> in it.</b>",'i');
+		var srcTag3 = $.string.stripTags("<b>This is a string with <i>html</i> in it.</b>",'i',true);
+		var srcTag4 = $.string.getTags("<b>This is a string with <i>html</i> in it.</b>",'i',true);
+		output.append('去除所有标签'+srcTag1+'<hr/>');
+		output.append('去除所有标签i'+srcTag2+'<hr/>');
+		output.append('去除所有标签i包括标签内容'+srcTag3+'<hr/>');
+		output.append('获取标签i内容'+srcTag4+'<hr/>');
+		
+		
+		//Array.
+		output.append('<h2>Array扩展:</h2><hr/>');
+		var arr = [1,2,'a','c','a','ccc','556','999','xyz',556,'c'];
+		var arr2 = ['a','vvvv',1,2,'999'];
+		var ct = $.array.contains(arr,'a');
+		output.append('contains:'+ct+'<hr/>');
+		
+		
+		var pck = $.array.pick([1,'a',-1,'c'],function(item,i){
+			return item>0
+		});
+		output.append('获取满足条件的第一个:'+pck+'<hr/>');
+		
+		var inx = $.array.indexOf(arr,'a',3);
+		output.append('索引:'+inx+'<hr/>');
+		
+		var inx2 = $.array.lastIndexOf(arr,'a',3);
+		output.append('逆向索引:'+inx2+'<hr/>');
+		
+		var remv = $.array.remove(arr,'a');
+		output.append('去掉指定项:'+remv+'<hr/>');
+		
+		var remv2 = $.array.remove(arr);
+		output.append('清空数组：'+remv2+'<hr/>');
+		
+		var uni = $.array.unique(['a','b','d','a',1,2,1,1]);
+		output.append('去掉单个数组里面的重复项：'+uni+'<hr/>');
+		
+		var ramd = $.array.shuffle(arr2);
+		output.append("随机"+ramd+'<hr/>');
+				
+		var inc = $.array.include([1,'a',-1,'c',556],'a');
+		output.append("只包含1个"+inc+'<hr/>');	
+
+		var cmb = $.array.combine(['a','b','c',2],['a','b','c',1]);
+		output.append('联合2个数组并去掉重复项'+cmb+'<hr/>');
+		
+		var inst = $.array.intersect(['a','b',1],['a','c','d',1]);
+		output.append("交集"+inst+'<hr/>');	
+		
+		var diff = $.array.differentiate(['a','b',1],['a','c','d',1]);
+		output.append("差集"+diff+'<hr/>');
+		
+
+
+		//insert
+		output.append('指定位置插入数组元素s'+$.array.insertAt(arr2,1,'xb')+'<hr/>');
+//		alert($.array.insertAt(['a','b','c'],2,'xb'));
+//		alert($.array.insertArrayAt(['a','b','c'],2,['x','y','z']));
+		
+		//pluck
+		var stooges = [{name : 'moe', age : 40}, {name : 'larry', age : 50}, {name : 'curly', age : 60},{name : 'larry', age : 66}];
+		
+		output.append('获取数组指定项组成新数组pluck'+$.array.pluck(stooges,'name')+'<hr/>');
+		
+		//where
+		console.log('$.array.where');
+		console.log($.array.where(["ZhangSan","LiSi"],function(item,index){return item=="ZhangSan"}));
+		console.log($.array.where(stooges,function(item,index){return item.name=="larry"}));
+		
+		//Number
+		var num = $.number.randomInt(0,100);
+		output.append(num);
+		//Object
+//		console.log($.Object.subsets({one:1,two:2,three:3}, ['one', 'three']));
+		//var myObj = {first: 'Sunday', second: 'Monday', third: 'Tuesday'};
+//		$.Object.filter({first: 20, second: 10, third: 60},function(value,key){
+//			console.log(value);
+//			console.log(key);
+//			return value>10
+//		});
+		////Date
+		var dt = $.date.format(new Date(),'yyyy-MM-ddThh:mm:ss');
+		var dt2 = $.date.parse('2014-05-06T12:20:35');
+		output.append('日期格式'+dt+'<hr/>');
+		output.append('日期转换'+dt2+'<hr/>');
+		//URI
+		var urlpram = $.url.getQueryValue('http://user:password@www.test.com:8383/the/path.html?query=value&page=12','page');
+		output.append('获取URI指定参数'+urlpram+'<hr/>');
+		var urljson = $.url.queryToJson('http://user:password@www.test.com:8383/the/path.html?query=value&page=12');
+		output.append('转化URI参数为JSON'+urljson+'<hr/>');
+		
+		
+   $('a.progre').on('click',function(){
+      $('#Pgress').progress($(this).attr('rel'),'easeInOutBack');
+   });	
+   
+   $('#testMe').on('input', function(eve){
+      $('#hlt').html('<pre>' + $(this).val() + '</pre>');
+   });
+});
+</script>
+
+</body>
+</html>

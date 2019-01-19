@@ -1,0 +1,48 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>点击加减或手动改变表单值(支持键盘控制)</title>
+
+
+
+<style>
+/*demo css*/
+.i_tips{height:30px;margin-left:20px;color:#f60;font-size:14px;line-height:30px}
+.i_box{margin:10px 20px;font-size:14px;float:left}
+.i_box *{vertical-align:middle}
+.i_box a{padding:2px 5px;background-color:#e9e9e9;border:1px solid #ccc;text-decoration:none;color:#585858;line-height:20px}
+.i_box a:hover{color:#000}
+.i_box input{width:30px;height:18px;margin:0 8px;padding:2px;border:1px solid #ccc;text-align:center;line-height:16px}
+</style>
+</head>
+<body>
+
+<!--DEMO start-->
+<div id="demo" data-url="a" data-orgin="b">
+	<div class="i_tips"></div>
+    <div class="i_box"><a href="javascript:;" class="J_minus">-</a><input type="text" value="0" class="J_input" /><a href="javascript:;" class="J_add">+</a></div>
+    <div class="i_box"><a href="javascript:;" class="J_minus">-</a><input type="text" value="0" class="J_input" /><a href="javascript:;" class="J_add">+</a></div>
+    <div class="i_box"><a href="javascript:;" class="J_minus">-</a><input type="text" value="0" class="J_input" /><a href="javascript:;" class="J_add">+</a></div>
+    <div class="i_box"><a href="javascript:;" class="J_minus">-</a><input type="text" value="0" class="J_input" /><a href="javascript:;" class="J_add">+</a></div>
+    <div class="i_box"><a href="javascript:;" class="J_minus">-</a><input type="text" value="0" class="J_input" /><a href="javascript:;" class="J_add">+</a></div>
+	
+</div> 
+<script src="js/jquery1.91.min.js"></script>
+<script src="js/asdui.js"></script>
+<script>
+//调用
+$( function() {
+	
+	$('.i_box').iVaryVal({},function(value,index){
+		$('.i_tips').html('你点击的表单索引是：'+index+'；改变后的表单值是：'+value);
+	});
+	//console.log($('#demo').datas());
+});
+</script>
+
+
+
+</body>
+</html>
